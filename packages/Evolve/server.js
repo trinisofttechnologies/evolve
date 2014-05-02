@@ -10,15 +10,15 @@ var result;
         result = Meteor.http.get(url);
         $ = cheerio.load(result.content);
         var designation = $(".results .col");
-        var currentDiv = null;
-        currentDiv = cheerio.load(designation[0])
-        console.log(currentDiv);
-        console.log(designation.length)
-        return;
+        // var currentDiv = null;
+        // currentDiv = cheerio.load(designation[0])
+        // console.log(currentDiv);
+        // console.log(designation.length)
+        // // return;
         for(var i=0,il=designation.length;i<il;i++){
-            currentDiv = designation[i];
+            currentDiv = designation[i];    
             // currentDiv.
-            // console.log(designation[i].children[0].data)
+            console.log(designation[i].children[0])
         }
     }
 
