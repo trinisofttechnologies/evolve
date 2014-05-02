@@ -9,16 +9,21 @@ var result;
 
         result = Meteor.http.get(url);
         $ = cheerio.load(result.content);
-        var designation = $(".results .col");
+        var designation = $(".col");
         var currentDiv = null;
-        currentDiv = cheerio.load(designation[0])
+        //currentDiv = cheerio.load(designation[0])
         console.log(currentDiv);
         console.log(designation.length)
-        return;
+        //var divProd = $('div.prod');
+        var myArray = [];
+        //return;
         for(var i=0,il=designation.length;i<il;i++){
             currentDiv = designation[i];
             // currentDiv.
-            // console.log(designation[i].children[0].data)
+            //console.log(designation[i].children[0].data)
+            console.log($(currentDiv).find('.thumb__tugger img').attr('src'));
+            console.log($(currentDiv).find('.media__message h4').text());
+            console.log($(currentDiv).find('.media__message .p4').text());
         }
     }
 
