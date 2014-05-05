@@ -73,9 +73,7 @@ function scrapTed(){
       //console.log("first")
       TedSpeakers.find({}).forEach(function(data){
           activeurl.push(data.moredetails);
-          //console.log(data.moredetails.length)
       });
-      //console.log("second")
       for(var i=0,il=activeurl.length-1;i<il;i++){
           var url = activeurl[i];
           if(url && (!url.match("undefined"))&&url.length>27){
@@ -91,12 +89,10 @@ function scrapTed(){
             }
             profileintro =$('.profile-intro').text();
             //listen = $('.section section--minor p');
-            for(var k=0,kl=listen.length;k<kl;k++){
-                console.log($(listen[k]).text());
-            }
+            // for(var k=0,kl=listen.length;k<kl;k++){
+            //     console.log($(listen[k]).text());
+            // }
             say =$('bloquote p').text();
-            // console.log(website);
-            // console.log(listen);
           }
           
 
