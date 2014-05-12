@@ -26,5 +26,3 @@ var result;
             console.log($(currentDiv).find('.media__message .p4').text());
         }
     }
-
-scrapTed();
