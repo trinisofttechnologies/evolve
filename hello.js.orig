@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 TedLeader = new Meteor.Collection("tedleader");
 TedFellows = new Meteor.Collection("tedfellows");
+=======
 TedSpeakers = new Meteor.Collection("tedspeakers");
 
+>>>>>>> be12e7d90b4116f710f93a89187eac9ff83aebc4
 if (Meteor.isClient) {
   Template.hello.greeting = function () {
     return "Welcome to hello.";
@@ -18,9 +21,8 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
     Meteor.startup(function () {
-        // scrapTed();
+        scrapTedFollows();
     });
-    
 
     var result,moreResult;
 
@@ -28,6 +30,10 @@ if (Meteor.isServer) {
     // scrapTed();
     getMoreDetails();
 
+
+}
+
+<<<<<<< HEAD
 function scrapTedFollows(){
     var i=1;
     var $ = null;
@@ -67,6 +73,31 @@ function scrapTedFollows(){
     scrapTedFollowsSecondPage();
 }
 
+function scrapTedFollowsSecondPage(){
+    var link = []
+    TedFellows.find({}).forEach(function(data){
+        // console.log(data.link);
+        link.push(data.link);
+    });
+    var url = null;
+    var result = null;
+    var moreDetails = null;
+    var referenceLink = [];
+    var links = null;
+    for(var i=0,il=link.length;i<1;i++){
+        url = link[i];
+        result = Meteor.http.get(url);
+        $ = cheerio.load(result.content);
+        links = $(".profile-header__links__inner");
+        var website = [];
+        console.log(links.length)
+        for(var j=0,jl=links.length;j<jl;j++){
+            // $(links
+            // website.push()
+        }
+    }
+}
+=======
 function scrapTed(){
       var $ = null,result = null;
       var url = "http://www.ted.com/speakers";
@@ -137,39 +168,4 @@ function scrapTed(){
 
       }
     }
-            var a = $('.profile-header__links__inner a');
-            for(var j=0,jl=a.length;j<jl;j++){
-                //console.log($(a[j]).attr('href'));
-                link1 = $(a[0]).attr('href');
-                link2 = $(a[1]).attr('href');
-                link3 = $(a[2]).attr('href');
-            }
-            profileintro =$('.profile-intro').text();
-            //listen = $('.section section--minor p');
-            // for(var k=0,kl=listen.length;k<kl;k++){
-            //     console.log($(listen[k]).text());
-            // }
-            say =$('bloquote p').text();
-          }
-          
-
-      }
-    }
-            var a = $('.profile-header__links__inner a');
-            for(var j=0,jl=a.length;j<jl;j++){
-                //console.log($(a[j]).attr('href'));
-                link1 = $(a[0]).attr('href');
-                link2 = $(a[1]).attr('href');
-                link3 = $(a[2]).attr('href');
-            }
-            profileintro =$('.profile-intro').text();
-            //listen = $('.section section--minor p');
-            // for(var k=0,kl=listen.length;k<kl;k++){
-            //     console.log($(listen[k]).text());
-            // }
-            say =$('bloquote p').text();
-          }
-          
-
-      }
-    }
+>>>>>>> be12e7d90b4116f710f93a89187eac9ff83aebc4

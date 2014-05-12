@@ -2,6 +2,7 @@ Future = Npm.require('fibers/future');
 jquery = Npm.require("jquery");
 scrap = Future.wrap(Npm.require('scrap'));
 cheerio = Npm.require("cheerio");
+<<<<<<< HEAD
 var result;
     function scrapTed(){
         var $ = null,result = null;
@@ -26,5 +27,5 @@ var result;
             console.log($(currentDiv).find('.media__message .p4').text());
         }
     }
-
-scrapTed();
+=======
+>>>>>>> be12e7d90b4116f710f93a89187eac9ff83aebc4
