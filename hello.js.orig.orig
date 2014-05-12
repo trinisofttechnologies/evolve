@@ -13,7 +13,6 @@ UserEvolve = new Meteor.Collection("userevolve");
 
 if (Meteor.isServer) {
     Meteor.startup(function () {
-        // scrapTed();
         
         // still in progress
         // edgeConversation();
@@ -29,6 +28,16 @@ if (Meteor.isServer) {
     
     // scrapTed();
     // getMoreDetails();
+<<<<<<< HEAD
+}
+function scrapTedFollows(){
+    var i=1;
+    var $ = null;
+    while(true){
+        break;
+        var url = "http://www.ted.com/people/fellows?page= " +i +"&per_page=30";
+        var result = Meteor.http.get(url);
+=======
     //scrapExperts();
     //scrapExpertsGetMore();
     //scrapVideos();
@@ -65,14 +74,14 @@ function scrapBlogsGetMore(){
           }
       }
 }
-
-function scrapTedFollows(){
-    var i=1;
-    var $ = null;
-    while(true){
-        break;
-        var url = "http://www.ted.com/people/fellows?page= " +i +"&per_page=30";
-        var result = Meteor.http.get(url);
+function scrapBlogs(){
+    console.log("scrapBlogs");
+    var $ = null,result = null;
+    var source,topic,author,moredetails;
+    for(var p=1;;p++){
+        var url = "http://bigthink.com/blogs?page="+p;
+        result = Meteor.http.get(url);
+>>>>>>> 4c288ac55b1849ef58a6b25551fd081bf9d192e0
         $ = cheerio.load(result.content);
         var expert = $(".post");
         if(expert.length==0)
@@ -120,7 +129,10 @@ function scrapVideos(){
         }
         console.log(expert.length);
     }
+<<<<<<< HEAD
     // scrapTedFollowsSecondPage();
+=======
+>>>>>>> 4c288ac55b1849ef58a6b25551fd081bf9d192e0
 }
 function scrapVideosGetMore(){
     console.log("scrapVideosGetMore");
@@ -266,94 +278,39 @@ function scrapTed(){
       }
       //console.log(moredetails);
     }
-    
-// function scrapBlogs(){
-//     console.log("scrapBlogs");
-//     var $ = null,result = null;
-//     var source,topic,author,moredetails;
-//     for(var p=1;;p++){
-//         var url = "http://bigthink.com/blogs?page="+p;
-//         result = Meteor.http.get(url);
+    function getMoreDetails(){
+      var $ = null,moreResult = null;
+      var link1,link2,link3,profileintro,listen,say
+      var activeurl = [];
+      //console.log("first")
+      TedSpeakers.find({}).forEach(function(data){
+          activeurl.push(data.moredetails);
+      });
+      for(var i=0,il=activeurl.length-1;i<il;i++){
+          var url = activeurl[i];
+          if(url && (!url.match("undefined"))&&url.length>27){
+            moreResult = Meteor.http.get(url);
+            $ = cheerio.load(moreResult.content);
+<<<<<<< HEAD
 
-    // function getMoreDetails(){
-    //   var $ = null,moreResult = null;
-    //   var link1,link2,link3,profileintro,listen,say
-    //   var activeurl = [];
-    //   //console.log("first")
-    //   TedSpeakers.find({}).forEach(function(data){
-    //       activeurl.push(data.moredetails);
-    //   });
-    //   for(var i=0,il=activeurl.length-1;i<il;i++){
-    //       var url = activeurl[i];
-    //       if(url && (!url.match("undefined"))&&url.length>27){
-    //         moreResult = Meteor.http.get(url);
-    //         $ = cheerio.load(moreResult.content);
-
-    //         var a = $('.profile-header__links__inner a');
-    //         for(var j=0,jl=a.length;j<jl;j++){
-    //             //console.log($(a[j]).attr('href'));
-    //             link1 = $(a[0]).attr('href');
-    //             link2 = $(a[1]).attr('href');
-    //             link3 = $(a[2]).attr('href');
-    //         }
-    //         profileintro =$('.profile-intro').text();
-    //         listen = $('.section--minor p').text();;
-    //         // for(var k=0,kl=listen.length;k<kl;k++){
-    //         //     console.log($(listen[k]).text());
-    //         // }
-    //         say =$('bloquote p').text();
-    //         // console.log($(listen[0]).text());
-    //         // console.log($(listen[1]).text());
-    //         console.log(listen);
-    //         var currentcursor= TedSpeakers.findOne({"moredetails":url});
-    //         if(currentcursor){
-    //             TedSpeakers.update({"moredetails":url},{$set : {"link1":link1,"link2":link2,"link3": link3,"profileintro": profileintro,"say": say,"listen":listen}});
-    //           }
-    //       }
-          
-    //       }
+            var a = $('.profile-header__links__inner a');
+            for(var j=0,jl=a.length;j<jl;j++){
+                //console.log($(a[j]).attr('href'));
+                link1 = $(a[0]).attr('href');
+                link2 = $(a[1]).attr('href');
+                link3 = $(a[2]).attr('href');
+            }
+            profileintro =$('.profile-intro').text();
+            //listen = $('.section section--minor p');
+            // for(var k=0,kl=listen.length;k<kl;k++){
+            //     console.log($(listen[k]).text());
+            // }
+            say =$('bloquote p').text();
+          }
           
 
-    //   }
-    // }
-    //         var a = $('.profile-header__links__inner a');
-    //         for(var j=0,jl=a.length;j<jl;j++){
-    //             //console.log($(a[j]).attr('href'));
-    //             link1 = $(a[0]).attr('href');
-    //             link2 = $(a[1]).attr('href');
-    //             link3 = $(a[2]).attr('href');
-    //         }
-    //         profileintro =$('.profile-intro').text();
-    //         //listen = $('.section section--minor p');
-    //         // for(var k=0,kl=listen.length;k<kl;k++){
-    //         //     console.log($(listen[k]).text());
-    //         // }
-    //         say =$('bloquote p').text();
-    //       }
-          
-
-    //   }
-    // }
-    //         var a = $('.profile-header__links__inner a');
-    //         for(var j=0,jl=a.length;j<jl;j++){
-    //             //console.log($(a[j]).attr('href'));
-    //             link1 = $(a[0]).attr('href');
-    //             link2 = $(a[1]).attr('href');
-    //             link3 = $(a[2]).attr('href');
-    //         }
-    //         profileintro =$('.profile-intro').text();
-    //         //listen = $('.section section--minor p');
-    //         // for(var k=0,kl=listen.length;k<kl;k++){
-    //         //     console.log($(listen[k]).text());
-    //         // }
-    //         say =$('bloquote p').text();
-    //       }
-          
-    //       }
-          
-
-    //   }
-    // }
+      }
+    }
     //         var a = $('.profile-header__links__inner a');
     //         for(var j=0,jl=a.length;j<jl;j++){
     //             //console.log($(a[j]).attr('href'));
@@ -539,6 +496,30 @@ function edgeVideos(){
             console.log("Finished Edge Video");
             break;
         }
+=======
+            console.log(url);
+            var a = $('.profile-header__links__inner a');
+            for(var j=0,jl=a.length;j<jl;j++){
+                link1 = $(a[0]).attr('href');
+                link2 = $(a[1]).attr('href');
+                link3 = $(a[2]).attr('href');
+            }
+            profileintro =$('.profile-intro').text();
+            listen = $('.section--minor p').text();;
+            // for(var k=0,kl=listen.length;k<kl;k++){
+            //     console.log($(listen[k]).text());
+            // }
+            say =$('bloquote p').text();
+            // console.log($(listen[0]).text());
+            // console.log($(listen[1]).text());
+            console.log(listen);
+            var currentcursor= TedSpeakers.findOne({"moredetails":url});
+            if(currentcursor){
+                TedSpeakers.update({"moredetails":url},{$set : {"link1":link1,"link2":link2,"link3": link3,"profileintro": profileintro,"say": say,"listen":listen}});
+              }
+          }
+          
+>>>>>>> 4c288ac55b1849ef58a6b25551fd081bf9d192e0
 
         row = $(".view-content .views-row");
         var currentRow = null;

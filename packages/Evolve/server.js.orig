@@ -26,5 +26,8 @@ var result;
             console.log($(currentDiv).find('.media__message .p4').text());
         }
     }
+<<<<<<< HEAD
+=======
 
 // scrapTed();
+>>>>>>> 4c288ac55b1849ef58a6b25551fd081bf9d192e0
