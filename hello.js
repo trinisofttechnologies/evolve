@@ -7,6 +7,8 @@ BigThinkExpert = new Meteor.Collection("bigthinkexpert");
 BigThinkVideos = new Meteor.Collection("bigthinkvideos");
 BigThinkBlogs = new Meteor.Collection("bigthinkblogs");
 
+CruchBaseOrganization = new Meteor.Collection("cruchbaseorganization");
+
 VideoEvolve = new Meteor.Collection("videoevolve");
 ConversationEvolve = new Meteor.Collection("conversationevolve");
 UserEvolve = new Meteor.Collection("userevolve");
@@ -15,7 +17,10 @@ if (Meteor.isServer) {
     Meteor.startup(function () {
         // scrapTed();
         
-        // still in progress
+        cruchbaseOrgaization();
+        // done
+        // edgeMember();
+        // fixed
         // edgeConversation();
         // tested working fine first page second page still to go
         // edgeLibrary();
@@ -798,7 +803,9 @@ function scrapTedTopics(){
     }
 /////////////////////////// BHAVESH ///////////////////////
 
-// Left over from here
+
+//////////////////////////// NICOLSON /////////////////////////
+// EDGE START //
 function edgeConversation(){
     // http://edge.org/conversations?page=0&tid=mind&type=0
     console.log("Started Edge Conversation");
@@ -810,15 +817,12 @@ function edgeConversation(){
     var origin = "http://edge.org";
     var $ = null,$$=null;
     var title = "";
-    for(var i=0;i<1;i++){
+    for(var i=9;;i++){
         console.log("Edge  Edge Library "+i);
         result = Meteor.http.get(url+i+urlEnd);
         $ = cheerio.load(result.content);
         row = $("tbody tr");
-        if(row.length == 0){
-            console.log("Finished Edge Conversation");
-            break;
-        }
+        
         var currentRow = null;
         var a = null;
         var td = null;
@@ -856,26 +860,74 @@ function edgeConversation(){
             // Second TD
             var secondTD = td[1];
             var contributor = $(secondTD).children(".contributor-list").children(".contributor");
+            var contributorArray = [],contributorId=null;
             for(l=0,ll=contributor.length;l<ll;l++){
                 contributorName = $(contributor[l]).children("a").text();
                 contributorLink = $(contributor[l]).children("a").attr("href");
                 contributorLink = origin + contributorLink;
-
-                var cursorUserEvolve = UserEvolve.findOne({"name":contributorName,"link":contributorLink});
+                var cursorUserEvolve = UserEvolve.findOne({"name":contributorName,"link":contributorLink,"source":"edge"});
                 if(cursorUserEvolve){
-
+                    contributorId = cursorUserEvolve._id;
                 }
                 else{
-                    UserEvolve.insert({"name":contributorName,"link":contributorLink})
+                    contributorId = UserEvolve.insert({"name":contributorName,"link":contributorLink,"source":"edge"})
                 }
+                contributorArray.push(contributorId);
             }
-            console.log($(contributor).length);
+            var insert = {};
+            insert.title
+            insert.referenceLink = referenceLink;
+            insert.memberName = memberName;
+            insert.memberLink = memberLink;
+            insert.topicName = topicName;
+            insert.topicLink = topicLink;
+            insert.contributorArray = contributorArray;
+            insert.source = "edge";
+            var cursorConversationEvolve = ConversationEvolve.findOne({"title":title,"memberName":memberName,"memberLink":memberLink});       
+            if(cursorConversationEvolve){
+
+            }
+            else{
+                ConversationEvolve.insert(insert);
+            }
+            // console.log($(contributor).length);
+
         }
-        console.log(row.length);
+
+        if(row.length < 50){
+            console.log("Finished Edge Conversation");
+            break;
+        }
     }
     console.log("Finished Edge Conversation");
 }
 
+function edgeMember() {
+    var userArray = [];
+    var currentUser = null;
+    var result = null,$=null;
+    UserEvolve.find({"source":"edge"}).forEach(function(data){
+        userArray.push(data);
+    });
+    var title = null,p = null,paraArray=[];
+    for(var i=0,il=userArray.length;i<il;i++){
+        currentUser = userArray[i];
+        console.log(currentUser.link)
+        if(!currentUser.link)
+            continue;
+        result = Meteor.http.get(currentUser.link);
+        $ = cheerio.load(result.content);
+        title = $(".title").text();
+        paraArray=[]
+        p = $(".field-name-field-user-biography div div p")
+        for(var j=1,jl=p.length;j<jl;j++){
+            paraArray.push($(p[j]).text())
+        }
+        console.log(paraArray);
+        UserEvolve.update({"_id":currentUser._id},{$set : {"title":title,"paraArray":paraArray}})
+        currentUser
+    }
+}
 function edgeLibrary(){
     
     console.log("Started Edge Library");
@@ -1004,9 +1056,40 @@ function edgeVideos(){
     }
     console.log("Finished Edge Video");
 }
+// EDGE END //
+
+// CRUNCHBASE START //
 
 
+// http://api.crunchbase.com/v/2/organizations?user_key=5095b3c5634b6f668bf4aa0b66cc8864&page=200&order=created_at+ASC
+function cruchbaseOrgaization () {
+    var url = "http://api.crunchbase.com/v/2/organizations?user_key=5095b3c5634b6f668bf4aa0b66cc8864&page="
+    var urlEnd = "&order=created_at+ASC";
+    var result = null;
+    var row = null;
+    var empty = null;
+    var origin = "http://edge.org";
+    for(var i=1;i<2;i++){
+        console.log("Edge Video Page "+i);
+        result = Meteor.http.get(url+i+urlEnd);
+        console.log(result.data.data.items);
+        console.log(result.statusCode);
+        if(result.statusCode == "200"){
+            var items = result.data.data.items;
+            for(var j=0,jl=items.length;j<jl;j++){
+                var insert = {"name":items[j].name};
+                // CruchBaseOrganization.insert()
+            }
+            console.log(items.length)
+        }
+    }
+}
+
+// CRUNCHBASE END //
+
+//////////////////////////// NICOLSON /////////////////////////
 
 function b(value){
     console.log(value);
+
 }

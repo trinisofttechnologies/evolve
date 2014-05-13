@@ -1,3 +1,10 @@
 http://edge.org/conversations
 http://edge.org/videos
 http://edge.org/library
+
+
+EvoDev server (zzzeal.com)
+Let's use evo.zzzeal.com for Dev (I setup this subdomain already)
+http://207.244.66.193:2082/
+N:  evodev
+P:  63-!JOD0n~3u
