@@ -682,8 +682,8 @@ x++;
             say2 =$('.lessonDescription p').text();
                                         // console.log(say2);     //----checked
  
-             say3 =$('.videoContainer ').find('iframe').attr('src');        
-                                      console.log(say3);
+             say3 =$('.videoContainer div').attr('data-video-id');        
+                                      console.log("https://www.youtube.com/embed/" +say3);
      //      
      																						// data base and iframe is remaning
            
@@ -1588,6 +1588,8 @@ function edgeVideos(){
 // ANGEL END //
 function nicolsonDevelopment(){
     // angelPublic();
+    // scrapLesson()
+    // getMoreLesson();
 }
 // CRUNCHBASE START //
 
