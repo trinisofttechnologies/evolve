@@ -9,6 +9,8 @@ BigThinkBlogs = new Meteor.Collection("bigthinkblogs");
 
 CruchBaseOrganization = new Meteor.Collection("cruchbaseorganization");
 
+Loader = new Meteor.Collection("loader");
+
 VideoEvolve = new Meteor.Collection("videoevolve");
 ConversationEvolve = new Meteor.Collection("conversationevolve");
 UserEvolve = new Meteor.Collection("userevolve");
@@ -16,7 +18,7 @@ UserEvolve = new Meteor.Collection("userevolve");
 if (Meteor.isServer) {
     Meteor.startup(function () {
         // scrapTed();
-        
+        loaderinit()
         cruchbaseOrgaization();
         // done
         // edgeMember();
@@ -41,6 +43,12 @@ if (Meteor.isServer) {
     //scrapBlogs();
     //scrapBlogsGetMore();
 
+}
+function loaderinit () {
+    var cursorLoader = Loader.findOne({"_id":"edge"});
+    if(!cursorLoader){
+      Loader.insert({"_id":"edge"});
+    }
 }
 function scrapBlogsGetMore(){
     console.log("scrapBlogsGetMore");
@@ -808,6 +816,7 @@ function scrapTedTopics(){
 // EDGE START //
 function edgeConversation(){
     // http://edge.org/conversations?page=0&tid=mind&type=0
+    Loader.update({"_id":"edge"},{$set : {"edgeConversation":"Started Edge Conversation"}})
     console.log("Started Edge Conversation");
     var url = "http://edge.org/conversations?page=";
     var urlEnd = "&tid=mind&type=0";
@@ -818,6 +827,7 @@ function edgeConversation(){
     var $ = null,$$=null;
     var title = "";
     for(var i=9;;i++){
+        Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Edge  Edge Library "+i}})
         console.log("Edge  Edge Library "+i);
         result = Meteor.http.get(url+i+urlEnd);
         $ = cheerio.load(result.content);
@@ -1077,7 +1087,7 @@ function cruchbaseOrgaization () {
         if(result.statusCode == "200"){
             var items = result.data.data.items;
             for(var j=0,jl=items.length;j<jl;j++){
-                var insert = {"name":items[j].name};
+                var insert = {"name":items[j].name,"link":items[j].path};
                 // CruchBaseOrganization.insert()
             }
             console.log(items.length)
