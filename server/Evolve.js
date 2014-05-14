@@ -1,4 +1,3 @@
-
 if (Meteor.isServer) {
     Meteor.startup(function () {
         // scrapTed();
@@ -7,9 +6,9 @@ if (Meteor.isServer) {
 
         Meteor.setTimeout(function(){
             if(DebugFace){
-            nicolsonDevelopment();
-            hastenDevelopment();
-            bhaveshDevelopment();
+                nicolsonDevelopment();
+                hastenDevelopment();
+                bhaveshDevelopment();
             }
             else{
                 nicolsonProduction();
@@ -27,21 +26,16 @@ if (Meteor.isServer) {
         // edgeLibrary();
         // tested working fine
         // edgeVideos();
+        // scrapTed();
+        // getMoreDetails();
+        //scrapExperts();
+        //scrapExpertsGetMore();
+        //scrapVideos();
+        //scrapVideosGetMore();
+        //scrapBlogs();
+        //scrapBlogsGetMore();
     });
-    
-
     var result,moreResult;
-
-    
-    // scrapTed();
-    // getMoreDetails();
-    //scrapExperts();
-    //scrapExpertsGetMore();
-    //scrapVideos();
-    //scrapVideosGetMore();
-    //scrapBlogs();
-    //scrapBlogsGetMore();
-
 }
 
 function hastenDevelopment(){
@@ -52,7 +46,10 @@ function bhaveshDevelopment(){
 }
 
 function nicolsonProduction(){
-
+    Meteor.setTimeout(edgeConversation,50);
+    Meteor.setTimeout(edgeMember,50);
+    Meteor.setTimeout(edgeLibrary,50);
+    Meteor.setTimeout(edgeVideos,50);
 }
 function hastenProduction(){
 
@@ -108,34 +105,109 @@ function loaderinit () {
         Loader.insert({"_id":"time"});
     }
 }
-function scrapBlogsGetMore(){
-    console.log("scrapBlogsGetMore");
+
+
+//////////////////////////// HASTEN /////////////////////////
+// CRUNCHBASE START //
+
+function cruchbasePerson(){
+
+    // CruchBaseOrganization.remove({});
+    // console.log("cruchbasePerson");
+    // console.log(CruchBaseOrganization.find().count())
+    var insert = {};
     var $ = null,moreResult = null;
     var activeurl = [];
-    BigThinkBlogs.find({}).forEach(function(data){
-          activeurl.push(data.moredetails);
+    CruchBaseOrganization.find({}).forEach(function(data){
+          activeurl.push(data.path);
     });
+    console.log(activeurl.length);
     for(var i=0,il=activeurl.length-1;i<il;i++){
           var url = activeurl[i];
-          if(url && (!url.match("undefined"))&&url.length>27){
+          // console.log(url);
+          if(url && (!url.match("undefined"))){
             // console.log(url);
-            moreResult = Meteor.http.get(url);
-            $ = cheerio.load(moreResult.content);
-            var bigpic=$('.content .image img').attr('src');
-            var desc=$('.content p').text();
-            // console.log(desc);
-            // console.log(desc);
-            var currentcursor= BigThinkBlogs.findOne({"moredetails":url});
-            if(currentcursor){
-                BigThinkBlogs.update({"moredetails":url},{$set : {"bigpic":bigpic,"desc":desc}});
+            // moreResult = Meteor.http.get(url);
+            // $ = cheerio.load(moreResult.content);
+            var urlnew = "http://api.crunchbase.com/v/2/"+url+"?user_key=5095b3c5634b6f668bf4aa0b66cc8864";
+            result = Meteor.http.get(urlnew);
+            if(result.statusCode == "200"){
+              var _id = result.data.data.uuid;
+              var last_name= result.data.data.properties.last_name;
+              var first_name = result.data.data.properties.first_name;
+              var homepage_url = result.data.data.properties.homepage_url;
+              var bio = result.data.data.properties.bio;
+              var degrees= result.data.data.relationships.degrees;
+              var experience= result.data.data.relationships.experience;
+              var founded_companies= result.data.data.relationships.founded_companies;
+              var primary_image= result.data.data.relationships.primary_image;
+              var web_presences= result.data.data.relationships.web_presences;
+              var press= result.data.data.relationships.press;
+              // console.log(_id);
+              // console.log(first_name);
+              // console.log(last_name);
+              // console.log(homepage_url);
+              insert._id =_id;
+              insert.last_name = last_name;
+              insert.first_name =first_name;
+              insert.homepage_url = homepage_url;
+              insert.bio =bio;
+              insert.degrees = degrees;
+              insert.experience = experience;
+              insert.founded_companies = founded_companies;
+              insert.primary_image = primary_image;
+              insert.web_presences = web_presences;
+              insert.press = press;
+              var personExist = CruchBasePerson.findOne({"_id":_id,"first_name":first_name,"last_name":last_name,"homepage_url":homepage_url,"bio":bio,"degrees":degrees,"experience":experience,"founded_companies":founded_companies,"primary_image":primary_image,"web_presences":web_presences,"press":press});
+              if(personExist){
+                CruchBasePerson.update({"_id":personExist._id},{$set : {"first_name":first_name,"last_name":last_name,"homepage_url":homepage_url,"bio":bio,"degrees":degrees,"experience":experience,"founded_companies":founded_companies,"primary_image":primary_image,"web_presences":web_presences,"press":press}});
+              }else{
+                CruchBasePerson.insert(insert);
               }
-              // else{
-              //   var Follow = {"desc": desc};
-              //   BigThinkVideos.insert(Follow);
-              // }
+
+            }
           }
       }
 }
+// http://api.crunchbase.com/v/2/organizations?user_key=5095b3c5634b6f668bf4aa0b66cc8864&page=200&order=created_at+ASC
+function cruchbaseOrgaization () {
+    // CruchBaseOrganization.remove();
+    var url = "http://api.crunchbase.com/v/2/people?user_key=5095b3c5634b6f668bf4aa0b66cc8864&page="
+    var urlEnd = "&order=created_at+ASC";
+    var result = null;
+    var row = null;
+    var empty = null;
+    var origin = "http://edge.org";
+    for(var i=1;i<275;i++){
+        console.log("Edge Video Page "+i);
+        result = Meteor.http.get(url+i+urlEnd);
+        var insert = {};
+        //console.log(result.data.data.items);
+        console.log(result.statusCode);
+        if(result.statusCode == "200"){
+            var items = result.data.data.items;
+            for(var j=0,jl=items.length;j<jl;j++){
+                //var insert = {"name":items[j].name,"link":items[j].path};
+                var name = items[j].name;
+                var path = items[j].path;
+                insert.name =name;
+                insert.path = path;
+                // console.log(insert)
+                // console.log(path)
+                //CruchBaseOrganization.insert()
+                var organizationsexist = CruchBaseOrganization.findOne({"name":name,"path":path});
+                if(organizationsexist){
+                  CruchBaseOrganization.update({"_id":organizationsexist._id},{$set : {"name":name,"path":path}});
+                }else{
+                  CruchBaseOrganization.insert(insert);
+                }
+            }
+            //console.log(items.length)
+        }
+    }
+}
+
+// CRUNCHBASE END //
 
 function scrapTedFollows(){
     var i=1;
@@ -166,302 +238,6 @@ function scrapTedFollows(){
         console.log(expert.length);
     }
 }
-function scrapVideos(){
-    var $ = null,result = null;
-    for(var p=1;;p++){
-        var url = "http://bigthink.com/videos?page="+p;
-        result = Meteor.http.get(url);
-        $ = cheerio.load(result.content);
-        var expert = $(".video");
-        if(expert.length==0)
-            break;
-        for(var i=0,il=expert.length;i<il;i++){
-          currentDiv = expert[i];
-          name = $(currentDiv).find('.name').text();
-          job = $(currentDiv).find('.job').text();
-          moredetails = "http://www.bigthink.com"+$(currentDiv).find('.video a').attr('href');
-
-          var currentcursor= BigThinkVideos.findOne({"moredetails":moredetails});
-          if(currentcursor){
-            BigThinkVideos.update({"moredetails":moredetails},{$set : {"name":name,"job":job}});
-          }else{
-            var Follow = {"moredetails": moredetails,"name": name,"job": job};
-            BigThinkVideos.insert(Follow);
-          }
-        }
-        console.log(expert.length);
-    }
-    // scrapTedFollowsSecondPage();
-}
-function scrapVideosGetMore(){
-    console.log("scrapVideosGetMore");
-    var $ = null,moreResult = null;
-    var activeurl = [];
-    BigThinkVideos.find({}).forEach(function(data){
-          activeurl.push(data.moredetails);
-    });
-    for(var i=0,il=activeurl.length-1;i<il;i++){
-          var url = activeurl[i];
-          if(url && (!url.match("undefined"))&&url.length>27){
-            // console.log(url);
-            moreResult = Meteor.http.get(url);
-            $ = cheerio.load(moreResult.content);
-            var videourl=$('.video iframe').attr('src');
-            var desc=$('.content p').text();
-            // console.log(videourl);
-            // console.log(desc);
-            var currentcursor= BigThinkVideos.findOne({"moredetails":url});
-            if(currentcursor){
-                BigThinkVideos.update({"moredetails":url},{$set : {"videourl":videourl,"desc":desc}});
-              }
-              // else{
-              //   var Follow = {"desc": desc};
-              //   BigThinkVideos.insert(Follow);
-              // }
-          }
-      }
-}
-function scrapVideos(){
-    var $ = null,result = null;
-    for(var p=1;;p++){
-        var url = "http://bigthink.com/videos?page="+p;
-        result = Meteor.http.get(url);
-        $ = cheerio.load(result.content);
-        var expert = $(".video");
-        if(expert.length==0)
-            break;
-        for(var i=0,il=expert.length;i<il;i++){
-          currentDiv = expert[i];
-          name = $(currentDiv).find('.name').text();
-          job = $(currentDiv).find('.job').text();
-          moredetails = "http://www.bigthink.com"+$(currentDiv).find('.video a').attr('href');
-
-          var currentcursor= BigThinkVideos.findOne({"moredetails":moredetails});
-          if(currentcursor){
-            BigThinkVideos.update({"moredetails":moredetails},{$set : {"name":name,"job":job}});
-          }else{
-            var Follow = {"moredetails": moredetails,"name": name,"job": job};
-            BigThinkVideos.insert(Follow);
-          }
-        }
-        console.log(expert.length);
-    }
-}
-function scrapExpertsGetMore(){
-    var $ = null,moreResult = null;
-    var activeurl = [];
-    BigThinkExpert.find({}).forEach(function(data){
-          activeurl.push(data.moredetails);
-    });
-    for(var i=0,il=activeurl.length-1;i<il;i++){
-          var url = activeurl[i];
-          if(url && (!url.match("undefined"))&&url.length>27){
-            console.log(url);
-            moreResult = Meteor.http.get(url);
-            $ = cheerio.load(moreResult.content);
-            var desc=$('.description p').text();
-            var currentcursor= BigThinkExpert.findOne({"moredetails":url});
-            if(currentcursor){
-                BigThinkExpert.update({"moredetails":url},{$set : {"desc":desc}});
-              }
-              // else{
-              //   var Follow = {"desc": desc};
-              //   BigThinkExpert.insert(Follow);
-              // }
-          }
-      }
-}
-function scrapExperts(){
-      var $ = null,result = null;
-      var imgurl,name,job,moredetails;
-      for(var p=1;;p++){
-        var url = "http://bigthink.com/experts?page="+p;
-        result = Meteor.http.get(url);
-        $ = cheerio.load(result.content);
-        var expert = $(".expert");
-        if(expert.length==0)
-            break;
-        for(var i=0,il=expert.length;i<il;i++){
-          currentDiv = expert[i];
-          imgurl = $(currentDiv).find('.image img').attr('src');
-          name = $(currentDiv).find('.name .user').text();
-          job = $(currentDiv).find('.job').text();
-          moredetails = "http://www.bigthink.com"+$(currentDiv).find('.name a').attr('href');
-          var currentcursor= BigThinkExpert.findOne({"moredetails":moredetails});
-          if(currentcursor){
-            BigThinkExpert.update({"moredetails":moredetails},{$set : {"imgurl":imgurl,"name":name,"job":job}});
-          }else{
-            var Follow = {"moredetails": moredetails,"imgurl":imgurl,"name": name,"job": job};
-            BigThinkExpert.insert(Follow);
-          }
-          console.log(moredetails);
-        }
-        console.log(expert.length);
-      }
-}
-function scrapTed(){
-      var $ = null,result = null;
-      var url = "http://www.ted.com/speakers";
-      result = Meteor.http.get(url);
-      $ = cheerio.load(result.content);
-      var designation = $(".col");
-      var currentDiv = null;
-      //currentDiv = cheerio.load(designation[0])
-      // console.log(currentDiv);
-      // console.log(designation.length)
-      //var divProd = $('div.prod');
-      var myArray = [];
-      var currentJson = {};
-      var moredetails,imgurl,name,expert;
-      for(var i=0,il=designation.length;i<il;i++){
-          currentDiv = designation[i];
-          //console.log(designation[i].children[0].data)
-          // currentJson = {
-          //         moredetails :  "http://www.ted.com"+$(currentDiv).find('a').attr('href'),
-          //         imgurl : $(currentDiv).find('.thumb__tugger img').attr('src'),
-          //         name : $(currentDiv).find('.media__message h4').text(),
-          //         expert : $(currentDiv).find('.media__message .p4').text()
-          //     };
-          // myArray.push(currentJson);
-          moredetails = "http://www.ted.com"+$(currentDiv).find('a').attr('href');
-          imgurl = $(currentDiv).find('.thumb__tugger img').attr('src');
-          name = $(currentDiv).find('.media__message h4').text();
-          expert = $(currentDiv).find('.media__message .p4').text();
-          var currentcursor= TedSpeakers.findOne({"moredetails":moredetails});
-          if(currentcursor){
-            TedSpeakers.update({"moredetails":moredetails},{$set : {"imgurl":imgurl,"name":name,"expert":expert}});
-          }else{
-            var Follow = {"moredetails": moredetails,"imgurl":imgurl,"name": name,"expert": expert};
-            TedSpeakers.insert(Follow);
-          }
-      }
-      //console.log(moredetails);
-    }
-
-// function scrapBlogs(){
-//     console.log("scrapBlogs");
-//     var $ = null,result = null;
-//     var source,topic,author,moredetails;
-//     for(var p=1;;p++){
-//         var url = "http://bigthink.com/blogs?page="+p;
-//         result = Meteor.http.get(url);
-
-    // function getMoreDetails(){
-    //   var $ = null,moreResult = null;
-    //   var link1,link2,link3,profileintro,listen,say
-    //   var activeurl = [];
-    //   //console.log("first")
-    //   TedSpeakers.find({}).forEach(function(data){
-    //       activeurl.push(data.moredetails);
-    //   });
-    //   for(var i=0,il=activeurl.length-1;i<il;i++){
-    //       var url = activeurl[i];
-    //       if(url && (!url.match("undefined"))&&url.length>27){
-    //         moreResult = Meteor.http.get(url);
-    //         $ = cheerio.load(moreResult.content);
-
-    //         var a = $('.profile-header__links__inner a');
-    //         for(var j=0,jl=a.length;j<jl;j++){
-    //             //console.log($(a[j]).attr('href'));
-    //             link1 = $(a[0]).attr('href');
-    //             link2 = $(a[1]).attr('href');
-    //             link3 = $(a[2]).attr('href');
-    //         }
-    //         profileintro =$('.profile-intro').text();
-    //         listen = $('.section--minor p').text();;
-    //         // for(var k=0,kl=listen.length;k<kl;k++){
-    //         //     console.log($(listen[k]).text());
-    //         // }
-    //         say =$('bloquote p').text();
-    //         // console.log($(listen[0]).text());
-    //         // console.log($(listen[1]).text());
-    //         console.log(listen);
-    //         var currentcursor= TedSpeakers.findOne({"moredetails":url});
-    //         if(currentcursor){
-    //             TedSpeakers.update({"moredetails":url},{$set : {"link1":link1,"link2":link2,"link3": link3,"profileintro": profileintro,"say": say,"listen":listen}});
-    //           }
-    //       }
-          
-    //       }
-          
-
-    //   }
-    // }
-    //         var a = $('.profile-header__links__inner a');
-    //         for(var j=0,jl=a.length;j<jl;j++){
-    //             //console.log($(a[j]).attr('href'));
-    //             link1 = $(a[0]).attr('href');
-    //             link2 = $(a[1]).attr('href');
-    //             link3 = $(a[2]).attr('href');
-    //         }
-    //         profileintro =$('.profile-intro').text();
-    //         //listen = $('.section section--minor p');
-    //         // for(var k=0,kl=listen.length;k<kl;k++){
-    //         //     console.log($(listen[k]).text());
-    //         // }
-    //         say =$('bloquote p').text();
-    //       }
-          
-
-    //   }
-    // }
-    //         var a = $('.profile-header__links__inner a');
-    //         for(var j=0,jl=a.length;j<jl;j++){
-    //             //console.log($(a[j]).attr('href'));
-    //             link1 = $(a[0]).attr('href');
-    //             link2 = $(a[1]).attr('href');
-    //             link3 = $(a[2]).attr('href');
-    //         }
-    //         profileintro =$('.profile-intro').text();
-    //         //listen = $('.section section--minor p');
-    //         // for(var k=0,kl=listen.length;k<kl;k++){
-    //         //     console.log($(listen[k]).text());
-    //         // }
-    //         say =$('bloquote p').text();
-    //       }
-          
-    //       }
-          
-
-    //   }
-    // }
-    //         var a = $('.profile-header__links__inner a');
-    //         for(var j=0,jl=a.length;j<jl;j++){
-    //             //console.log($(a[j]).attr('href'));
-    //             link1 = $(a[0]).attr('href');
-    //             link2 = $(a[1]).attr('href');
-    //             link3 = $(a[2]).attr('href');
-    //         }
-    //         profileintro =$('.profile-intro').text();
-    //         //listen = $('.section section--minor p');
-    //         // for(var k=0,kl=listen.length;k<kl;k++){
-    //         //     console.log($(listen[k]).text());
-    //         // }
-    //         say =$('bloquote p').text();
-    //       }
-          
-
-    //   }
-    // }
-    //         var a = $('.profile-header__links__inner a');
-    //         for(var j=0,jl=a.length;j<jl;j++){
-    //             //console.log($(a[j]).attr('href'));
-    //             link1 = $(a[0]).attr('href');
-    //             link2 = $(a[1]).attr('href');
-    //             link3 = $(a[2]).attr('href');
-    //         }
-    //         profileintro =$('.profile-intro').text();
-    //         //listen = $('.section section--minor p');
-    //         // for(var k=0,kl=listen.length;k<kl;k++){
-    //         //     console.log($(listen[k]).text());
-    //         // }
-    //         say =$('bloquote p').text();
-    //       }
-          
-
-    //   }
-
-//////////////////////////// HASTEN /////////////////////////
 
 function scrapBlogsGetMore(){
     console.log("scrapBlogsGetMore");
@@ -1308,41 +1084,62 @@ function scrapTedTopics(){
           }
       }
     }
-    function scrapTedx(){
-      var $ = null,result = null;
-      var url = "http://tedxtalks.ted.com/pages/talks-by-topic";  //http://www.ted.com/watch/topics
-      
-
-      result = Meteor.http.get(url);
-      $ = cheerio.load(result.content);                           
-      var designation = $(".mvp_page_title_expressive");  //  topics__list__topic
-      var currentDiv = null;
-
- console.log(url+"****"+designation.length);
-
-      var moredetails,imgurl;                          //-----
+// TEDX START //
+function scrapTedx(){
+    var topicName = [];
+    var $ = null,result = null;
+    var url = "http://tedxtalks.ted.com/pages/talks-by-topic";  //http://www.ted.com/watch/topics
 
 
+    result = Meteor.http.get(url);
+    $ = cheerio.load(result.content);                           
+    var designation = $(".mvp_page_title_expressive");  //  topics__list__topic
+    var currentDiv = null;
 
-      for(var i=0,il=designation.length;i<il;i++){
-          currentDiv = designation[i];
-          var topics=$(designation[i]).text()   //topics
-          topics=topics.replace(/\s+/g, "");
-          if(topics && (!topics.match("undefined"))&&topics.length>10){
-          moredetails = "http://tedxtalks.ted.com/playlist.mason"+$(designation[i]).text()+"?pages=";  
-          console.log(moredetails)        
-         
-          var currentcursor= TedxTopicx.findOne({"moredetails":moredetails});
-          
-          if(currentcursor){
-            TedxTopicx.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
-          }else{
-            var Follow = {"moredetails": moredetails,"imgurl":imgurl};
-            TedxTopicx.insert(Follow);
-          }
+
+    var moredetails,imgurl;                          //-----
+
+
+
+    for(var i=0,il=designation.length;i<il;i++){
+        currentDiv = designation[i];
+        var topics=$(designation[i]).text()   //topics
+        var newTopic = "";
+        for(var j=0,jl=topics.length;j<jl;j++){
+            if(!(topics.charCodeAt(j)== 9 || topics.charCodeAt(j)== 10)){
+                if(topics.charAt(j) == " "){
+                    newTopic+= "-";
+                }
+                else{
+                    newTopic+=topics.charAt(j);                    
+                }
+
+            }
+                
+                
+
         }
-      }
-     // getMoreDetailsx();
+        console.log(newTopic)
+        topics=topics.replace("/\r?\n|\r/", "");
+        // console.log(topics)
+        topicName.push(newTopic)
+        if(topics && (!topics.match("undefined"))&&topics.length>10){
+
+            moredetails = "http://tedxtalks.ted.com/playlist.mason"+newTopic+"?pages=";  
+            // console.log(moredetails)        
+
+            var currentcursor= TedxTopicx.findOne({"moredetails":moredetails});
+
+            if(currentcursor){
+                TedxTopicx.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
+            }
+            else{
+                var Follow = {"moredetails": moredetails,"imgurl":imgurl};
+                TedxTopicx.insert(Follow);
+            }
+        }
+    }
+        getMoreDetailsx();
     }
 
 
@@ -1460,17 +1257,21 @@ function scrapTedTopics(){
     //       }
     //   }
     // }
+// TEDX END //
 /////////////////////////// BHAVESH ///////////////////////
 
 
 //////////////////////////// NICOLSON /////////////////////////
 // EDGE START //
-function nicolsonDevelopment(){
-    // edgeConversation();
+function getMyTime(startTime){
+    var elapsed = new Date().getTime() - startTime;
+    return elapsed / 10 + (elapsed % 10 ? '' : '.0' )
 }
+
 function edgeConversation(){
     // http://edge.org/conversations?page=0&tid=mind&type=0
-    Loader.update({"_id":"edge"},{$set : {"edgeConversation":"Started Edge Conversation"}});
+    var startTime = new Date().getTime();
+    Loader.update({"_id":"edge"},{$set : {"edgeConversation":"Started Edge Conversation", "edgeConversationTime" :getMyTime(startTime)}});
     console.log("Started Edge Conversation");
     var url = "http://edge.org/conversations?page=";
     var urlEnd = "&tid=mind&type=0";
@@ -1482,7 +1283,7 @@ function edgeConversation(){
     var title = "";
     for(var i=0;;i++){
         Meteor.setTimeout(function(){
-            Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Edge Library "+i}})
+            Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Edge Library "+i, "edgeConversationTime" :getMyTime(startTime)}})
         },50);
         console.log("Edge  Edge Library "+i);
         result = Meteor.http.get(url+i+urlEnd);
@@ -1561,17 +1362,18 @@ function edgeConversation(){
         }
 
         if(row.length < 50){
-            Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Finished Edge Conversation"}});
+            Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Finished Edge Conversation","edgeConversationTime" :getMyTime(startTime), "edgeConversationTime" :getMyTime(startTime)}});
             console.log("Finished Edge Conversation");
             break;
         }
     }
     console.log("Finished Edge Conversation");
-    Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Finished Edge Conversation"}})
+    Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Finished Edge Conversation","edgeConversationTime" :getMyTime(startTime)}})
 }
 
 function edgeMember() {
-    Loader.update({"_id":"edge"},{$set : {"edgeMember":"Started Edge Member"}});
+    var startTime = new Date().getTime();
+    Loader.update({"_id":"edge"},{$set : {"edgeMember":"Started Edge Member","edgeMemberTime" :getMyTime(startTime)}});
     var userArray = [];
     var currentUser = null;
     var result = null,$=null;
@@ -1585,7 +1387,7 @@ function edgeMember() {
 
         if(!currentUser.link)
             continue;
-        Loader.update({"_id":"edge"},{$set : {"edgeMember":"Started Edge Member link "+currentUser.link}});
+        Loader.update({"_id":"edge"},{$set : {"edgeMember":"Started Edge Member link "+currentUser.link,"edgeMemberTime" :getMyTime(startTime)}});
 
         result = Meteor.http.get(currentUser.link);
         $ = cheerio.load(result.content);
@@ -1597,12 +1399,13 @@ function edgeMember() {
         }
         console.log(paraArray);
         UserEvolve.update({"_id":currentUser._id},{$set : {"title":title,"paraArray":paraArray}})
-        currentUser
+        //currentUser
     }
-    Loader.update({"_id":"edge"},{$set : {"edgeMember":"Ended Edge Member"}});
+    Loader.update({"_id":"edge"},{$set : {"edgeMember":"Ended Edge Member","edgeMemberTime" :getMyTime(startTime)}});
 }
 function edgeLibrary(){
-    Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Started Edge Library"}});   
+    var startTime = new Date().getTime();
+    Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Started Edge Library","edgeLibraryTime" :getMyTime(startTime)}});   
     console.log("Started Edge Library");
     var url = "http://edge.org/library?page=";
     var result = null,resultSecond=null;;
@@ -1612,7 +1415,7 @@ function edgeLibrary(){
     var $ = null,$$=null;
     for(var i=0;;i++){
         console.log("Edge  Edge Library "+i);
-        Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Edge Library "+url+i}});
+        Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Edge Library "+url+i,"edgeLibraryTime" :getMyTime(startTime)}});
         result = Meteor.http.get(url+i);
         $ = cheerio.load(result.content);
         row = $("tbody tr");
@@ -1640,7 +1443,7 @@ function edgeLibrary(){
             }
         }
     }
-    Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Finished  Edge Library"}});
+    Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Finished  Edge Library","edgeLibraryTime" :getMyTime(startTime)}});
     console.log("Finished  Edge Library");
 }   
 function edgeLibrarySecond(referenceLink){
@@ -1659,8 +1462,9 @@ function edgeLibrarySecond(referenceLink){
     }
 }
 function edgeVideos(){
+    var startTime = new Date().getTime();
     console.log("Started Edge Video");
-    Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Started Edge Video"}});
+    Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Started Edge Video","edgeVideoTime" :getMyTime(startTime)}});
     var url = "http://edge.org/videos?page=";
     var result = null;
     var row = null;
@@ -1668,7 +1472,7 @@ function edgeVideos(){
     var origin = "http://edge.org";
     for(var i=0;;i++){
         console.log("Edge Video Page "+i);
-        Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Edge Video Page "+i}});
+        Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Edge Video Page "+i,"edgeVideoTime" :getMyTime(startTime)}});
         result = Meteor.http.get(url+i);
         $ = cheerio.load(result.content);
         empty = $(".view-empty").children("p").text();
@@ -1731,39 +1535,62 @@ function edgeVideos(){
         }
         
     }
-    Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Finished Edge Video"}});
+    Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Finished Edge Video","edgeVideoTime" :getMyTime(startTime)}});
     console.log("Finished Edge Video");
 }
 // EDGE END //
 
+
+// ANGEL START //
+    
+    // https://angel.co/people
+    function angelPeople(){
+
+    }   
+
+    // https://angel.co/company_filters/search_data
+    function angelPublic(){
+        var url = "https://angel.co/company_filters/search_data";
+        var result = null,resultSecond=null;
+        var row = null;
+        var empty = null;
+        var origin = "http://edge.org";
+        for(var i=0;i<1;i++){
+            console.log("Edge Video Page "+i);
+            // Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Edge Video Page "+i,"edgeVideoTime" :getMyTime(startTime)}});
+            result = Meteor.http.get(url,{"params":{"sort":"signal","page":2}});
+            console.log(result.data)
+            if(result.statusCode == 200){
+                console.log(result.data);
+                var ids = result.data.ids;
+                var total = result.data.total
+                var page = result.data.page
+                var sort = result.data.sort
+                var news = result.data.new
+                var hexdigest = result.data.hexdigest;
+                var signal = result.data.signal;
+                var secondURL = "https://angel.co/companies/startups?";
+                for(var j=0,jl=ids.length;j<jl;j++){
+                    secondURL +="ids[]="+ids[j] +"&";
+                }
+                secondURL += "total=" +total +"&";
+                secondURL += "signal=" +signal +"&";
+                secondURL += "new=" +news +"&";
+                secondURL += "hexdigest=" +hexdigest;
+                console.log(secondURL);
+                // "https://angel.co/companies/startups"
+                resultSecond = Meteor.http.get(secondURL); 
+                console.log(resultSecond);   
+            }
+            // https://angel.co/companies/startups?ids[]=37608&ids[]=38066&ids[]=38073&ids[]=32477&ids[]=33188&ids[]=33193&ids[]=26775&ids[]=31544&ids[]=32203&ids[]=32221&ids[]=32519&ids[]=32543&ids[]=32545&ids[]=32551&ids[]=32562&ids[]=32563&ids[]=32564&ids[]=32566&ids[]=32572&ids[]=32579&total=279958&page=2&sort=signal&new=false&hexdigest=d01fa83ec926a4207f46fc367de12b43d31fc6e9
+        }   
+    } 
+// ANGEL END //
+function nicolsonDevelopment(){
+    // angelPublic();
+}
 // CRUNCHBASE START //
 
-
-// http://api.crunchbase.com/v/2/organizations?user_key=5095b3c5634b6f668bf4aa0b66cc8864&page=200&order=created_at+ASC
-function cruchbaseOrgaization () {
-    var url = "http://api.crunchbase.com/v/2/organizations?user_key=5095b3c5634b6f668bf4aa0b66cc8864&page="
-    var urlEnd = "&order=created_at+ASC";
-    var result = null;
-    var row = null;
-    var empty = null;
-    var origin = "http://edge.org";
-    for(var i=1;i<2;i++){
-        console.log("Edge Video Page "+i);
-        result = Meteor.http.get(url+i+urlEnd);
-        console.log(result.data.data.items);
-        console.log(result.statusCode);
-        if(result.statusCode == "200"){
-            var items = result.data.data.items;
-            for(var j=0,jl=items.length;j<jl;j++){
-                var insert = {"name":items[j].name,"link":items[j].path};
-                // CruchBaseOrganization.insert()
-            }
-            console.log(items.length)
-        }
-    }
-}
-
-// CRUNCHBASE END //
 
 //////////////////////////// NICOLSON /////////////////////////
 
