@@ -1,14 +1,38 @@
+<<<<<<< HEAD
+TedLeader = new Meteor.Collection("tedleader");
+TedFellows = new Meteor.Collection("tedfellows");
+TedSpeakers = new Meteor.Collection("tedspeakers");
+TedTopic = new Meteor.Collection("tedtopic");
+Tedwatch = new Meteor.Collection("tedwatch");
+BigThinkExpert = new Meteor.Collection("bigthinkexpert");
+BigThinkVideos = new Meteor.Collection("bigthinkvideos");
+BigThinkBlogs = new Meteor.Collection("bigthinkblogs");
+CruchBaseOrganization = new Meteor.Collection("cruchbaseorganization");
+CruchBasePerson = new Meteor.Collection("Cruchbaseperson");
+
+Loader = new Meteor.Collection("loader");
+
+VideoEvolve = new Meteor.Collection("videoevolve");
+ConversationEvolve = new Meteor.Collection("conversationevolve");
+UserEvolve = new Meteor.Collection("userevolve");
+=======
+>>>>>>> 3097cccd0195382f7d54fc5621f0cb58ba53ea0a
+
 if (Meteor.isServer) {
     Meteor.startup(function () {
         // scrapTed();
         
+<<<<<<< HEAD
+        loaderinit()
+        // cruchbasePerson();
+=======
         loaderinit();
 
         Meteor.setTimeout(function(){
             if(DebugFace){
-                nicolsonDevelopment();
-                hastenDevelopment();
-                bhaveshDevelopment();
+            nicolsonDevelopment();
+            hastenDevelopment();
+            bhaveshDevelopment();
             }
             else{
                 nicolsonProduction();
@@ -17,6 +41,7 @@ if (Meteor.isServer) {
             }
         },50)
 
+>>>>>>> 3097cccd0195382f7d54fc5621f0cb58ba53ea0a
         // cruchbaseOrgaization();
         // done
         // edgeMember();
@@ -35,7 +60,12 @@ if (Meteor.isServer) {
         //scrapBlogs();
         //scrapBlogsGetMore();
     });
+    
+
     var result,moreResult;
+
+    
+   
 }
 
 function hastenDevelopment(){
@@ -46,10 +76,7 @@ function bhaveshDevelopment(){
 }
 
 function nicolsonProduction(){
-    Meteor.setTimeout(edgeConversation,50);
-    Meteor.setTimeout(edgeMember,50);
-    Meteor.setTimeout(edgeLibrary,50);
-    Meteor.setTimeout(edgeVideos,50);
+
 }
 function hastenProduction(){
 
@@ -106,15 +133,14 @@ function loaderinit () {
     }
 }
 
-
 //////////////////////////// HASTEN /////////////////////////
 // CRUNCHBASE START //
 
 function cruchbasePerson(){
 
-    // CruchBaseOrganization.remove({});
-    // console.log("cruchbasePerson");
-    // console.log(CruchBaseOrganization.find().count())
+//     // CruchBaseOrganization.remove({});
+//     // console.log("cruchbasePerson");
+//     // console.log(CruchBaseOrganization.find().count())
     var insert = {};
     var $ = null,moreResult = null;
     var activeurl = [];
@@ -168,6 +194,40 @@ function cruchbasePerson(){
             }
           }
       }
+    //var urlnew = "http://api.crunchbase.com/v/2/person/ben-elowitz?user_key=5095b3c5634b6f668bf4aa0b66cc8864";
+    // result = Meteor.http.get(urlnew);
+    // if(result.statusCode == "200"){
+    //   var _id = result.data.data.uuid;
+    //   var last_name= result.data.data.properties.last_name;
+    //   var first_name = result.data.data.properties.first_name;
+    //   var homepage_url = result.data.data.properties.homepage_url;
+    //   var bio = result.data.data.properties.bio;
+    //   var degrees= result.data.data.relationships.degrees;
+    //   var experience= result.data.data.relationships.experience;
+    //   var founded_companies= result.data.data.relationships.founded_companies;
+    //   var primary_image= result.data.data.relationships.primary_image;
+    //   var web_presences= result.data.data.relationships.web_presences;
+    //   var press= result.data.data.relationships.press;
+    //   console.log(_id)
+    //   // insert._id =_id;
+    //   // insert.last_name = last_name;
+    //   // insert.first_name =first_name;
+    //   // insert.homepage_url = homepage_url;
+    //   // insert.bio =bio;
+    //   // insert.degrees = degrees;
+    //   // insert.experience = experience;
+    //   // insert.founded_companies = founded_companies;
+    //   // insert.primary_image = primary_image;
+    //   // insert.web_presences = web_presences;
+    //   // insert.press = press;
+    //   // var personExist = CruchBasePerson.findOne({"_id":_id,"first_name":first_name,"last_name":last_name,"homepage_url":homepage_url,"bio":bio,"degrees":degrees,"experience":experience,"founded_companies":founded_companies,"primary_image":primary_image,"web_presences":web_presences,"press":press});
+    //   // if(personExist){
+    //   //   CruchBasePerson.update({"_id":personExist._id},{$set : {"first_name":first_name,"last_name":last_name,"homepage_url":homepage_url,"bio":bio,"degrees":degrees,"experience":experience,"founded_companies":founded_companies,"primary_image":primary_image,"web_presences":web_presences,"press":press}});
+    //   // }else{
+    //   //   CruchBasePerson.insert(insert);
+    //   // }
+
+    // }
 }
 // http://api.crunchbase.com/v/2/organizations?user_key=5095b3c5634b6f668bf4aa0b66cc8864&page=200&order=created_at+ASC
 function cruchbaseOrgaization () {
@@ -296,32 +356,7 @@ function scrapBlogs(){
         console.log(expert.length);
     }
 }
-function scrapVideos(){
-    var $ = null,result = null;
-    for(var p=1;;p++){
-        var url = "http://bigthink.com/videos?page="+p;
-        result = Meteor.http.get(url);
-        $ = cheerio.load(result.content);
-        var expert = $(".video");
-        if(expert.length==0)
-            break;
-        for(var i=0,il=expert.length;i<il;i++){
-          currentDiv = expert[i];
-          name = $(currentDiv).find('.name').text();
-          job = $(currentDiv).find('.job').text();
-          moredetails = "http://www.bigthink.com"+$(currentDiv).find('.video a').attr('href');
 
-          var currentcursor= BigThinkVideos.findOne({"moredetails":moredetails});
-          if(currentcursor){
-            BigThinkVideos.update({"moredetails":moredetails},{$set : {"name":name,"job":job}});
-          }else{
-            var Follow = {"moredetails": moredetails,"name": name,"job": job};
-            BigThinkVideos.insert(Follow);
-          }
-        }
-        console.log(expert.length);
-    }
-}
 function scrapVideosGetMore(){
     console.log("scrapVideosGetMore");
     var $ = null,moreResult = null;
@@ -1036,62 +1071,41 @@ function scrapTedTopics(){
           }
       }
     }
-// TEDX START //
-function scrapTedx(){
-    var topicName = [];
-    var $ = null,result = null;
-    var url = "http://tedxtalks.ted.com/pages/talks-by-topic";  //http://www.ted.com/watch/topics
+    function scrapTedx(){
+      var $ = null,result = null;
+      var url = "http://tedxtalks.ted.com/pages/talks-by-topic";  //http://www.ted.com/watch/topics
+      
+
+      result = Meteor.http.get(url);
+      $ = cheerio.load(result.content);                           
+      var designation = $(".mvp_page_title_expressive");  //  topics__list__topic
+      var currentDiv = null;
+
+ console.log(url+"****"+designation.length);
+
+      var moredetails,imgurl;                          //-----
 
 
-    result = Meteor.http.get(url);
-    $ = cheerio.load(result.content);                           
-    var designation = $(".mvp_page_title_expressive");  //  topics__list__topic
-    var currentDiv = null;
 
-
-    var moredetails,imgurl;                          //-----
-
-
-
-    for(var i=0,il=designation.length;i<il;i++){
-        currentDiv = designation[i];
-        var topics=$(designation[i]).text()   //topics
-        var newTopic = "";
-        for(var j=0,jl=topics.length;j<jl;j++){
-            if(!(topics.charCodeAt(j)== 9 || topics.charCodeAt(j)== 10)){
-                if(topics.charAt(j) == " "){
-                    newTopic+= "-";
-                }
-                else{
-                    newTopic+=topics.charAt(j);                    
-                }
-
-            }
-                
-                
-
+      for(var i=0,il=designation.length;i<il;i++){
+          currentDiv = designation[i];
+          var topics=$(designation[i]).text()   //topics
+          topics=topics.replace(/\s+/g, "");
+          if(topics && (!topics.match("undefined"))&&topics.length>10){
+          moredetails = "http://tedxtalks.ted.com/playlist.mason"+$(designation[i]).text()+"?pages=";  
+          console.log(moredetails)        
+         
+          var currentcursor= TedxTopicx.findOne({"moredetails":moredetails});
+          
+          if(currentcursor){
+            TedxTopicx.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
+          }else{
+            var Follow = {"moredetails": moredetails,"imgurl":imgurl};
+            TedxTopicx.insert(Follow);
+          }
         }
-        console.log(newTopic)
-        topics=topics.replace("/\r?\n|\r/", "");
-        // console.log(topics)
-        topicName.push(newTopic)
-        if(topics && (!topics.match("undefined"))&&topics.length>10){
-
-            moredetails = "http://tedxtalks.ted.com/playlist.mason"+newTopic+"?pages=";  
-            // console.log(moredetails)        
-
-            var currentcursor= TedxTopicx.findOne({"moredetails":moredetails});
-
-            if(currentcursor){
-                TedxTopicx.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
-            }
-            else{
-                var Follow = {"moredetails": moredetails,"imgurl":imgurl};
-                TedxTopicx.insert(Follow);
-            }
-        }
-    }
-        getMoreDetailsx();
+      }
+     // getMoreDetailsx();
     }
 
 
@@ -1209,21 +1223,17 @@ function scrapTedx(){
     //       }
     //   }
     // }
-// TEDX END //
 /////////////////////////// BHAVESH ///////////////////////
 
 
 //////////////////////////// NICOLSON /////////////////////////
 // EDGE START //
-function getMyTime(startTime){
-    var elapsed = new Date().getTime() - startTime;
-    return elapsed / 10 + (elapsed % 10 ? '' : '.0' )
+function nicolsonDevelopment(){
+    // edgeConversation();
 }
-
 function edgeConversation(){
     // http://edge.org/conversations?page=0&tid=mind&type=0
-    var startTime = new Date().getTime();
-    Loader.update({"_id":"edge"},{$set : {"edgeConversation":"Started Edge Conversation", "edgeConversationTime" :getMyTime(startTime)}});
+    Loader.update({"_id":"edge"},{$set : {"edgeConversation":"Started Edge Conversation"}});
     console.log("Started Edge Conversation");
     var url = "http://edge.org/conversations?page=";
     var urlEnd = "&tid=mind&type=0";
@@ -1235,7 +1245,7 @@ function edgeConversation(){
     var title = "";
     for(var i=0;;i++){
         Meteor.setTimeout(function(){
-            Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Edge Library "+i, "edgeConversationTime" :getMyTime(startTime)}})
+            Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Edge Library "+i}})
         },50);
         console.log("Edge  Edge Library "+i);
         result = Meteor.http.get(url+i+urlEnd);
@@ -1314,18 +1324,17 @@ function edgeConversation(){
         }
 
         if(row.length < 50){
-            Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Finished Edge Conversation","edgeConversationTime" :getMyTime(startTime), "edgeConversationTime" :getMyTime(startTime)}});
+            Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Finished Edge Conversation"}});
             console.log("Finished Edge Conversation");
             break;
         }
     }
     console.log("Finished Edge Conversation");
-    Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Finished Edge Conversation","edgeConversationTime" :getMyTime(startTime)}})
+    Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Finished Edge Conversation"}})
 }
 
 function edgeMember() {
-    var startTime = new Date().getTime();
-    Loader.update({"_id":"edge"},{$set : {"edgeMember":"Started Edge Member","edgeMemberTime" :getMyTime(startTime)}});
+    Loader.update({"_id":"edge"},{$set : {"edgeMember":"Started Edge Member"}});
     var userArray = [];
     var currentUser = null;
     var result = null,$=null;
@@ -1339,7 +1348,7 @@ function edgeMember() {
 
         if(!currentUser.link)
             continue;
-        Loader.update({"_id":"edge"},{$set : {"edgeMember":"Started Edge Member link "+currentUser.link,"edgeMemberTime" :getMyTime(startTime)}});
+        Loader.update({"_id":"edge"},{$set : {"edgeMember":"Started Edge Member link "+currentUser.link}});
 
         result = Meteor.http.get(currentUser.link);
         $ = cheerio.load(result.content);
@@ -1353,11 +1362,10 @@ function edgeMember() {
         UserEvolve.update({"_id":currentUser._id},{$set : {"title":title,"paraArray":paraArray}})
         //currentUser
     }
-    Loader.update({"_id":"edge"},{$set : {"edgeMember":"Ended Edge Member","edgeMemberTime" :getMyTime(startTime)}});
+    Loader.update({"_id":"edge"},{$set : {"edgeMember":"Ended Edge Member"}});
 }
 function edgeLibrary(){
-    var startTime = new Date().getTime();
-    Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Started Edge Library","edgeLibraryTime" :getMyTime(startTime)}});   
+    Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Started Edge Library"}});   
     console.log("Started Edge Library");
     var url = "http://edge.org/library?page=";
     var result = null,resultSecond=null;;
@@ -1367,7 +1375,7 @@ function edgeLibrary(){
     var $ = null,$$=null;
     for(var i=0;;i++){
         console.log("Edge  Edge Library "+i);
-        Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Edge Library "+url+i,"edgeLibraryTime" :getMyTime(startTime)}});
+        Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Edge Library "+url+i}});
         result = Meteor.http.get(url+i);
         $ = cheerio.load(result.content);
         row = $("tbody tr");
@@ -1395,7 +1403,7 @@ function edgeLibrary(){
             }
         }
     }
-    Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Finished  Edge Library","edgeLibraryTime" :getMyTime(startTime)}});
+    Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Finished  Edge Library"}});
     console.log("Finished  Edge Library");
 }   
 function edgeLibrarySecond(referenceLink){
@@ -1414,9 +1422,8 @@ function edgeLibrarySecond(referenceLink){
     }
 }
 function edgeVideos(){
-    var startTime = new Date().getTime();
     console.log("Started Edge Video");
-    Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Started Edge Video","edgeVideoTime" :getMyTime(startTime)}});
+    Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Started Edge Video"}});
     var url = "http://edge.org/videos?page=";
     var result = null;
     var row = null;
@@ -1424,7 +1431,7 @@ function edgeVideos(){
     var origin = "http://edge.org";
     for(var i=0;;i++){
         console.log("Edge Video Page "+i);
-        Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Edge Video Page "+i,"edgeVideoTime" :getMyTime(startTime)}});
+        Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Edge Video Page "+i}});
         result = Meteor.http.get(url+i);
         $ = cheerio.load(result.content);
         empty = $(".view-empty").children("p").text();
@@ -1487,61 +1494,11 @@ function edgeVideos(){
         }
         
     }
-    Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Finished Edge Video","edgeVideoTime" :getMyTime(startTime)}});
+    Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Finished Edge Video"}});
     console.log("Finished Edge Video");
 }
 // EDGE END //
 
-
-// ANGEL START //
-    
-    // https://angel.co/people
-    function angelPeople(){
-
-    }   
-
-    // https://angel.co/company_filters/search_data
-    function angelPublic(){
-        var url = "https://angel.co/company_filters/search_data";
-        var result = null,resultSecond=null;
-        var row = null;
-        var empty = null;
-        var origin = "http://edge.org";
-        for(var i=0;i<1;i++){
-            console.log("Edge Video Page "+i);
-            // Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Edge Video Page "+i,"edgeVideoTime" :getMyTime(startTime)}});
-            result = Meteor.http.get(url,{"params":{"sort":"signal","page":2}});
-            console.log(result.data)
-            if(result.statusCode == 200){
-                console.log(result.data);
-                var ids = result.data.ids;
-                var total = result.data.total
-                var page = result.data.page
-                var sort = result.data.sort
-                var news = result.data.new
-                var hexdigest = result.data.hexdigest;
-                var signal = result.data.signal;
-                var secondURL = "https://angel.co/companies/startups?";
-                for(var j=0,jl=ids.length;j<jl;j++){
-                    secondURL +="ids[]="+ids[j] +"&";
-                }
-                secondURL += "total=" +total +"&";
-                secondURL += "signal=" +signal +"&";
-                secondURL += "new=" +news +"&";
-                secondURL += "hexdigest=" +hexdigest;
-                console.log(secondURL);
-                // "https://angel.co/companies/startups"
-                resultSecond = Meteor.http.get(secondURL); 
-                console.log(resultSecond);   
-            }
-            // https://angel.co/companies/startups?ids[]=37608&ids[]=38066&ids[]=38073&ids[]=32477&ids[]=33188&ids[]=33193&ids[]=26775&ids[]=31544&ids[]=32203&ids[]=32221&ids[]=32519&ids[]=32543&ids[]=32545&ids[]=32551&ids[]=32562&ids[]=32563&ids[]=32564&ids[]=32566&ids[]=32572&ids[]=32579&total=279958&page=2&sort=signal&new=false&hexdigest=d01fa83ec926a4207f46fc367de12b43d31fc6e9
-        }   
-    } 
-// ANGEL END //
-function nicolsonDevelopment(){
-    // angelPublic();
-}
-// CRUNCHBASE START //
 
 
 //////////////////////////// NICOLSON /////////////////////////

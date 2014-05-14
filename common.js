@@ -6,7 +6,7 @@ Tedwatch = new Meteor.Collection("tedwatch");
 BigThinkExpert = new Meteor.Collection("bigthinkexpert");
 BigThinkVideos = new Meteor.Collection("bigthinkvideos");
 BigThinkBlogs = new Meteor.Collection("bigthinkblogs");
-
+CruchBasePerson = new Meteor.Collection("Cruchbaseperson");
 CruchBaseOrganization = new Meteor.Collection("cruchbaseorganization");
 
 TedxTopicx = new Meteor.Collection("tedxtopicx");
