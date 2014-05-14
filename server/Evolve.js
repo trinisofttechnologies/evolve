@@ -732,33 +732,46 @@ function scrapExperts(){
 
 
 /////////////////////////// BHAVESH ///////////////////////
-// scrapRanker();
+Timed = new Meteor.Collection("timed");
+TimeData = new Meteor.Collection("timedata");
 //    var url2013 = "http://time100.time.com/2013/04/18/time-100/slide/all/"
  //    scrapTimes(url2013);
  // var url2010 = "http://content.time.com/time/specials/packages/completelist/0,29569,1984685,00.html"
  //    scrapTimes(url2010);
  // var url2009 = "http://content.time.com/time/specials/packages/completelist/0,29569,1894410,00.html"
  //    scrapTimes(url2009);
-
-  
-   
   // var url2011 = "http://content.time.com/time/specials/packages/article/0,28804,2066367_2066369,00.html";
   //   scrapTimes2(url2011);
   //   var url2012="http://content.time.com/time/specials/packages/article/0,28804,2111975_2111976,00.html";
   //   scrapTimes2(url2012);
+  // 	getMoreDetailsTimes()
+	
+ranker = new Meteor.Collection("ranker");
+// scrapRanker();
+Esquire = new Meteor.Collection("esquire");
+// 	scrapEsquire();
+Lesson = new Meteor.Collection("lesson");		//remaning 
+ // scrapLesson();
+// 	getMoreLesson();
+
+browse = new Meteor.Collection("browse");
+browseData = new Meteor.Collection("browsedata");
+// 	scrapBrowse();
+// 	getMoreBrows();
+	
+Themes = new Meteor.Collection("themes");
+ThemesData = new Meteor.Collection("themesdata");
+
 // scrapThemes();
 //   getMoreThemes()
   
-    // getMoreDetailsTimes()
-// scrapTedTopics();
-    //getMoreDetailsTopics();
-   // getMoreDetails1Topics();
-   // scrapEsquire();
-  //  scrapBrowse();
-  // getMoreBrows();
-// scrapLesson();
-//   getMoreLesson();
-
+TedTopic = new Meteor.Collection("tedtopic");
+Tedwatch = new Meteor.Collection("tedwatch");  
+    // 	scrapTedTopics();
+    //	getMoreDetailsTopics();
+   	// 	getMoreDetails1Topics();
+   
+  
 function scrapThemes(){
       var $ = null,result = null,say1,say2,say3,say4;
 // var x=0;
@@ -820,7 +833,13 @@ function scrapThemes(){
             say3 =$('.about p').text(); 
                                                     // console.log(say3);
         
-               
+            var currentcursor= ThemesData.findOne({"name":say1,"img":say2,"blog":say3});
+          if(currentcursor){
+            ThemesData.update({"_id":currentcursor._id},{$set : {"name":say1,"img":say2,"blog":say3}});
+          }else{
+            var Follow = {"name":say1,"img":say2,"blog":say3};
+            ThemesData.insert(Follow);
+          }
           } //if
       }     //end of for i
     }
@@ -839,26 +858,28 @@ x++;
       var designation = $(".videoText");  //  topics__list__topic
       var currentDiv = null;
                                           // console.log(url+" "+designation.length);
-       if(designation.length<=0)break;
+      if(designation.length<=0)break;
+      
       var moredetails,imgurl;                          //-----
 
       for(var i=0,il=designation.length;i<il;i++){
           currentDiv = designation[i];
 
-          var url = $(currentDiv).find('a').attr('href');
+      var url = $(currentDiv).find('a').attr('href');
                                               // console.log(url)                                     
-          if(url && (!url.match("undefined"))&&url.length>27)
-         { moredetails = "http://ed.ted.com"+$(currentDiv).find('a').attr('href');  
+      if(url && (!url.match("undefined"))&&url.length>27)
+      {
+       		moredetails = "http://ed.ted.com"+$(currentDiv).find('a').attr('href');  
                                           console.log(moredetails);
-          var currentcursor= Lesson.findOne({"moredetails":moredetails});
+          	var currentcursor= Lesson.findOne({"moredetails":moredetails});
           
-          if(currentcursor){
-            Lesson.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
-          }else{
-            var Follow = {"moredetails": moredetails,"imgurl":imgurl};
-            Lesson.insert(Follow);
-          }
-}
+          	if(currentcursor){
+            	Lesson.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
+          	}else{
+            	var Follow = {"moredetails": moredetails,"imgurl":imgurl};
+            	Lesson.insert(Follow);
+          	}
+		}//end if
       }
     }
   }
@@ -885,10 +906,10 @@ x++;
             say2 =$('.lessonDescription p').text();
                                         // console.log(say2);     //----checked
  
-            // say3 =$('.videoContainer').html();        
+             say3 =$('.videoContainer ').find('iframe').attr('src');        
                                       console.log(say3);
      //      
-
+     																						// data base and iframe is remaning
            
                
           } //if
@@ -941,7 +962,7 @@ x++;
 
       for(var i=0,il=activeurl.length-1;i<il;i++){
           var url = activeurl[i];
-                console.log(url)                                     
+                // console.log(url)                                     
           if(url && (!url.match("undefined"))&&url.length>27){
             moreResult = Meteor.http.get(url);   
             $ = cheerio.load(moreResult.content);  
@@ -950,7 +971,7 @@ x++;
             say2 =$('.talk-hero__title').text();
             say3 =$('.talk-sharing__value').text();        
             say4 =$('.talk-description').text();        
-            say5 =$('.talk-sharing__value').text();        //----checked
+            say5 =$('.talk-hero__poster').find('img').attr('src');        //----checked
 
            
               // -------------------------------------------------------
@@ -977,6 +998,13 @@ x++;
             // end of for 
                
           }
+        var currentcursor= browseData.findOne({"name":say1,"title":say2});
+          if(currentcursor){
+            browseData.update({"_id":currentcursor._id},{$set : {"name":say1,"title":say2,"share":say3,"para":say4,"video":say5,"link1":link1,"link2":link2,"link3":link3}});
+          }else{
+            var Follow = {"name":say1,"title":say2,"share":say3,"para":say4,"video":say5,"link1":link1,"link2":link2,"link1":link3};
+            browseData.insert(Follow);
+          }
       }
     }
 
@@ -994,18 +1022,26 @@ function scrapEsquire(){
 
       var moredetails,imgurl;                          //-----
 
-      for(var i=0,il=designation.length;i<il;i++){
+     for(var i=0,il=designation.length;i<il;i++){
           currentDiv = designation[i];
 
           say1=$(currentDiv).find('.slideTitle').text();   
-           say3=$(currentDiv).find('.imageContent').text();   
-          say4=$(currentDiv).find('.imageCredit').text();   
-          console.log(say1+" "+say3+" "+say4+" ");
+           say3=$(currentDiv).find('.imageContainer img').attr("src");   
+          say4=$(currentDiv).find('.imageContent b').text();   
+         say2=$(currentDiv).find('.imageContent i').text();   
+         // console.log("person"+i)
+          // console.log(say1+" * "+say3+" * "+say2+" * "+say4+" * ");
+   		
       
+      var currentcursor= Esquire.findOne({"name":say1,"image":say3,"desc":say4,"para":say2});
+          if(currentcursor){
+            Esquire.update({"_id":currentcursor._id},{$set : {"name":say1,"image":say3,"desc":say4,"para":say2}});
+          }else{
+            var Follow = {"name":say1,"image":say3,"desc":say4,"para":say2};
+            Esquire.insert(Follow);
+          }
       }
-     // getMoreDetails();
-      
-      
+     
     }
 function scrapTimes2(url){
       var $ = null,result = null;
@@ -1023,13 +1059,13 @@ while(1)
       var moredetails,imgurl;                          //-----
       moredetails=url;
           
-          var currentcursor= Time.findOne({"moredetails":moredetails});
+          var currentcursor= Timed.findOne({"moredetails":moredetails});
           
           if(currentcursor){
-            Time.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
+            Timed.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
           }else{
             var Follow = {"moredetails": moredetails,"imgurl":imgurl};
-            Time.insert(Follow);
+            Timed.insert(Follow);
           }
            url="http://content.time.com"+$('.next-item').find("a").attr("href");
            console.log(url+x)
@@ -1056,13 +1092,13 @@ function scrapTimes(url){
           currentDiv = designation[i];
           moredetails = $(currentDiv).find('a').attr('href');  
                                               // console.log(moredetails+" "+designation.length)
-          var currentcursor= Time.findOne({"moredetails":moredetails});
+          var currentcursor= Timed.findOne({"moredetails":moredetails});
           
           if(currentcursor){
             Time.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
           }else{
             var Follow = {"moredetails": moredetails,"imgurl":imgurl};
-            Time.insert(Follow);
+            Timed.insert(Follow);
           }
 
       }
@@ -1075,7 +1111,7 @@ function scrapTimes(url){
         var $ = null,result2 = null,say1,say2,say3,say4;
         var activeurl = [];
      
-        Time.find({}).forEach(function(data){
+        Timed.find({}).forEach(function(data){
           activeurl.push(data.moredetails);             //  featching data from the collection TeadSpeaker
       });
        
@@ -1086,15 +1122,21 @@ function scrapTimes(url){
             moreResult = Meteor.http.get(url);   
             $ = cheerio.load(moreResult.content);  
             say1 =$('.item-title').text();
-                                                // console.log(say1);
+          																	  	// console.log("name="+say1);
             say2 =$('.describer-title').text();
-            say4 =$('.entry-content p ').text();
-                                                console.log(say4+"----");
-            say3 =$('.responsive').find("img").attr("src"); 
-                                                    // console.log(say3);
+            say3 =$('.entry-content p ').text();
+            																  	// console.log(say4+"----");
+            say4 =$('.entry-content').find("img").attr("src"); 
+                       															// console.log(say3);
         
-               
-          } //if
+               var currentcursor= TimeData.findOne({"name":say1,"title":say2,"img":say4});
+          if(currentcursor){
+            TimeData.update({"_id":currentcursor._id},{$set : {"name":say1,"title":say2,"blogText":say3,"img":say4}});
+          }else{
+            var Follow = {"name":say1,"title":say2,"blogText":say3,"img":say4};
+            TimeData.insert(Follow);
+          }
+          }	//if
       }     //end of for i
     }
 function scrapRanker(){
@@ -1116,16 +1158,22 @@ x++;
       for(var i=0,il=designation.length;i<il;i++){
           currentDiv = designation[i];
 
-          say1=$(currentDiv).find('.oNode').text();   
-           say3=$(currentDiv).find('.blogText').text();   
-          say4=$(currentDiv).find('.oImg').text();   
+          	say1=$(currentDiv).find('.oNode').text();   
+           	say3=$(currentDiv).find('.blogText').text();   
+          	say4=$(currentDiv).find('.oImg').text();   
           // console.log(say1+" "+say3+" "+say4+" ");
       
       }
      // getMoreDetails();
       var next =$("#pagingBot_next").attr('href');
-      console.log(next)
-    
+     	// console.log(next)
+      var currentcursor= ranker.findOne({"img":say4});
+          if(currentcursor){
+            ranker.update({"_id":currentcursor._id},{$set : {"name":say1,"blogText":say3,"img":say4}});
+          }else{
+            var Follow = {"name":say1,"blogText": say3,"img": say4};
+            ranker.insert(Follow);
+          }
       if(next && (next.match("undefined"))&&next.length<27)break;
       }
     }
