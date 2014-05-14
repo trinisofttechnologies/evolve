@@ -38,7 +38,6 @@ if (Meteor.isServer) {
     //scrapVideosGetMore();
     //scrapBlogs();
     //scrapBlogsGetMore();
-
 }
 function scrapBlogsGetMore(){
     console.log("scrapBlogsGetMore");
