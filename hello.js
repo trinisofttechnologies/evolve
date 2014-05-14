@@ -18,8 +18,10 @@ UserEvolve = new Meteor.Collection("userevolve");
 if (Meteor.isServer) {
     Meteor.startup(function () {
         // scrapTed();
+        
         loaderinit()
-        cruchbaseOrgaization();
+
+        // cruchbaseOrgaization();
         // done
         // edgeMember();
         // fixed
@@ -45,9 +47,50 @@ if (Meteor.isServer) {
 
 }
 function loaderinit () {
-    var cursorLoader = Loader.findOne({"_id":"edge"});
+    var cursorLoader = null;
+    cursorLoader = Loader.findOne({"_id":"edge"});
     if(!cursorLoader){
-      Loader.insert({"_id":"edge"});
+        Loader.insert({"_id":"edge"});
+    }
+    cursorLoader = Loader.findOne({"_id":"ted"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"ted"});
+    }
+    cursorLoader = Loader.findOne({"_id":"tedx"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"tedx"});
+    }
+    cursorLoader = Loader.findOne({"_id":"bigthink"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"bigthink"});
+    }
+    cursorLoader = Loader.findOne({"_id":"crunchbase"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"crunchbase"});
+    }
+    cursorLoader = Loader.findOne({"_id":"angel"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"angel"});
+    }
+    cursorLoader = Loader.findOne({"_id":"amazon"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"amazon"});
+    }
+    cursorLoader = Loader.findOne({"_id":"maven"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"maven"});
+    }
+    cursorLoader = Loader.findOne({"_id":"alltop"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"alltop"});
+    }
+    cursorLoader = Loader.findOne({"_id":"wikipedia"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"wikipedia"});
+    }
+    cursorLoader = Loader.findOne({"_id":"time"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"time"});
     }
 }
 function scrapBlogsGetMore(){
