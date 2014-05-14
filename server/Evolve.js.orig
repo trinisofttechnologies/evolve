@@ -1,7 +1,31 @@
+<<<<<<< HEAD
+TedLeader = new Meteor.Collection("tedleader");
+TedFellows = new Meteor.Collection("tedfellows");
+TedSpeakers = new Meteor.Collection("tedspeakers");
+TedTopic = new Meteor.Collection("tedtopic");
+Tedwatch = new Meteor.Collection("tedwatch");
+BigThinkExpert = new Meteor.Collection("bigthinkexpert");
+BigThinkVideos = new Meteor.Collection("bigthinkvideos");
+BigThinkBlogs = new Meteor.Collection("bigthinkblogs");
+CruchBaseOrganization = new Meteor.Collection("cruchbaseorganization");
+CruchBasePerson = new Meteor.Collection("Cruchbaseperson");
+
+Loader = new Meteor.Collection("loader");
+
+VideoEvolve = new Meteor.Collection("videoevolve");
+ConversationEvolve = new Meteor.Collection("conversationevolve");
+UserEvolve = new Meteor.Collection("userevolve");
+=======
+>>>>>>> 3097cccd0195382f7d54fc5621f0cb58ba53ea0a
+
 if (Meteor.isServer) {
     Meteor.startup(function () {
         // scrapTed();
         
+<<<<<<< HEAD
+        loaderinit()
+        // cruchbasePerson();
+=======
         loaderinit();
 
         Meteor.setTimeout(function(){
@@ -17,6 +41,7 @@ if (Meteor.isServer) {
             }
         },50)
 
+>>>>>>> 3097cccd0195382f7d54fc5621f0cb58ba53ea0a
         // cruchbaseOrgaization();
         // done
         // edgeMember();
@@ -35,7 +60,12 @@ if (Meteor.isServer) {
         //scrapBlogs();
         //scrapBlogsGetMore();
     });
+    
+
     var result,moreResult;
+
+    
+   
 }
 
 function hastenDevelopment(){
@@ -103,15 +133,14 @@ function loaderinit () {
     }
 }
 
-
 //////////////////////////// HASTEN /////////////////////////
 // CRUNCHBASE START //
 
 function cruchbasePerson(){
 
-    // CruchBaseOrganization.remove({});
-    // console.log("cruchbasePerson");
-    // console.log(CruchBaseOrganization.find().count())
+//     // CruchBaseOrganization.remove({});
+//     // console.log("cruchbasePerson");
+//     // console.log(CruchBaseOrganization.find().count())
     var insert = {};
     var $ = null,moreResult = null;
     var activeurl = [];
@@ -165,6 +194,40 @@ function cruchbasePerson(){
             }
           }
       }
+    //var urlnew = "http://api.crunchbase.com/v/2/person/ben-elowitz?user_key=5095b3c5634b6f668bf4aa0b66cc8864";
+    // result = Meteor.http.get(urlnew);
+    // if(result.statusCode == "200"){
+    //   var _id = result.data.data.uuid;
+    //   var last_name= result.data.data.properties.last_name;
+    //   var first_name = result.data.data.properties.first_name;
+    //   var homepage_url = result.data.data.properties.homepage_url;
+    //   var bio = result.data.data.properties.bio;
+    //   var degrees= result.data.data.relationships.degrees;
+    //   var experience= result.data.data.relationships.experience;
+    //   var founded_companies= result.data.data.relationships.founded_companies;
+    //   var primary_image= result.data.data.relationships.primary_image;
+    //   var web_presences= result.data.data.relationships.web_presences;
+    //   var press= result.data.data.relationships.press;
+    //   console.log(_id)
+    //   // insert._id =_id;
+    //   // insert.last_name = last_name;
+    //   // insert.first_name =first_name;
+    //   // insert.homepage_url = homepage_url;
+    //   // insert.bio =bio;
+    //   // insert.degrees = degrees;
+    //   // insert.experience = experience;
+    //   // insert.founded_companies = founded_companies;
+    //   // insert.primary_image = primary_image;
+    //   // insert.web_presences = web_presences;
+    //   // insert.press = press;
+    //   // var personExist = CruchBasePerson.findOne({"_id":_id,"first_name":first_name,"last_name":last_name,"homepage_url":homepage_url,"bio":bio,"degrees":degrees,"experience":experience,"founded_companies":founded_companies,"primary_image":primary_image,"web_presences":web_presences,"press":press});
+    //   // if(personExist){
+    //   //   CruchBasePerson.update({"_id":personExist._id},{$set : {"first_name":first_name,"last_name":last_name,"homepage_url":homepage_url,"bio":bio,"degrees":degrees,"experience":experience,"founded_companies":founded_companies,"primary_image":primary_image,"web_presences":web_presences,"press":press}});
+    //   // }else{
+    //   //   CruchBasePerson.insert(insert);
+    //   // }
+
+    // }
 }
 // http://api.crunchbase.com/v/2/organizations?user_key=5095b3c5634b6f668bf4aa0b66cc8864&page=200&order=created_at+ASC
 function cruchbaseOrgaization () {
@@ -293,32 +356,7 @@ function scrapBlogs(){
         console.log(expert.length);
     }
 }
-function scrapVideos(){
-    var $ = null,result = null;
-    for(var p=1;;p++){
-        var url = "http://bigthink.com/videos?page="+p;
-        result = Meteor.http.get(url);
-        $ = cheerio.load(result.content);
-        var expert = $(".video");
-        if(expert.length==0)
-            break;
-        for(var i=0,il=expert.length;i<il;i++){
-          currentDiv = expert[i];
-          name = $(currentDiv).find('.name').text();
-          job = $(currentDiv).find('.job').text();
-          moredetails = "http://www.bigthink.com"+$(currentDiv).find('.video a').attr('href');
 
-          var currentcursor= BigThinkVideos.findOne({"moredetails":moredetails});
-          if(currentcursor){
-            BigThinkVideos.update({"moredetails":moredetails},{$set : {"name":name,"job":job}});
-          }else{
-            var Follow = {"moredetails": moredetails,"name": name,"job": job};
-            BigThinkVideos.insert(Follow);
-          }
-        }
-        console.log(expert.length);
-    }
-}
 function scrapVideosGetMore(){
     console.log("scrapVideosGetMore");
     var $ = null,moreResult = null;
@@ -1461,7 +1499,6 @@ function edgeVideos(){
 }
 // EDGE END //
 
-// CRUNCHBASE START //
 
 
 //////////////////////////// NICOLSON /////////////////////////

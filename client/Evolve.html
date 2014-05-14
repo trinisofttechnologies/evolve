@@ -14,8 +14,14 @@
 
 <template name="loader">
 	<div class="loaderPage">
-		<div>
-			
-		</div>
+		{{#each scrapingsite}}
+			<div>
+				{{> ownLoader}}
+			</div>
+			<br>
+		{{/each}}
 	</div> 
+</template>
+<template name="ownLoader">
+	{{{html}}}
 </template>
