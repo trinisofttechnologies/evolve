@@ -9,6 +9,8 @@ BigThinkBlogs = new Meteor.Collection("bigthinkblogs");
 
 CruchBaseOrganization = new Meteor.Collection("cruchbaseorganization");
 
+Loader = new Meteor.Collection("loader");
+
 VideoEvolve = new Meteor.Collection("videoevolve");
 ConversationEvolve = new Meteor.Collection("conversationevolve");
 UserEvolve = new Meteor.Collection("userevolve");
@@ -17,7 +19,9 @@ if (Meteor.isServer) {
     Meteor.startup(function () {
         // scrapTed();
         
-        cruchbaseOrgaization();
+        loaderinit()
+
+        // cruchbaseOrgaization();
         // done
         // edgeMember();
         // fixed
@@ -40,6 +44,53 @@ if (Meteor.isServer) {
     //scrapVideosGetMore();
     //scrapBlogs();
     //scrapBlogsGetMore();
+}
+function loaderinit () {
+    var cursorLoader = null;
+    cursorLoader = Loader.findOne({"_id":"edge"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"edge"});
+    }
+    cursorLoader = Loader.findOne({"_id":"ted"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"ted"});
+    }
+    cursorLoader = Loader.findOne({"_id":"tedx"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"tedx"});
+    }
+    cursorLoader = Loader.findOne({"_id":"bigthink"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"bigthink"});
+    }
+    cursorLoader = Loader.findOne({"_id":"crunchbase"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"crunchbase"});
+    }
+    cursorLoader = Loader.findOne({"_id":"angel"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"angel"});
+    }
+    cursorLoader = Loader.findOne({"_id":"amazon"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"amazon"});
+    }
+    cursorLoader = Loader.findOne({"_id":"maven"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"maven"});
+    }
+    cursorLoader = Loader.findOne({"_id":"alltop"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"alltop"});
+    }
+    cursorLoader = Loader.findOne({"_id":"wikipedia"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"wikipedia"});
+    }
+    cursorLoader = Loader.findOne({"_id":"time"});
+    if(!cursorLoader){
+        Loader.insert({"_id":"time"});
+    }
 }
 function scrapBlogsGetMore(){
     console.log("scrapBlogsGetMore");
@@ -665,10 +716,403 @@ function scrapExperts(){
 
 
 /////////////////////////// BHAVESH ///////////////////////
+// scrapRanker();
+//    var url2013 = "http://time100.time.com/2013/04/18/time-100/slide/all/"
+ //    scrapTimes(url2013);
+ // var url2010 = "http://content.time.com/time/specials/packages/completelist/0,29569,1984685,00.html"
+ //    scrapTimes(url2010);
+ // var url2009 = "http://content.time.com/time/specials/packages/completelist/0,29569,1894410,00.html"
+ //    scrapTimes(url2009);
 
+  
+   
+  // var url2011 = "http://content.time.com/time/specials/packages/article/0,28804,2066367_2066369,00.html";
+  //   scrapTimes2(url2011);
+  //   var url2012="http://content.time.com/time/specials/packages/article/0,28804,2111975_2111976,00.html";
+  //   scrapTimes2(url2012);
+// scrapThemes();
+//   getMoreThemes()
+  
+    // getMoreDetailsTimes()
 // scrapTedTopics();
     //getMoreDetailsTopics();
    // getMoreDetails1Topics();
+   // scrapEsquire();
+  //  scrapBrowse();
+  // getMoreBrows();
+// scrapLesson();
+//   getMoreLesson();
+
+function scrapThemes(){
+      var $ = null,result = null,say1,say2,say3,say4;
+// var x=0;
+
+// x++;
+
+      var url = "https://www.ted.com/themes";  //http://www.ted.com/themes
+      
+
+      result = Meteor.http.get(url);
+      $ = cheerio.load(result.content);                           
+      var designation = $(".clearfix h4");  //  topics__list__topic
+      var currentDiv = null;
+                                 // console.log(url+" "+designation.length);
+//        if(designation.length<=0)break;
+      var moredetails,imgurl;                          //-----
+
+      for(var i=0,il=designation.length;i<il;i++){
+          currentDiv = designation[i];
+          var url=$(currentDiv).find('a').attr('href');
+          if(url && (!url.match("undefined"))&&url.length>27)
+          {
+          moredetails = "http://www.ted.com"+$(currentDiv).find('a').attr('href');  
+                                          // console.log(moredetails);
+          var currentcursor= Themes.findOne({"moredetails":moredetails});
+          
+          if(currentcursor){
+            Themes.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
+          }else{
+            var Follow = {"moredetails": moredetails,"imgurl":imgurl};
+            Themes.insert(Follow);
+          }
+      }
+       }
+    
+  }
+
+      /*check point*/
+    //-----------------------------------------------------------
+    function getMoreThemes(){
+      var $ = null,moreResult = null;
+      var link1,link2,link3,listen,say1,say2,say3,say4,say5;
+      var activeurl = [];
+      //console.log("first")
+      Themes.find({}).forEach(function(data){
+          activeurl.push(data.moredetails);
+      });
+
+      for(var i=0,il=activeurl.length-1;i<il;i++){
+          var url = activeurl[i];
+                // console.log(url)                                     
+          if(url && (!url.match("undefined"))&&url.length>27){
+            moreResult = Meteor.http.get(url);   
+            $ = cheerio.load(moreResult.content);  
+            say1 =$('h1 span').text();
+                                                // console.log(say1);
+            say2 =$('.about img').attr("src");
+                                                // console.log(say2+"----");
+            say3 =$('.about p').text(); 
+                                                    // console.log(say3);
+        
+               
+          } //if
+      }     //end of for i
+    }
+
+function scrapLesson(){
+      var $ = null,result = null;
+var x=0;
+while(1){
+x++;
+
+      var url = "http://ed.ted.com/lessons?page="+x;  //http://www.browse.com/
+      
+
+      result = Meteor.http.get(url);
+      $ = cheerio.load(result.content);                           
+      var designation = $(".videoText");  //  topics__list__topic
+      var currentDiv = null;
+                                          // console.log(url+" "+designation.length);
+       if(designation.length<=0)break;
+      var moredetails,imgurl;                          //-----
+
+      for(var i=0,il=designation.length;i<il;i++){
+          currentDiv = designation[i];
+
+          var url = $(currentDiv).find('a').attr('href');
+                                              // console.log(url)                                     
+          if(url && (!url.match("undefined"))&&url.length>27)
+         { moredetails = "http://ed.ted.com"+$(currentDiv).find('a').attr('href');  
+                                          console.log(moredetails);
+          var currentcursor= Lesson.findOne({"moredetails":moredetails});
+          
+          if(currentcursor){
+            Lesson.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
+          }else{
+            var Follow = {"moredetails": moredetails,"imgurl":imgurl};
+            Lesson.insert(Follow);
+          }
+}
+      }
+    }
+  }
+
+      /*check point*/
+    //-----------------------------------------------------------
+    function getMoreLesson(){
+      var $ = null,moreResult = null;
+      var link1,link2,link3,listen,say1,say2,say3,say4,say5;
+      var activeurl = [];
+      //console.log("first")
+      Lesson.find({}).forEach(function(data){
+          activeurl.push(data.moredetails);
+      });
+
+      for(var i=0,il=activeurl.length-1;i<4;i++){
+          var url = activeurl[i];
+                                          // console.log(url)                                     
+          if(url && (!url.match("undefined"))&&url.length>27){
+            moreResult = Meteor.http.get(url);   
+            $ = cheerio.load(moreResult.content);  
+            say1 =$('.content h1').text();
+                                      console.log(say1);
+            say2 =$('.lessonDescription p').text();
+                                        // console.log(say2);     //----checked
+ 
+            // say3 =$('.videoContainer').html();        
+                                      console.log(say3);
+     //      
+
+           
+               
+          } //if
+      }
+    }
+function scrapBrowse(){
+      var $ = null,result = null,say1,say2,say3,say4;
+var x=0;
+while(1){
+x++;
+
+      var url = "http://www.ted.com/talks/browse?page="+x;  //http://www.browse.com/
+      
+
+      result = Meteor.http.get(url);
+      $ = cheerio.load(result.content);                           
+      var designation = $(".talk-link");  //  topics__list__topic
+      var currentDiv = null;
+       console.log(url+" "+designation.length);
+       if(designation.length<=0)break;
+      var moredetails,imgurl;                          //-----
+
+      for(var i=0,il=designation.length;i<il;i++){
+          currentDiv = designation[i];
+          moredetails = "http://www.ted.com"+$(currentDiv).find('a').attr('href');  
+        console.log(moredetails);
+          var currentcursor= browse.findOne({"moredetails":moredetails});
+          
+          if(currentcursor){
+            browse.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
+          }else{
+            var Follow = {"moredetails": moredetails,"imgurl":imgurl};
+            browse.insert(Follow);
+          }
+
+      }
+    }
+  }
+
+      /*check point*/
+    //-----------------------------------------------------------
+    function getMoreBrows(){
+      var $ = null,moreResult = null;
+      var link1,link2,link3,listen,say1,say2,say3,say4,say5;
+      var activeurl = [];
+      //console.log("first")
+      browse.find({}).forEach(function(data){
+          activeurl.push(data.moredetails);
+      });
+
+      for(var i=0,il=activeurl.length-1;i<il;i++){
+          var url = activeurl[i];
+                console.log(url)                                     
+          if(url && (!url.match("undefined"))&&url.length>27){
+            moreResult = Meteor.http.get(url);   
+            $ = cheerio.load(moreResult.content);  
+            say1 =$('.talk-hero__speaker a').text();
+            // console.log(say1);
+            say2 =$('.talk-hero__title').text();
+            say3 =$('.talk-sharing__value').text();        
+            say4 =$('.talk-description').text();        
+            say5 =$('.talk-sharing__value').text();        //----checked
+
+           
+              // -------------------------------------------------------
+            var a = $('.talk-sharing__tools a');
+            var afinal;
+            
+            var x=0;
+            for(var j=0,jl=a.length;j<jl;j++){
+                afinal=$(a[j]).attr('href');
+               
+
+                    if(afinal && (!afinal.match("undefined"))&&afinal.length>27){
+                        // console.log(x+afinal);
+                        x++;
+                        if(x==1)
+                            link1=$(a[j]).attr('href');
+                        if(x==2)
+                            link2=$(a[j]).attr('href');
+                        if(x==3)
+                            link3=$(a[j]).attr('href');
+
+                    }
+            }
+            // end of for 
+               
+          }
+      }
+    }
+
+function scrapEsquire(){
+      var $ = null,result = null,say1,say2,say3,say4;
+
+      var url = "http://www.esquire.com/features/most-influential-21st-century-1008#slide-1";  //http://www.espire.com/
+      
+
+      result = Meteor.http.get(url);
+      $ = cheerio.load(result.content);                           
+      var designation = $(".clearfix");  //  topics__list__topic
+      var currentDiv = null;
+       // console.log(url);
+
+      var moredetails,imgurl;                          //-----
+
+      for(var i=0,il=designation.length;i<il;i++){
+          currentDiv = designation[i];
+
+          say1=$(currentDiv).find('.slideTitle').text();   
+           say3=$(currentDiv).find('.imageContent').text();   
+          say4=$(currentDiv).find('.imageCredit').text();   
+          console.log(say1+" "+say3+" "+say4+" ");
+      
+      }
+     // getMoreDetails();
+      
+      
+    }
+function scrapTimes2(url){
+      var $ = null,result = null;
+        //http://time100.time.com/2013/04/18/time-100/slide/all/ 
+    var x=0;  
+while(1)
+{
+    x++;
+      result = Meteor.http.get(url);
+      $ = cheerio.load(result.content);                           
+      
+      var currentDiv = null;
+       // console.log(url);
+
+      var moredetails,imgurl;                          //-----
+      moredetails=url;
+          
+          var currentcursor= Time.findOne({"moredetails":moredetails});
+          
+          if(currentcursor){
+            Time.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
+          }else{
+            var Follow = {"moredetails": moredetails,"imgurl":imgurl};
+            Time.insert(Follow);
+          }
+           url="http://content.time.com"+$('.next-item').find("a").attr("href");
+           console.log(url+x)
+    if(url && (url.match("undefined"))||url.length<27)     
+      break;
+    if(x>=100)break;
+  }
+     // getMoreDetailsTopics();
+    }
+function scrapTimes(url){
+      var $ = null,result = null;
+      ;  //http://time100.time.com/2013/04/18/time-100/slide/all/ 
+      
+
+      result = Meteor.http.get(url);
+      $ = cheerio.load(result.content);                           
+      var designation = $(".items li");  //  items li
+      var currentDiv = null;
+       console.log(url);
+
+      var moredetails,imgurl;                          //-----
+
+      for(var i=0,il=designation.length;i<il;i++){
+          currentDiv = designation[i];
+          moredetails = $(currentDiv).find('a').attr('href');  
+                                              // console.log(moredetails+" "+designation.length)
+          var currentcursor= Time.findOne({"moredetails":moredetails});
+          
+          if(currentcursor){
+            Time.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
+          }else{
+            var Follow = {"moredetails": moredetails,"imgurl":imgurl};
+            Time.insert(Follow);
+          }
+
+      }
+   
+    }
+
+
+    //-----------------------------------------------------------
+    function getMoreDetailsTimes(){
+        var $ = null,result2 = null,say1,say2,say3,say4;
+        var activeurl = [];
+     
+        Time.find({}).forEach(function(data){
+          activeurl.push(data.moredetails);             //  featching data from the collection TeadSpeaker
+      });
+       
+       for(var i=0,il=activeurl.length-1;i<il;i++){
+          var url = activeurl[i];
+                // console.log(url)                                     
+          if(url && (!url.match("undefined"))&&url.length>27){
+            moreResult = Meteor.http.get(url);   
+            $ = cheerio.load(moreResult.content);  
+            say1 =$('.item-title').text();
+                                                // console.log(say1);
+            say2 =$('.describer-title').text();
+            say4 =$('.entry-content p ').text();
+                                                console.log(say4+"----");
+            say3 =$('.responsive').find("img").attr("src"); 
+                                                    // console.log(say3);
+        
+               
+          } //if
+      }     //end of for i
+    }
+function scrapRanker(){
+      var $ = null,result = null,say1,say2,say3,say4;
+var x=0;
+while(1){
+x++;
+      var url = "http://www.ranker.com/list/top-50-most-influential-people-of-the-21st-century/theomanlenz?page="+x;  //http://www.ranker.com/
+      
+
+      result = Meteor.http.get(url);
+      $ = cheerio.load(result.content);                           
+      var designation = $(".blog");  //  topics__list__topic
+      var currentDiv = null;
+       // console.log(url);
+
+      var moredetails,imgurl;                          //-----
+
+      for(var i=0,il=designation.length;i<il;i++){
+          currentDiv = designation[i];
+
+          say1=$(currentDiv).find('.oNode').text();   
+           say3=$(currentDiv).find('.blogText').text();   
+          say4=$(currentDiv).find('.oImg').text();   
+          // console.log(say1+" "+say3+" "+say4+" ");
+      
+      }
+     // getMoreDetails();
+      var next =$("#pagingBot_next").attr('href');
+      console.log(next)
+    
+      if(next && (next.match("undefined"))&&next.length<27)break;
+      }
+    }
 
 function scrapTedTopics(){
       var $ = null,result = null;
@@ -807,6 +1251,7 @@ function scrapTedTopics(){
 // EDGE START //
 function edgeConversation(){
     // http://edge.org/conversations?page=0&tid=mind&type=0
+    Loader.update({"_id":"edge"},{$set : {"edgeConversation":"Started Edge Conversation"}})
     console.log("Started Edge Conversation");
     var url = "http://edge.org/conversations?page=";
     var urlEnd = "&tid=mind&type=0";
@@ -817,6 +1262,7 @@ function edgeConversation(){
     var $ = null,$$=null;
     var title = "";
     for(var i=9;;i++){
+        Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Edge  Edge Library "+i}})
         console.log("Edge  Edge Library "+i);
         result = Meteor.http.get(url+i+urlEnd);
         $ = cheerio.load(result.content);
@@ -1076,7 +1522,7 @@ function cruchbaseOrgaization () {
         if(result.statusCode == "200"){
             var items = result.data.data.items;
             for(var j=0,jl=items.length;j<jl;j++){
-                var insert = {"name":items[j].name};
+                var insert = {"name":items[j].name,"link":items[j].path};
                 // CruchBaseOrganization.insert()
             }
             console.log(items.length)
