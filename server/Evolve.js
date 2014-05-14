@@ -52,7 +52,17 @@ function nicolsonProduction(){
     Meteor.setTimeout(edgeVideos,50);
 }
 function hastenProduction(){
-
+    Meteor.setTimeout(scrapBlogs,50);
+    Meteor.setTimeout(scrapBlogsGetMore,50);
+    Meteor.setTimeout(scrapVideos,50);
+    Meteor.setTimeout(scrapVideosGetMore,50);
+    Meteor.setTimeout(scrapExperts,50);
+    Meteor.setTimeout(scrapExpertsGetMore,50);
+    Meteor.setTimeout(scrapTed,50);
+    Meteor.setTimeout(getMoreDetails,50);
+    Meteor.setTimeout(cruchbaseOrgaization,50);
+    Meteor.setTimeout(cruchbasePerson,50);
+    Meteor.setTimeout(scrapTedFollows,50);
 }
 function bhaveshProduction(){
 
@@ -111,7 +121,8 @@ function loaderinit () {
 // CRUNCHBASE START //
 
 function cruchbasePerson(){
-
+    var startTime = new Date().getTime();
+    Loader.update({"_id":"crunchbase"},{$set : {"cruchbasePerson":"Started cruchbasePerson","cruchbasePersonTime" :getMyTime(startTime)}});
     // CruchBaseOrganization.remove({});
     // console.log("cruchbasePerson");
     // console.log(CruchBaseOrganization.find().count())
@@ -168,9 +179,13 @@ function cruchbasePerson(){
             }
           }
       }
+      Loader.update({"_id":"crunchbase"},{$set : {"cruchbasePerson":"Finished  cruchbasePerson","cruchbasePersonTime" :getMyTime(startTime)}});
+      console.log("Finished  cruchbasePerson");
 }
 // http://api.crunchbase.com/v/2/organizations?user_key=5095b3c5634b6f668bf4aa0b66cc8864&page=200&order=created_at+ASC
 function cruchbaseOrgaization () {
+    var startTime = new Date().getTime();
+    Loader.update({"_id":"crunchbase"},{$set : {"cruchbaseOrgaization":"Started cruchbaseOrgaization","cruchbaseOrgaizationTime" :getMyTime(startTime)}});
     // CruchBaseOrganization.remove();
     var url = "http://api.crunchbase.com/v/2/people?user_key=5095b3c5634b6f668bf4aa0b66cc8864&page="
     var urlEnd = "&order=created_at+ASC";
@@ -205,11 +220,15 @@ function cruchbaseOrgaization () {
             //console.log(items.length)
         }
     }
+    Loader.update({"_id":"crunchbase"},{$set : {"cruchbaseOrgaization":"Finished  cruchbaseOrgaization","cruchbaseOrgaizationTime" :getMyTime(startTime)}});
+    console.log("Finished  cruchbaseOrgaization");
 }
 
 // CRUNCHBASE END //
 
 function scrapTedFollows(){
+    var startTime = new Date().getTime();
+    Loader.update({"_id":"ted"},{$set : {"scrapTedFollows":"Started scrapTedFollows","scrapTedFollowsTime" :getMyTime(startTime)}});
     var i=1;
     var $ = null;
     while(true){
@@ -237,9 +256,13 @@ function scrapTedFollows(){
         }
         console.log(expert.length);
     }
+    Loader.update({"_id":"ted"},{$set : {"scrapTedFollows":"Finished  scrapTedFollows","scrapTedFollowsTime" :getMyTime(startTime)}});
+    console.log("Finished  scrapTedFollows");
 }
 
 function scrapBlogsGetMore(){
+    var startTime = new Date().getTime();
+    Loader.update({"_id":"bigthink"},{$set : {"scrapBlogsGetMore":"Started scrapBlogsGetMore","scrapBlogsGetMoreTime" :getMyTime(startTime)}});
     console.log("scrapBlogsGetMore");
     var $ = null,moreResult = null;
     var activeurl = [];
@@ -266,8 +289,12 @@ function scrapBlogsGetMore(){
               // }
           }
       }
+      Loader.update({"_id":"bigthink"},{$set : {"scrapBlogsGetMore":"Finished  scrapBlogsGetMore","scrapBlogsGetMoreTime" :getMyTime(startTime)}});
+      console.log("Finished  scrapBlogsGetMore");
 }
 function scrapBlogs(){
+    var startTime = new Date().getTime();
+    Loader.update({"_id":"scrapBlogsGetMore"},{$set : {"scrapBlogs":"Started scrapBlogs","scrapBlogsTime" :getMyTime(startTime)}});
     console.log("scrapBlogs");
     var $ = null,result = null;
     var source,topic,author,moredetails;
@@ -295,8 +322,12 @@ function scrapBlogs(){
         }
         console.log(expert.length);
     }
+    Loader.update({"_id":"bigthink"},{$set : {"scrapBlogs":"Finished  scrapBlogs","scrapBlogsTime" :getMyTime(startTime)}});
+    console.log("Finished  scrapBlogs");
 }
 function scrapVideos(){
+    var startTime = new Date().getTime();
+    Loader.update({"_id":"bigthink"},{$set : {"scrapVideos":"Started scrapVideos","scrapVideosTime" :getMyTime(startTime)}});
     var $ = null,result = null;
     for(var p=1;;p++){
         var url = "http://bigthink.com/videos?page="+p;
@@ -321,8 +352,12 @@ function scrapVideos(){
         }
         console.log(expert.length);
     }
+    Loader.update({"_id":"bigthink"},{$set : {"scrapVideos":"Finished  scrapVideos","scrapVideosTime" :getMyTime(startTime)}});
+    console.log("Finished  scrapVideos");
 }
 function scrapVideosGetMore(){
+    var startTime = new Date().getTime();
+    Loader.update({"_id":"bigthink"},{$set : {"scrapVideosGetMore":"Started scrapVideosGetMore","scrapVideosGetMoreTime" :getMyTime(startTime)}});
     console.log("scrapVideosGetMore");
     var $ = null,moreResult = null;
     var activeurl = [];
@@ -349,34 +384,12 @@ function scrapVideosGetMore(){
               // }
           }
       }
-}
-function scrapVideos(){
-    var $ = null,result = null;
-    for(var p=1;;p++){
-        var url = "http://bigthink.com/videos?page="+p;
-        result = Meteor.http.get(url);
-        $ = cheerio.load(result.content);
-        var expert = $(".video");
-        if(expert.length==0)
-            break;
-        for(var i=0,il=expert.length;i<il;i++){
-          currentDiv = expert[i];
-          name = $(currentDiv).find('.name').text();
-          job = $(currentDiv).find('.job').text();
-          moredetails = "http://www.bigthink.com"+$(currentDiv).find('.video a').attr('href');
-
-          var currentcursor= BigThinkVideos.findOne({"moredetails":moredetails});
-          if(currentcursor){
-            BigThinkVideos.update({"moredetails":moredetails},{$set : {"name":name,"job":job}});
-          }else{
-            var Follow = {"moredetails": moredetails,"name": name,"job": job};
-            BigThinkVideos.insert(Follow);
-          }
-        }
-        console.log(expert.length);
-    }
+      Loader.update({"_id":"bigthink"},{$set : {"scrapVideosGetMore":"Finished  scrapVideosGetMore","scrapVideosGetMoreTime" :getMyTime(startTime)}});
+      console.log("Finished  scrapVideosGetMore");
 }
 function scrapExpertsGetMore(){
+    var startTime = new Date().getTime();
+    Loader.update({"_id":"bigthink"},{$set : {"scrapExpertsGetMore":"Started scrapExpertsGetMore","scrapExpertsGetMoreTime" :getMyTime(startTime)}});
     var $ = null,moreResult = null;
     var activeurl = [];
     BigThinkExpert.find({}).forEach(function(data){
@@ -399,8 +412,12 @@ function scrapExpertsGetMore(){
               // }
           }
       }
+      Loader.update({"_id":"bigthink"},{$set : {"scrapExpertsGetMore":"Finished  scrapExpertsGetMore","scrapExpertsGetMoreTime" :getMyTime(startTime)}});
+      console.log("Finished  scrapExpertsGetMore");
 }
 function scrapExperts(){
+      var startTime = new Date().getTime();
+      Loader.update({"_id":"bigthink"},{$set : {"scrapExperts":"Started scrapExperts","scrapExpertsTime" :getMyTime(startTime)}});
       var $ = null,result = null;
       var imgurl,name,job,moredetails;
       for(var p=1;;p++){
@@ -427,8 +444,12 @@ function scrapExperts(){
         }
         console.log(expert.length);
       }
+      Loader.update({"_id":"bigthink"},{$set : {"scrapExperts":"Finished  scrapExperts","scrapExpertsTime" :getMyTime(startTime)}});
+      console.log("Finished  scrapExperts");
 }
  function scrapTed(){
+      var startTime = new Date().getTime();
+      Loader.update({"_id":"ted"},{$set : {"scrapTed":"Started scrapTed","scrapTedTime" :getMyTime(startTime)}});
       var $ = null,result = null;
       var url = "http://www.ted.com/speakers";
       result = Meteor.http.get(url);
@@ -465,8 +486,12 @@ function scrapExperts(){
           }
       }
       //console.log(moredetails);
+      Loader.update({"_id":"ted"},{$set : {"scrapTed":"Finished  scrapTed","scrapTedTime" :getMyTime(startTime)}});
+      console.log("Finished scrapTed");
     }
     function getMoreDetails(){
+      var startTime = new Date().getTime();
+      Loader.update({"_id":"ted"},{$set : {"getMoreDetails":"Started getMoreDetails","getMoreDetailsTime" :getMyTime(startTime)}});
       var $ = null,moreResult = null;
       var link1,link2,link3,profileintro,listen,say
       var activeurl = [];
@@ -503,6 +528,8 @@ function scrapExperts(){
           
 
       }
+      Loader.update({"_id":"ted"},{$set : {"getMoreDetails":"Finished  getMoreDetails","getMoreDetailsTime" :getMyTime(startTime)}});
+      console.log("Finished getMoreDetails");
     }
 //////////////////////////// HASTEN /////////////////////////
 
