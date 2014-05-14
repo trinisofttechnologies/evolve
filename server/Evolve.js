@@ -1,25 +1,22 @@
-TedLeader = new Meteor.Collection("tedleader");
-TedFellows = new Meteor.Collection("tedfellows");
-TedSpeakers = new Meteor.Collection("tedspeakers");
-TedTopic = new Meteor.Collection("tedtopic");
-Tedwatch = new Meteor.Collection("tedwatch");
-BigThinkExpert = new Meteor.Collection("bigthinkexpert");
-BigThinkVideos = new Meteor.Collection("bigthinkvideos");
-BigThinkBlogs = new Meteor.Collection("bigthinkblogs");
-
-CruchBaseOrganization = new Meteor.Collection("cruchbaseorganization");
-
-Loader = new Meteor.Collection("loader");
-
-VideoEvolve = new Meteor.Collection("videoevolve");
-ConversationEvolve = new Meteor.Collection("conversationevolve");
-UserEvolve = new Meteor.Collection("userevolve");
 
 if (Meteor.isServer) {
     Meteor.startup(function () {
         // scrapTed();
         
-        loaderinit()
+        loaderinit();
+
+        Meteor.setTimeout(function(){
+            if(DebugFace){
+            nicolsonDevelopment();
+            hastenDevelopment();
+            bhaveshDevelopment();
+            }
+            else{
+                nicolsonProduction();
+                hastenProduction();
+                bhaveshProduction();
+            }
+        },50)
 
         // cruchbaseOrgaization();
         // done
@@ -46,6 +43,24 @@ if (Meteor.isServer) {
     //scrapBlogsGetMore();
 
 }
+
+function hastenDevelopment(){
+
+}
+function bhaveshDevelopment(){
+
+}
+
+function nicolsonProduction(){
+
+}
+function hastenProduction(){
+
+}
+function bhaveshProduction(){
+
+}
+
 function loaderinit () {
     var cursorLoader = null;
     cursorLoader = Loader.findOne({"_id":"edge"});
@@ -1245,14 +1260,169 @@ function scrapTedTopics(){
           }
       }
     }
+    function scrapTedx(){
+      var $ = null,result = null;
+      var url = "http://tedxtalks.ted.com/pages/talks-by-topic";  //http://www.ted.com/watch/topics
+      
+
+      result = Meteor.http.get(url);
+      $ = cheerio.load(result.content);                           
+      var designation = $(".mvp_page_title_expressive");  //  topics__list__topic
+      var currentDiv = null;
+
+ console.log(url+"****"+designation.length);
+
+      var moredetails,imgurl;                          //-----
+
+
+
+      for(var i=0,il=designation.length;i<il;i++){
+          currentDiv = designation[i];
+          var topics=$(designation[i]).text()   //topics
+          topics=topics.replace(/\s+/g, "");
+          if(topics && (!topics.match("undefined"))&&topics.length>10){
+          moredetails = "http://tedxtalks.ted.com/playlist.mason"+$(designation[i]).text()+"?pages=";  
+          console.log(moredetails)        
+         
+          var currentcursor= TedxTopicx.findOne({"moredetails":moredetails});
+          
+          if(currentcursor){
+            TedxTopicx.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
+          }else{
+            var Follow = {"moredetails": moredetails,"imgurl":imgurl};
+            TedxTopicx.insert(Follow);
+          }
+        }
+      }
+     // getMoreDetailsx();
+    }
+
+
+    //-----------------------------------------------------------
+    function getMoreDetailsx(){
+        var $ = null,result2 = null;
+        var activeurl = [];
+     
+        TedxTopicx.find({}).forEach(function(data){
+          activeurl.push(data.moredetails);             //  featching data from the collection TeadSpeaker
+      });
+       
+      for(var j=0,jl=activeurl.length-1;j<jl;j++){
+        var url2 = activeurl[j];                         //featching all the urls
+        // console.log(url2);
+      var x=0;
+
+      while(1)
+      {
+        x++;
+        var url =url2+x;
+
+        console.log("-----"+url)
+         if(url && (!url.match("undefined"))&&url.length>27){
+
+            result2 = Meteor.http.get(url);
+                // console.log(url)
+            $ = cheerio.load(result2.content);      
+
+            var designation = $(".mvp_grid_panel_title a");  //  topics__list__topic
+            var currentDiv = null;
+            console.log(designation);
+            var lastpage=designation.length;  
+
+            if(lastpage<=0)break;
+            
+            console.log(lastpage+"---/no of videos/------");
+
+            var moredetails,imgurl,urls2;         
+                             //----- not working from here due to extra space
+           console.log(url2+" /**/*/*/*/*/*/*/*/"+designation.length)
+
+
+          //   for(var i=0,il=designation.length;i<il;i++){
+          //     currentDiv = designation[i];
+
+          //       urls2=$(currentDiv).attr('href');   
+          //       // console.log(urls2)
+          //       if(urls2 && (!urls2.match("undefined"))&&urls2.length>27)
+          //       {
+          //             moredetails = "http://tedxtalks.ted.com"+urls2;  
+          //               var currentcursor= Tedxwatch.findOne({"moredetails":moredetails});
+          //             console.log(moredetails);  
+          //               if(currentcursor){
+          //                 Tedxwatch.update({"moredetails":moredetails},{$set : {"imgurl":imgurl}});
+          //               }
+          //               else{
+          //                 var Follow = {"moredetails": moredetails,"imgurl":imgurl};
+          //                 Tedxwatch.insert(Follow);
+          //                 }
+          //       }// end for if
+
+          // }// end for i
+        
+        }   // end for if
+        // break;
+    }//end of while
+      }// end for j
+      // getMoreDetails1();
+    }
+    // function getMoreDetails1x(){
+    //   var $ = null,moreResult = null;
+    //   var link1,link2,link3,listen,say1,say2;
+    //   var activeurl = [];
+    //   //console.log("first")
+    //   Tedwatch.find({}).forEach(function(data){
+    //       activeurl.push(data.moredetails);
+    //   });
+
+    //   for(var i=0,il=activeurl.length-1;i<il;i++){
+    //       var url = activeurl[i];
+                                                     
+    //       if(url && (!url.match("undefined"))&&url.length>27){
+    //         moreResult = Meteor.http.get(url);   
+    //         $ = cheerio.load(moreResult.content);  
+    //         say1 =$('.mvp_page_title').text();
+    //         // console.log(say1);
+    //         say2 =$('.mvp-player-video-content iframe').attr('src');
+    //              //----checked
+
+           
+    //           // -------------------------------------------------------
+    //         var a = $('.magnify-player-social-features a');
+    //         var afinal;
+            
+    //         var x=0;
+    //         for(var j=0,jl=a.length;j<jl;j++){
+    //             afinal=$(a[j]).attr('href');
+               
+
+    //                 if(afinal && (!afinal.match("undefined"))&&afinal.length>27){
+    //                     // console.log(x+afinal);
+    //                     x++;
+    //                     if(x==1)
+    //                         link1=$(a[j]).attr('href');
+    //                     if(x==2)
+    //                         link2=$(a[j]).attr('href');
+    //                     if(x==3)
+    //                         link3=$(a[j]).attr('href');
+
+    //                 }
+    //         }
+    //         // end of for 
+               
+    //       }
+    //   }
+    // }
 /////////////////////////// BHAVESH ///////////////////////
 
 
 //////////////////////////// NICOLSON /////////////////////////
 // EDGE START //
+function nicolsonDevelopment(){
+    // edgeConversation();
+}
 function edgeConversation(){
     // http://edge.org/conversations?page=0&tid=mind&type=0
-    Loader.update({"_id":"edge"},{$set : {"edgeConversation":"Started Edge Conversation"}})
+    Loader.update({"_id":"edge"},{$set : {"edgeConversation":"Started Edge Conversation"}});
     console.log("Started Edge Conversation");
     var url = "http://edge.org/conversations?page=";
     var urlEnd = "&tid=mind&type=0";
@@ -1262,8 +1432,10 @@ function edgeConversation(){
     var origin = "http://edge.org";
     var $ = null,$$=null;
     var title = "";
-    for(var i=9;;i++){
-        Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Edge  Edge Library "+i}})
+    for(var i=0;;i++){
+        Meteor.setTimeout(function(){
+            Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Edge Library "+i}})
+        },50);
         console.log("Edge  Edge Library "+i);
         result = Meteor.http.get(url+i+urlEnd);
         $ = cheerio.load(result.content);
@@ -1341,14 +1513,17 @@ function edgeConversation(){
         }
 
         if(row.length < 50){
+            Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Finished Edge Conversation"}});
             console.log("Finished Edge Conversation");
             break;
         }
     }
     console.log("Finished Edge Conversation");
+    Loader.update({"_id":"edge"},{$set : {"edgeConversation": "Finished Edge Conversation"}})
 }
 
 function edgeMember() {
+    Loader.update({"_id":"edge"},{$set : {"edgeMember":"Started Edge Member"}});
     var userArray = [];
     var currentUser = null;
     var result = null,$=null;
@@ -1359,8 +1534,11 @@ function edgeMember() {
     for(var i=0,il=userArray.length;i<il;i++){
         currentUser = userArray[i];
         console.log(currentUser.link)
+
         if(!currentUser.link)
             continue;
+        Loader.update({"_id":"edge"},{$set : {"edgeMember":"Started Edge Member link "+currentUser.link}});
+
         result = Meteor.http.get(currentUser.link);
         $ = cheerio.load(result.content);
         title = $(".title").text();
@@ -1373,9 +1551,10 @@ function edgeMember() {
         UserEvolve.update({"_id":currentUser._id},{$set : {"title":title,"paraArray":paraArray}})
         currentUser
     }
+    Loader.update({"_id":"edge"},{$set : {"edgeMember":"Ended Edge Member"}});
 }
 function edgeLibrary(){
-    
+    Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Started Edge Library"}});   
     console.log("Started Edge Library");
     var url = "http://edge.org/library?page=";
     var result = null,resultSecond=null;;
@@ -1385,6 +1564,7 @@ function edgeLibrary(){
     var $ = null,$$=null;
     for(var i=0;;i++){
         console.log("Edge  Edge Library "+i);
+        Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Edge Library "+url+i}});
         result = Meteor.http.get(url+i);
         $ = cheerio.load(result.content);
         row = $("tbody tr");
@@ -1412,6 +1592,7 @@ function edgeLibrary(){
             }
         }
     }
+    Loader.update({"_id":"edge"},{$set : {"edgeLibrary":"Finished  Edge Library"}});
     console.log("Finished  Edge Library");
 }   
 function edgeLibrarySecond(referenceLink){
@@ -1431,6 +1612,7 @@ function edgeLibrarySecond(referenceLink){
 }
 function edgeVideos(){
     console.log("Started Edge Video");
+    Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Started Edge Video"}});
     var url = "http://edge.org/videos?page=";
     var result = null;
     var row = null;
@@ -1438,6 +1620,7 @@ function edgeVideos(){
     var origin = "http://edge.org";
     for(var i=0;;i++){
         console.log("Edge Video Page "+i);
+        Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Edge Video Page "+i}});
         result = Meteor.http.get(url+i);
         $ = cheerio.load(result.content);
         empty = $(".view-empty").children("p").text();
@@ -1500,6 +1683,7 @@ function edgeVideos(){
         }
         
     }
+    Loader.update({"_id":"edge"},{$set : {"edgeVideos":"Finished Edge Video"}});
     console.log("Finished Edge Video");
 }
 // EDGE END //
