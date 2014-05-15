@@ -1,6 +1,7 @@
-http://edge.org/conversations
-http://edge.org/videos
-http://edge.org/library
+ssh 207.244.66.193 -p 65321
+ssh -i '/home/nicolsondsouza/id_dsa.ppk' luxdev@sonochicagoliving.com -p 65321
+ssh luxdev@sonochicagoliving.com -p 65321
+
 
 
 EvoDev server (zzzeal.com)
