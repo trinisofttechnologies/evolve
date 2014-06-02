@@ -1,0 +1,37 @@
+<template name="alltop"> 
+	{{>page}}
+	<ul class="nav nav-tabs">
+		<li class="active" ref="news" search="title" subscribe="alltopsitelinks"><a href="#">People</a></li>
+	</ul>
+
+	<div class="bs-example">
+		<div class="news absoluteDiv firstdiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Title</th>
+						<th>Link</th>
+						<th>Source</th>
+						<th>Time</th>
+						<th>description</th>
+
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each news}}
+		        <tr>
+		          <td>{{_id}}</td>
+		          <td>{{title}}</td>
+		          <td>{{link}}</td>
+		          <td>{{url}}</td>
+		          <td>{{publishedtime}}</td>
+		          <td>{{description}}</td>
+		        </tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+
+  	</div>
+</template>

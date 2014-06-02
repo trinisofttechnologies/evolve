@@ -7,3 +7,7 @@ standard-app-packages
 insecure
 http
 Evolve
+bootstrap-3
+router
+iron-router
+handlebars-server

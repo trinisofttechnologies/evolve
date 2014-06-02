@@ -1,0 +1,25 @@
+{
+  "format": "unipackage-slice-pre1",
+  "packageVariables": [
+    {
+      "name": "CordovaPush",
+      "export": true
+    }
+  ],
+  "uses": [
+    {
+      "package": "meteor"
+    }
+  ],
+  "node_modules": "npm/node_modules",
+  "resources": [
+    {
+      "type": "prelink",
+      "file": "os/packages/phonegap-push.js",
+      "length": 32129,
+      "offset": 0,
+      "servePath": "/packages/phonegap-push.js",
+      "sourceMap": "os/packages/phonegap-push.js.map"
+    }
+  ]
+}

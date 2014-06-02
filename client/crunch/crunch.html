@@ -1,0 +1,140 @@
+<template name="crunch"> 
+	{{>page}}
+	<ul class="nav nav-tabs">
+		<li  class="active" ref="member" search="name" subscribe="cruchbaseorganization"><a href="#">cruchbaseOrgaization</a></li>
+		<li ref="person" search="first_name" subscribe="cruchbaseperson"><a href="#">cruchbasePerson</a></li>
+		<li ref="people" search="name" subscribe="angelpeople"><a href="#">angelPeople</a></li>
+		<li ref="public" search="companyName" subscribe="angelpublic"><a href="#">angelPublic</a></li>
+	</ul>
+	<div class="bs-example">
+		<div class="member absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Path</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each organization}}
+		        <tr>
+		          <td>{{_id}}</td>
+		          <td>{{name}}</td>
+		          <td><a href="{{path}}">{{path}}</a></td>
+		        </tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+	    <div class="person absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>First</th>
+						<th>Last</th>
+						<th>HomeUrl</th>
+						<th>Degrees</th>
+						<th>Experience</th>
+						<th>Founded Companies</th>
+						<th>Primary Image</th>
+						<th>Web Presences</th>
+						<th>Press</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each person}}
+		        <tr>
+					<td>{{_id}}</td>
+					<td>{{first_name}}</td>
+					<td>{{last_name}}</td>
+					<td>{{homepage_url}}</td>
+					<td>{{bio}}</td>
+					<td>{{degrees}}</td>
+					<td>{{experience}}</td>
+					<td>{{founded_companies}}</td>
+					<td><a href="{{primary_image}}">{{primary_image}}</a></td>
+					<td>{{web_presences}}</td>
+					<td>{{press}}</td>
+				</tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+	    <div class="people absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>ProfileLink</th>
+						<th>Resume</th>
+						<th>Linkin</th>
+						<th>FBLink</th>
+						<th>TweetLink</th>
+						<th>BlogLink</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each people}}
+		        <tr>
+					<td>{{_id}}</td>
+					<td>{{name}}</td>
+					<td><a href="{{profileLink}}">{{profileLink}}</a></td>
+					<td>{{resume}}</td>
+					<td><a href="{{linkin}}">{{linkin}}</a></td>
+					<td><a href="{{fblink}}">{{fblink}}</a></td>
+					<td><a href="{{twiterlink}}">{{twiterlink}}</a></td>
+					<td><a href="{{bloglink}}">{{bloglink}}</a></td>
+				</tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+	    <div class="public absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>AngelLink</th>
+						<th>CompanyImg</th>
+						<th>CompanyName</th>
+						<th>CompanyPitch</th>
+						<th>CompSignal</th>
+						<th>companyJoined</th>
+						<th>companyLocation</th>
+						<th>companyMarket</th>
+						<th>companyRaised</th>
+						<th>linksArray</th>
+						<th>companyScreenShot</th>
+						<th>companyDescription</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each public}}
+		        <tr>
+					<td>{{_id}}</td>
+					<td>{{angelLink}}</td>
+					<td>{{companyImage}}</td>
+					<td>{{companyName}}</td>
+					<td>{{companyPitch}}</td>
+					<td>{{companySignal}}</td>
+					<td>{{companyJoined}}</td>
+					<td><a href="{{companyLocationLink}}">{{companyLocation}}</a></td>
+					<td><a href="{{companyMarketLink}}">{{companyMarket}}</a></td>
+					<td><a href="{{companyWebsite}}">{{companyWebsite}}</a></td>
+					<td>{{companyRaised}}</td>
+					<td>{{linksArray}}</td>
+					<td>{{companyScreenShot}}</td>
+					<td>{{companyScreenShot}}</td>
+				</tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+  	</div>
+
+</template>
+
+

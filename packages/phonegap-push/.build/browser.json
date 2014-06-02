@@ -1,0 +1,19 @@
+{
+  "format": "unipackage-slice-pre1",
+  "packageVariables": [],
+  "uses": [
+    {
+      "package": "meteor"
+    }
+  ],
+  "resources": [
+    {
+      "type": "prelink",
+      "file": "browser/packages/phonegap-push.js",
+      "length": 0,
+      "offset": 0,
+      "servePath": "/packages/phonegap-push.js",
+      "sourceMap": "browser/packages/phonegap-push.js.map"
+    }
+  ]
+}

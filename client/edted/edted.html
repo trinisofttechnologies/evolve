@@ -1,0 +1,40 @@
+<template name="edted"> 
+{{> page}}
+	<ul class="nav nav-tabs">
+		<li class="active" search="creator" subscribe="EdTed" ref="member"><a href="#">Lessons</a></li>
+		
+	</ul>
+	<div class="bs-example">
+		<div class="member absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Creator Name</th>
+						<th>Creater Post</th>
+						<th>Creater Image</th>
+						<th>Video</th>
+						<th>Header</th>
+						<th>Blog</th>
+					</tr>
+				</thead>				
+		      	<tbody>
+		      	{{#each member}}
+		        <tr>
+		          <td>{{_id}}</td>
+		          <td>{{creator}}</td>		         
+		          <td>{{post}}</td>
+		          <td><a href="{{creatorI}}">{{creatorI}}</a></td>
+		          <td><a href="{{video}}">{{video}}</a></td>
+		          <td>{{head}}</td>
+		          <td>{{say}}</td>
+		        
+		        </tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>	
+  	</div>
+</template>
+
+

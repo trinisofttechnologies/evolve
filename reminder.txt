@@ -9,3 +9,18 @@ Let's use evo.zzzeal.com for Dev (I setup this subdomain already)
 http://207.244.66.193:2082/
 N:  evodev
 P:  63-!JOD0n~3u
+
+ssh evodev@207.244.66.193 -p 65321
+
+
+Meteor.call("testBhavesh",function(err,data){console.log(err);console.log(data)});
+
+alchemy api key
+Nicolson : 8524031593880fa2a555a5ecba584af574bdb21d
+
+not working 
+edted lesson
+
+Klout 
+key : wguhjuxb4qn6jr44bd2smxhx
+shared : mupuEQmnDj

@@ -1,0 +1,210 @@
+<template name="ted"> 
+	{{>page}}
+	<ul class="nav nav-tabs">
+		<li class="active" search="head" subscribe="" ref="member"><a href="#"></a></li>
+		<li ref="themes" search="name" subscribe="TedTheme"><a href="#">Ted Themes</a></li>
+		<li ref="watch" search="name" subscribe="TedTopics"><a href="#">Ted Watch</a></li>
+		<li ref="browse" search="name" subscribe="TedBrows"><a href="#">Ted Browse</a></li>
+		<li ref="speaker" search="name" subscribe="TedSpeakers"><a href="#">Ted Speaker</a></li>
+		<li ref="follows" search="name" subscribe="TedFellows"><a href="#">Ted Follows</a></li>
+	</ul>
+	<div class="bs-example">
+	<div class="follows absoluteDiv">
+	    <table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>name</th>
+					<th>expert</th>
+					<th>imgurl</th>
+					<th>link</th>
+					<th>link1</th>
+					<th>link2</th>
+					<th>link3</th>
+					<th>tedGlobal</th>
+					<th>lang</th>
+					<th>edu</th>
+					<th>job</th>
+					<th>bio</th>
+
+
+				</tr>
+			</thead>
+	      	<tbody>
+	      	{{#each follows}}
+	        <tr>
+	        		<th>{{_id}}</th>
+					<th>{{name}}</th>
+					<th>{{expert}}</th>
+					<th>{{imgurl}}</th>
+					<th>{{link}}</th>
+					<th>{{link1}}</th>
+					<th>{{link2}}</th>
+					<th>{{link3}}</th>
+					<th><a href="{{tedGlobalLink}}">{{tedGlobal}}</a></th>
+					<th>{{lang}}</th>
+					<th>{{edu}}</th>
+					<th>{{job}}</th>
+					<th>{{bio}}</th>
+	        </tr>
+
+			{{/each}}
+	      </tbody>
+	    </table>
+	</div>
+
+
+	<div class="speaker absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>name</th>
+						<th>expert</th>
+						<th>imgurl</th>
+						<th>moredetails</th>
+						<th>link1</th>
+						<th>link2</th>
+						<th>link3</th>
+						<th>profileintro</th>
+						<th>listen</th>
+						<th>say</th>
+
+
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each speaker}}
+		        <tr>
+		        		<th>{{_id}}</th>
+						<th>{{name}}</th>
+						<th>{{expert}}</th>
+						<th>{{imgurl}}</th>
+						<th>{{moredetails}}</th>
+						<th>{{link1}}</th>
+						<th>{{link2}}</th>
+						<th>{{link3}}</th>
+						<th>{{profileintro}}</th>
+						<th>{{listen}}</th>
+						<th>{{say}}</th>
+		        </tr>
+
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+
+
+		<div class="member absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Title</th>
+						<th>Video</th>
+						<th>Para</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each member}}
+		        <tr>
+		          <td>{{_id}}</td>
+		          <td>{{head}}</td>
+		          <td><a href="{{video}}">{{video}}</a></td>
+		          <td>{{say}}</td>
+		        </tr>
+
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+	    <div class="themes absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th> Name</th>
+						<th> Image</th>
+						<th>Blog</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each memb}}
+		        <tr>
+		          <td>{{_id}}</td>
+		          <td>{{name}}</td>
+		          <td><a href="{{img}}">{{img}}</a></td>
+		          <td>{{blog}}</td>
+		        </tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+	    <div class="watch absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Title</th>
+						<th>Share</th>
+						<th>Para</th>
+						<th>Video</th>
+						<th>Link1</th>
+						<th>Link2</th>
+						<th>Link3</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each watch}}
+		        <tr>
+		          <td>{{_id}}</td>
+		          <td>{{name}}</td>
+		          <td>{{title}}</td>
+		          <td>{{share}}</td>
+		          <td>{{para}}</td>
+		          <td><a href="{{video}}">{{video}}</a></td>
+		          <td><a href="{{link1}}">{{link1}}</a></td>
+		          <td><a href="{{link2}}">{{link2}}</a></td>
+		          <td><a href="{{link3}}">{{link3}}</a></td>
+		        </tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>	
+	    <div class="browse absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Title</th>
+						<th>Share</th>
+						<th>Para</th>
+						<th>Video</th>
+						<th>Link1</th>
+						<th>Link2</th>
+						<th>Link3</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each browse}}
+		        <tr>
+		          <td>{{_id}}</td>
+		          <td>{{name}}</td>
+		          <td>{{title}}</td>
+		          <td>{{share}}</td>
+		          <td>{{para}}</td>
+		          <td><a href="{{video}}">{{video}}</a></td>
+		          <td><a href="{{link1}}">{{link1}}</a></td>
+		          <td><a href="{{link2}}">{{link2}}</a></td>
+		          <td><a href="{{link3}}">{{link3}}</a></td>
+		        </tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>	
+  	</div>
+</template>
+
+

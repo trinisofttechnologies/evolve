@@ -1,0 +1,8 @@
+{
+  "name": "deps-ext",
+  "description": "Awesome extensions to the deps package!",
+  "homepage": "https://github.com/EventedMind/deps-ext",
+  "author": "Chris Mather (https://github.com/cmather)",
+  "version": "0.2.0",
+  "git": "https://github.com/EventedMind/deps-ext.git"
+}

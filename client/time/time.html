@@ -1,0 +1,36 @@
+<template name="time"> 
+{{>page}}
+	<ul class="nav nav-tabs">
+		<li class="active" search="name" subscribe="Time100" ref="member"><a href="#">Time 100</a></li>
+		
+	</ul>
+	<div class="bs-example">
+		<div class="member absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Title</th>
+						<th>Image</th>
+						<th>Blog</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each member}}
+		        <tr>
+		          <td>{{_id}}</td>
+		          <td>{{name}}</td>		         
+		         <td><a >{{title}}</a></td>
+		          <td><a href="{{img}}">{{img}}</a></td>
+		          <td><a >{{blogText}}</a></td>
+		        
+		        </tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>	
+  	</div>
+</template>
+
+

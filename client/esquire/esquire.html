@@ -1,0 +1,34 @@
+<template name="Esquire"> 
+{{> page}}
+	<ul class="nav nav-tabs">
+		<li class="active" search="name" subscribe="Esquire"  ref="member"><a href="#">Lib</a></li>		
+	</ul>
+	<div class="bs-example">
+		<div class="member absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Image</th>
+						<th>Designe</th>
+						<th>Para</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each member}}
+		        <tr>
+		          <td>{{_id}}</td>
+		          <td>{{name}}</td>
+		          <td><a href="{{image}}">{{image}}</a></td>
+		          <td>{{desc}}</td>
+		          <td>{{para}}</td>
+		        </tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>	
+  	</div>
+</template>
+
+

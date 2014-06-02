@@ -1,0 +1,137 @@
+<template name="edge">
+	{{> page}}
+	<ul class="nav nav-tabs">
+		<li  ref="conversation"  search="conversationWith" subscribe="conversationevolve" ><a href="#">edgeConversation</a></li>
+		<li class="active" ref="member" search="name" subscribe="userevolve"><a href="#">edgeMember</a></li>
+		<li ref="video" search="title" subscribe="videoevolve"><a href="#">edgeVideos</a></li>
+		<li ref="library" search="author" subscribe="libraryevolve"><a href="#">edgeLibrary</a></li>
+	</ul>
+	
+	<div class="bs-example">
+		<div class="member absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Link</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each memeber}}
+		        <tr>
+					<td>{{_id}}</td>
+					<td>{{name}}</td>
+					<td><a href="{{link}}">{{link}}</a></td>
+		        </tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+	    <div class="conversation absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Title</th>
+						<th>Link</th>
+						<th>memberName</th>
+						<th>topicName</th>
+						<th>contributorArray</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each conversation}}
+		        <tr>
+					<td>{{_id}}</td>
+					<td>{{title}}</td>
+					<td><a href="{{memberLink}}">{{memberName}}</a></td>
+					<td><a href="{{topicLink}}">{{topicName}}</a></td>
+					<td>
+						{{#each contributorArray}}
+							<a href="{{memberLink}}">{{this}}</a>
+						{{/each}}
+					</td>
+				</tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+	    <div class="video absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Title</th>
+						<th>Link</th>
+						<th>Conversation</th>
+						<th>ConversationWith</th>
+						<th>Category</th>
+						<th>VideoLink</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each video}}
+		        <tr>
+					<td>{{_id}}</td>
+					<td><a href="{{titleMainLink}}">{{title}}</a></td>
+					<td>{{conversation}}</td>
+					<td>{{conversationWith}}</td>
+					<td>{{category}}</td>
+					<td>{{videoLink}}</td>
+				</tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+	    <div class="library absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Title</th>
+						<th>Author</th>
+						<th>ImageLink</th>
+						<th>Reference Link</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each library}}
+		        <tr>
+					<td>{{_id}}</td>
+					<td>{{title}}</td>
+					<td>{{author}}</td>
+					<td><a href="{{referenceLink}}">{{referenceLink}}</a></td>
+					<td><a href="{{imageLink}}">{{imageLink}}</a></td>
+				</tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+  	</div>
+	
+</template>
+
+
+<template name="page">
+	<form class="navbar-form navbar-left" role="search">
+		<div class="form-group">
+  			<input type="text" class="form-control" placeholder="Search">
+		</div>
+		<button type="button" class="btn btn-default">Submit</button>
+	</form>
+	<ul class="pagination">
+		<li><a href="#">&laquo;</a></li>
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li><a href="#">5</a></li>
+		<li><a href="#">6</a></li>
+		<li><a href="#">7</a></li>
+		<li><a href="#">8</a></li>
+		<li><a href="#">9</a></li>
+		<li><a href="#">10</a></li>
+		<li><a href="#">&raquo;</a></li>
+	</ul> 
+</template>

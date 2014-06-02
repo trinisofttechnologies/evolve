@@ -1,0 +1,92 @@
+<template name="bigthink"> 
+	{{>page}}
+	<ul class="nav nav-tabs">
+		<li  ref="video" search="name" subscribe="bigthinkvideos"><a href="#">Videos</a></li>
+		<li ref="blogs" search="topic" subscribe="bigthinkblogs"><a href="#">Blogs</a></li>
+		<li class="active" ref="experts" search="name" subscribe="bigthinkexpert"><a href="#">Experts</a></li>
+	</ul>
+
+	<div class="bs-example">
+		<div class="blogs absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Topic</th>
+						<th>Pic</th>
+						<th>Author</th>
+						<th>Source</th>
+						<th>Moredetails</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each blogs}}
+		        <tr>
+		          <td>{{_id}}</td>
+		          <td>{{topic}}</td>
+		          <td>{{thumbnail}}</td>
+		          <td>{{author}}</td>
+		          <td>{{source}}</td>
+		          <td>{{moredetails}}</td>
+		        </tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+
+	    <div class="video absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>name</th>
+						<th>moredetails</th>
+						<th>job</th>
+						<th>videourl</th>
+						<th>desc</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each video}}
+		        <tr>
+					<td>{{_id}}</td>
+					<td>{{name}}</td>
+					<td>{{moredetails}}</td>
+					<td>{{job}}</td>
+					<td>{{videourl}}</td>
+					<td>{{desc}}</td>
+				</tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+
+	    <div class="experts absoluteDiv firstdiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>name</th>
+						<th>job</th>
+						<th>moredetails</th>
+						<th>imgurl</th>
+						<th>desc</th>
+					</tr>
+				</thead>
+		      	<tbody>
+		      	{{#each experts}}
+		        <tr>
+					<td>{{_id}}</td>
+					<td>{{name}}</td>
+					<td>{{job}}</td>
+					<td>{{moredetails}}</td>
+					<td>{{imgurl}}</td>
+					<td>{{desc}}</td>
+				</tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>
+
+  	</div>
+</template>

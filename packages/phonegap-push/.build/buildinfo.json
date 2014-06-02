@@ -1,0 +1,43 @@
+{
+  "builtBy": "meteor/10",
+  "sliceDependencies": {
+    "browser.json": {
+      "files": {
+        "/home/bhavesh-laptop/Desktop/scraping/ted/eva/packages/phonegap-push/package.js": "9aa5523e20a07182f36fda95a4f2206116aa4785"
+      },
+      "directories": []
+    },
+    "os.json": {
+      "files": {
+        "/home/bhavesh-laptop/Desktop/scraping/ted/eva/packages/phonegap-push/package.js": "9aa5523e20a07182f36fda95a4f2206116aa4785",
+        "/home/bhavesh-laptop/Desktop/scraping/ted/eva/packages/phonegap-push/android.server.js": "f3e9e3bb7d75ea345669f2029a2cc9257f47fc92",
+        "/home/bhavesh-laptop/Desktop/scraping/ted/eva/packages/phonegap-push/ios.server.js": "9f6da4bb3fc8b154ea63e564b399e7a0cc408b6f",
+        "/home/bhavesh-laptop/Desktop/scraping/ted/eva/packages/phonegap-push/push.server.js": "5fe9aa831d7f9dab8318792e417657b00f11afcf"
+      },
+      "directories": []
+    },
+    "tests.browser.json": {
+      "files": {
+        "/home/bhavesh-laptop/Desktop/scraping/ted/eva/packages/phonegap-push/package.js": "9aa5523e20a07182f36fda95a4f2206116aa4785"
+      },
+      "directories": []
+    },
+    "tests.os.json": {
+      "files": {
+        "/home/bhavesh-laptop/Desktop/scraping/ted/eva/packages/phonegap-push/package.js": "9aa5523e20a07182f36fda95a4f2206116aa4785"
+      },
+      "directories": []
+    }
+  },
+  "pluginDependencies": {
+    "files": {
+      "/home/bhavesh-laptop/Desktop/scraping/ted/eva/packages/phonegap-push/package.js": "9aa5523e20a07182f36fda95a4f2206116aa4785"
+    },
+    "directories": []
+  },
+  "pluginProviderPackages": {
+    "phonegap-push": "/home/bhavesh-laptop/Desktop/scraping/ted/eva/packages/phonegap-push",
+    "meteor": "/home/bhavesh-laptop/.meteor/packages/meteor/144d60bec6"
+  },
+  "source": "/home/bhavesh-laptop/Desktop/scraping/ted/eva/packages/phonegap-push"
+}

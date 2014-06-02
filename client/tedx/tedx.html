@@ -1,0 +1,41 @@
+<template name="tedx"> 
+		{{>page}}
+	<ul class="nav nav-tabs">
+		<li class="active" search="title" subscribe="TedX" ref="member"><a href="#">Ted X</a></li>
+		
+	</ul>
+	<div class="bs-example">
+		<div class="member absoluteDiv">
+		    <table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Title</th>
+						<th>Share</th>
+						<th>Video</th>
+						<th>link1</th>
+						<th>link2</th>
+						<th>link3</th>
+						<th>Para</th>
+					</tr>
+				</thead>				
+		      	<tbody>
+		      	{{#each member}}
+		        <tr>
+		          <td>{{_id}}</td>
+		          <td>{{title}}</td>
+		           <td>{{share}}</td>
+		         <td><a href="{{video}}">{{video}}</a></td>
+		          <td>{{link1}}</td>
+		          <td>{{link2}}</td>
+		          <td>{{link3}}</td>
+		           <td>{{videoBlog}}</td>		        
+		        </tr>
+				{{/each}}
+		      </tbody>
+		    </table>
+	    </div>	
+  	</div>
+</template>
+
+

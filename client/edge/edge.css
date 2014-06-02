@@ -1,0 +1,7 @@
+.absoluteDiv{
+	position: absolute;
+	display: none;
+}
+.member{
+	display: block;	
+}

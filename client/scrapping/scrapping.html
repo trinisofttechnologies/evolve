@@ -1,0 +1,46 @@
+<template name="scrapping">
+    {{>page}}
+	<div class="loaderPage">
+		{{#each scrapingsite}}
+			<div>
+				{{> ownLoader}}
+			</div>
+			<br>
+		{{/each}}
+	</div> 
+</template>
+<template name="ownLoader">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+            <h3 class="panel-title">{{_id}}</h3>
+            </div>
+            {{#if method1}}
+            <ol class="breadcrumb">
+                <li><a href="#"> name : {{method1.name}}</a></li>
+                <li><a href="#">status : {{method1.status}}</a></li>
+                <li class="active">time : {{method1.time}}</li>
+            </ol>
+            {{/if}}
+            {{#if method2}}
+            <ol class="breadcrumb">
+                <li><a href="#"> name : {{method2.name}}</a></li>
+                <li><a href="#">status : {{method2.status}}</a></li>
+                <li class="active">time : {{method2.time}}</li>
+            </ol>
+            {{/if}}
+            {{#if method3}}
+            <ol class="breadcrumb">
+                <li><a href="#"> name : {{method3.name}}</a></li>
+                <li><a href="#">status : {{method3.status}}</a></li>
+                <li class="active">time : {{method3.time}}</li>
+            </ol>
+            {{/if}}
+            {{#if method4}}
+            <ol class="breadcrumb">
+                <li><a href="#"> name : {{method4.name}}</a></li>
+                <li><a href="#">status : {{method4.status}}</a></li>
+                <li class="active">time : {{method4.time}}</li>
+            </ol>
+            {{/if}}
+        </div>
+</template>

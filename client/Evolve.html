@@ -1,27 +1,84 @@
 <head>
-  <title>hello</title>
+  <title>Evolve</title>
 </head>
 
 <body>
-  {{> loader}}
+    {{> header}}
+    {{> renderPage}}
 </body>
 
+<template name="header"> 
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand">Evolve</a>
+    </div>
+    <nav class="navbar-collapse bs-navbar-collapse" role="navigation">
+        
+      <ul class="nav navbar-nav">
+        <li>
+            <a href="/admin/scrapping">Scrapping</a>
+        </li>
+        <li class="dropdown">
+            <a id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
+            <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                <li role="presentation"><a role="menuitem" href="/admin/edge">Edge</a></li>
+                <li role="presentation"><a href="/admin/ranker">Ranker</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/admin/edge">Edge</a>
+        </li>
+        <li class="active">
+            <a href="/admin/ranker">Ranker</a>
+        </li>
+        <li>
+            <a href="/admin/bigthink">BigThink</a>
+        </li>
+        <li>
+            <a href="/admin/alltop">All Top</a>
+        </li>
+        <li>
+            <a href="/admin/ted">Ted</a>
+        </li>
+        <li>
+            <a href="/admin/edted">Ed Ted</a>
+        </li>
+        <li>
+            <a href="/admin/time">Time</a>
+        </li>
+        <li>
+            <a href="/admin/tedx">Ted x</a>
+        </li>
+        <li>
+            <a href="/admin/crunch">Crunch/Angel</a>
+        </li>
+        <li>
+            <a href="/admin/esquire">Esquire</a>
+        </li>
+        <li>
+            <a href="/admin/esquire">Esquire</a>
+        </li> 
+        <li>
+            <a href="/admin/connection">Connection</a>
+        </li> 
+      </ul>
+    </nav>
+  </div>
+</header>
+</template>
 <template name="hello">
   <h1>Hello World!</h1>
   {{greeting}}
   <input type="button" value="Click" />
 </template>
 
-<template name="loader">
-	<div class="loaderPage">
-		{{#each scrapingsite}}
-			<div>
-				{{> ownLoader}}
-			</div>
-			<br>
-		{{/each}}
-	</div> 
-</template>
-<template name="ownLoader">
-	{{{html}}}
-</template>

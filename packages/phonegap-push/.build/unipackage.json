@@ -1,0 +1,43 @@
+{
+  "format": "unipackage-pre1",
+  "summary": "Meteor push server for IOS and android\n\u001b[32mv0.0.3\n\u001b[33m-----------------------------------------\n\u001b[0m Meteor push server for IOS and android   \n\u001b[0m                                          \n\u001b[33m-------------------------------------RaiX\n",
+  "slices": [
+    {
+      "name": "main",
+      "arch": "browser",
+      "path": "browser.json"
+    },
+    {
+      "name": "main",
+      "arch": "os",
+      "path": "os.json"
+    },
+    {
+      "name": "tests",
+      "arch": "browser",
+      "path": "tests.browser.json"
+    },
+    {
+      "name": "tests",
+      "arch": "os",
+      "path": "tests.os.json"
+    }
+  ],
+  "defaultSlices": {
+    "browser": [
+      "main"
+    ],
+    "os": [
+      "main"
+    ]
+  },
+  "testSlices": {
+    "browser": [
+      "tests"
+    ],
+    "os": [
+      "tests"
+    ]
+  },
+  "plugins": []
+}
