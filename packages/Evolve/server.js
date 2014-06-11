@@ -8,3 +8,5 @@ Schedule = Npm.require("node-schedule");
 Schedule = Npm.require("node-schedule");
 Future = Npm.require('fibers/future');
 wait = Future.wait;
+
+googleapis = Npm.require('googleapis');

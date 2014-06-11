@@ -238,7 +238,8 @@ function bhaveshDevelopment(){
 }
 var alchemy;
 function nicolsonDevelopment(){
-    
+    var resutl = Meteor.http.get("https://www.googleapis.com/customsearch/v1?key=290965586398-3oudnu7iv7thh46vdvhi2mean195vohr.apps.googleusercontent.com&cx=017576662512468239146:omuauf_lfve&q=lectures");
+    console.log(resutl)
     // Meteor.setTimeout(Scrap.ted.scrapTed,50);
     // Meteor.setTimeout(Scrap.ted.scrapTedFollows,50);
     // console.log(AlchemyAPI)

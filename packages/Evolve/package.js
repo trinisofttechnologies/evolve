@@ -14,7 +14,7 @@ Npm.depends({
     "cheerio" : "0.15.0",
     "alchemy-api" : "1.0.2",
     "node-schedule" : "0.1.13",
-    // "jsdom" : "0.10.5"
+    "googleapis" : "0.7.0"
 });
 
 
@@ -31,6 +31,7 @@ Package.on_use(function (api) {
         // api.export("jsdom","server");
         api.export("App","client");
         api.export("schedule","server");
+        api.export("googleapis","server");
     }
     // api.export && api.export('CordovaPush', 'server');
 });
