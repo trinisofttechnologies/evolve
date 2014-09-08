@@ -1,0 +1,1355 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'npm-shrinkwrap' ]
+2 info using npm@1.4.23
+3 info using node@v0.10.31
+4 verbose node symlink /usr/bin/node
+5 verbose cache add [ 'npm-shrinkwrap', null ]
+6 verbose cache add name=undefined spec="npm-shrinkwrap" args=["npm-shrinkwrap",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'npm-shrinkwrap',
+7 verbose parsed url   path: 'npm-shrinkwrap',
+7 verbose parsed url   href: 'npm-shrinkwrap' }
+8 silly lockFile e15814f1-npm-shrinkwrap npm-shrinkwrap
+9 verbose lock npm-shrinkwrap /home/hastenf/.npm/e15814f1-npm-shrinkwrap.lock
+10 silly lockFile e15814f1-npm-shrinkwrap npm-shrinkwrap
+11 silly lockFile e15814f1-npm-shrinkwrap npm-shrinkwrap
+12 verbose addNamed [ 'npm-shrinkwrap', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile 7eb4b022-npm-shrinkwrap npm-shrinkwrap@
+15 verbose lock npm-shrinkwrap@ /home/hastenf/.npm/7eb4b022-npm-shrinkwrap.lock
+16 silly addNameRange { name: 'npm-shrinkwrap', range: '*', hasData: false }
+17 verbose request where is /npm-shrinkwrap
+18 verbose request registry https://registry.npmjs.org/
+19 verbose request id e973be0fb8664f57
+20 verbose url raw /npm-shrinkwrap
+21 verbose url resolving [ 'https://registry.npmjs.org/', './npm-shrinkwrap' ]
+22 verbose url resolved https://registry.npmjs.org/npm-shrinkwrap
+23 verbose request where is https://registry.npmjs.org/npm-shrinkwrap
+24 info trying registry request attempt 1 at 17:20:51
+25 http GET https://registry.npmjs.org/npm-shrinkwrap
+26 http 200 https://registry.npmjs.org/npm-shrinkwrap
+27 silly registry.get cb [ 200,
+27 silly registry.get   { date: 'Mon, 08 Sep 2014 11:50:53 GMT',
+27 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 silly registry.get     etag: '"8O5MCGNH6IAGGUJUP3LEE53JB"',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     'cache-control': 'max-age=60',
+27 silly registry.get     'content-length': '47624',
+27 silly registry.get     'accept-ranges': 'bytes',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     age: '3064',
+27 silly registry.get     'x-served-by': 'cache-syd1621-SYD',
+27 silly registry.get     'x-cache': 'MISS',
+27 silly registry.get     'x-cache-hits': '0',
+27 silly registry.get     'x-timer': 'S1410177053.421413,VS0,VE196',
+27 silly registry.get     vary: 'Accept',
+27 silly registry.get     'keep-alive': 'timeout=10, max=50',
+27 silly registry.get     connection: 'Keep-Alive' } ]
+28 silly addNameRange number 2 { name: 'npm-shrinkwrap', range: '*', hasData: true }
+29 silly addNameRange versions [ 'npm-shrinkwrap',
+29 silly addNameRange   [ '1.0.0',
+29 silly addNameRange     '1.0.1',
+29 silly addNameRange     '1.1.0',
+29 silly addNameRange     '1.2.0',
+29 silly addNameRange     '1.2.1',
+29 silly addNameRange     '1.2.2',
+29 silly addNameRange     '1.2.3',
+29 silly addNameRange     '1.2.4',
+29 silly addNameRange     '1.2.5',
+29 silly addNameRange     '1.2.6',
+29 silly addNameRange     '1.2.7',
+29 silly addNameRange     '2.0.0',
+29 silly addNameRange     '2.0.2',
+29 silly addNameRange     '3.0.0',
+29 silly addNameRange     '3.1.0',
+29 silly addNameRange     '3.1.1',
+29 silly addNameRange     '3.1.2',
+29 silly addNameRange     '3.1.3',
+29 silly addNameRange     '3.1.4',
+29 silly addNameRange     '3.1.6',
+29 silly addNameRange     '3.1.7',
+29 silly addNameRange     '3.1.8' ] ]
+30 verbose addNamed [ 'npm-shrinkwrap', '3.1.8' ]
+31 verbose addNamed [ '3.1.8', '3.1.8' ]
+32 silly lockFile 2b2155c3-npm-shrinkwrap-3-1-8 npm-shrinkwrap@3.1.8
+33 verbose lock npm-shrinkwrap@3.1.8 /home/hastenf/.npm/2b2155c3-npm-shrinkwrap-3-1-8.lock
+34 silly lockFile 0869c7c5-inkwrap-npm-shrinkwrap-3-1-8-tgz https://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-3.1.8.tgz
+35 verbose lock https://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-3.1.8.tgz /home/hastenf/.npm/0869c7c5-inkwrap-npm-shrinkwrap-3-1-8-tgz.lock
+36 verbose addRemoteTarball [ 'https://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-3.1.8.tgz',
+36 verbose addRemoteTarball   '5e1ad911a77e840ccd8541f946b67d45536fb6a8' ]
+37 info retry fetch attempt 1 at 17:20:55
+38 verbose fetch to= /tmp/npm-11444-GZnGJHE4/registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-3.1.8.tgz
+39 http GET https://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-3.1.8.tgz
+40 http 200 https://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-3.1.8.tgz
+41 silly lockFile 0869c7c5-inkwrap-npm-shrinkwrap-3-1-8-tgz https://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-3.1.8.tgz
+42 silly lockFile 0869c7c5-inkwrap-npm-shrinkwrap-3-1-8-tgz https://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-3.1.8.tgz
+43 silly lockFile 2b2155c3-npm-shrinkwrap-3-1-8 npm-shrinkwrap@3.1.8
+44 silly lockFile 2b2155c3-npm-shrinkwrap-3-1-8 npm-shrinkwrap@3.1.8
+45 silly lockFile 7eb4b022-npm-shrinkwrap npm-shrinkwrap@
+46 silly lockFile 7eb4b022-npm-shrinkwrap npm-shrinkwrap@
+47 silly resolved [ { name: 'npm-shrinkwrap',
+47 silly resolved     version: '3.1.8',
+47 silly resolved     description: 'A consistent shrinkwrap tool',
+47 silly resolved     keywords: [],
+47 silly resolved     author: { name: 'Raynos', email: 'raynos2@gmail.com' },
+47 silly resolved     repository: { type: 'git', url: 'git://github.com/uber/npm-shrinkwrap.git' },
+47 silly resolved     main: 'index',
+47 silly resolved     homepage: 'https://github.com/uber/npm-shrinkwrap',
+47 silly resolved     bugs:
+47 silly resolved      { url: 'https://github.com/uber/npm-shrinkwrap/issues',
+47 silly resolved        email: 'raynos2@gmail.com' },
+47 silly resolved     dependencies:
+47 silly resolved      { 'array-find': '^0.1.1',
+47 silly resolved        error: '^3.0.0',
+47 silly resolved        'json-diff': '^0.3.1',
+47 silly resolved        minimist: '0.0.8',
+47 silly resolved        msee: '^0.1.1',
+47 silly resolved        npm: '1.4.21',
+47 silly resolved        'read-json': '0.0.0',
+47 silly resolved        rimraf: '^2.2.8',
+47 silly resolved        'run-parallel': '^0.3.0',
+47 silly resolved        'run-series': '^1.0.2',
+47 silly resolved        'safe-json-parse': '^1.0.1',
+47 silly resolved        semver: '^2.2.1',
+47 silly resolved        'sorted-object': '^1.0.0',
+47 silly resolved        'string-template': '^0.1.3' },
+47 silly resolved     devDependencies:
+47 silly resolved      { 'fixtures-fs': '^1.0.2',
+47 silly resolved        istanbul: '~0.2.4',
+47 silly resolved        jshint: '2.4.2',
+47 silly resolved        'pre-commit': '0.0.4',
+47 silly resolved        'tap-spec': '~0.1.4',
+47 silly resolved        tape: '^2.10.2' },
+47 silly resolved     scripts:
+47 silly resolved      { test: 'npm run jshint -s && NODE_ENV=test node test/index.js | tap-spec',
+47 silly resolved        'unit-test': 'NODE_ENV=test node test/npm-shrinkwrap.js | tap-spec',
+47 silly resolved        'jshint-pre-commit': 'jshint --verbose $(git diff --cached --name-only | grep \'\\.js$\')',
+47 silly resolved        jshint: 'jshint --verbose .',
+47 silly resolved        cover: 'istanbul cover --report none --print detail test/index.js',
+47 silly resolved        'view-cover': 'istanbul report html && open ./coverage/index.html',
+47 silly resolved        travis: 'npm run cover -s && istanbul report lcov && ((cat coverage/lcov.info | coveralls) || exit 0)' },
+47 silly resolved     'pre-commit': [ 'jshint-pre-commit', 'unit-test' ],
+47 silly resolved     bin: { 'npm-shrinkwrap': './bin/cli.js' },
+47 silly resolved     engine: { node: '>= 0.8.x' },
+47 silly resolved     gitHead: 'bda61b08adaabfca62db3912c677f962fb315ec2',
+47 silly resolved     _id: 'npm-shrinkwrap@3.1.8',
+47 silly resolved     _shasum: '5e1ad911a77e840ccd8541f946b67d45536fb6a8',
+47 silly resolved     _from: 'npm-shrinkwrap@',
+47 silly resolved     _npmVersion: '1.4.21',
+47 silly resolved     _npmUser: { name: 'raynos', email: 'raynos2@gmail.com' },
+47 silly resolved     maintainers: [ [Object] ],
+47 silly resolved     dist:
+47 silly resolved      { shasum: '5e1ad911a77e840ccd8541f946b67d45536fb6a8',
+47 silly resolved        tarball: 'http://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-3.1.8.tgz' },
+47 silly resolved     directories: {},
+47 silly resolved     _resolved: 'https://registry.npmjs.org/npm-shrinkwrap/-/npm-shrinkwrap-3.1.8.tgz' } ]
+48 info install npm-shrinkwrap@3.1.8 into /home/hastenf/development/meteor/evolve
+49 info installOne npm-shrinkwrap@3.1.8
+50 verbose node_modules/npm-shrinkwrap unbuild
+51 verbose tar unpack /home/hastenf/.npm/npm-shrinkwrap/3.1.8/package.tgz
+52 silly lockFile 6a62af77-olve-node-modules-npm-shrinkwrap tar:///home/hastenf/development/meteor/evolve/node_modules/npm-shrinkwrap
+53 verbose lock tar:///home/hastenf/development/meteor/evolve/node_modules/npm-shrinkwrap /home/hastenf/.npm/6a62af77-olve-node-modules-npm-shrinkwrap.lock
+54 silly lockFile 155f0b32-npm-shrinkwrap-3-1-8-package-tgz tar:///home/hastenf/.npm/npm-shrinkwrap/3.1.8/package.tgz
+55 verbose lock tar:///home/hastenf/.npm/npm-shrinkwrap/3.1.8/package.tgz /home/hastenf/.npm/155f0b32-npm-shrinkwrap-3-1-8-package-tgz.lock
+56 silly gunzTarPerm modes [ '775', '664' ]
+57 silly gunzTarPerm extractEntry package.json
+58 silly gunzTarPerm extractEntry .npmignore
+59 silly gunzTarPerm extractEntry README.md
+60 silly gunzTarPerm extractEntry LICENSE
+61 silly gunzTarPerm extractEntry verify-git.js
+62 silly gunzTarPerm extractEntry analyze-dependency.js
+63 silly gunzTarPerm extractEntry trim-nested.js
+64 silly gunzTarPerm extractEntry trim-and-sort-shrinkwrap.js
+65 silly gunzTarPerm extractEntry index.js
+66 silly gunzTarPerm extractEntry set-resolved.js
+67 silly gunzTarPerm extractEntry walk-shrinkwrap.js
+68 silly gunzTarPerm extractEntry .jshintignore
+69 silly gunzTarPerm extractEntry sync/force-install.js
+70 silly gunzTarPerm extractEntry sync/index.js
+71 silly gunzTarPerm extractEntry sync/install-module.js
+72 silly gunzTarPerm extractEntry sync/purge-excess.js
+73 silly gunzTarPerm extractEntry sync/read.js
+74 silly gunzTarPerm extractEntry test/git-https-use-case.js
+75 silly gunzTarPerm extractEntry test/index.js
+76 silly gunzTarPerm extractEntry test/npm-shrinkwrap.js
+77 silly gunzTarPerm extractEntry docs.mli
+78 silly gunzTarPerm extractEntry bin/cli.js
+79 silly gunzTarPerm extractEntry bin/diff.js
+80 silly gunzTarPerm extractEntry bin/formatters.js
+81 silly gunzTarPerm extractEntry bin/help.js
+82 silly gunzTarPerm extractEntry bin/install.js
+83 silly gunzTarPerm extractEntry bin/usage.md
+84 silly gunzTarPerm extractEntry .jshintrc
+85 silly lockFile 6a62af77-olve-node-modules-npm-shrinkwrap tar:///home/hastenf/development/meteor/evolve/node_modules/npm-shrinkwrap
+86 silly lockFile 6a62af77-olve-node-modules-npm-shrinkwrap tar:///home/hastenf/development/meteor/evolve/node_modules/npm-shrinkwrap
+87 silly lockFile 155f0b32-npm-shrinkwrap-3-1-8-package-tgz tar:///home/hastenf/.npm/npm-shrinkwrap/3.1.8/package.tgz
+88 silly lockFile 155f0b32-npm-shrinkwrap-3-1-8-package-tgz tar:///home/hastenf/.npm/npm-shrinkwrap/3.1.8/package.tgz
+89 info preinstall npm-shrinkwrap@3.1.8
+90 verbose readDependencies using package.json deps
+91 verbose readDependencies using package.json deps
+92 verbose cache add [ 'array-find@^0.1.1', null ]
+93 verbose cache add name=undefined spec="array-find@^0.1.1" args=["array-find@^0.1.1",null]
+94 verbose parsed url { protocol: null,
+94 verbose parsed url   slashes: null,
+94 verbose parsed url   auth: null,
+94 verbose parsed url   host: null,
+94 verbose parsed url   port: null,
+94 verbose parsed url   hostname: null,
+94 verbose parsed url   hash: null,
+94 verbose parsed url   search: null,
+94 verbose parsed url   query: null,
+94 verbose parsed url   pathname: 'array-find@^0.1.1',
+94 verbose parsed url   path: 'array-find@^0.1.1',
+94 verbose parsed url   href: 'array-find@^0.1.1' }
+95 verbose cache add [ 'error@^3.0.0', null ]
+96 verbose cache add name=undefined spec="error@^3.0.0" args=["error@^3.0.0",null]
+97 verbose parsed url { protocol: null,
+97 verbose parsed url   slashes: null,
+97 verbose parsed url   auth: null,
+97 verbose parsed url   host: null,
+97 verbose parsed url   port: null,
+97 verbose parsed url   hostname: null,
+97 verbose parsed url   hash: null,
+97 verbose parsed url   search: null,
+97 verbose parsed url   query: null,
+97 verbose parsed url   pathname: 'error@^3.0.0',
+97 verbose parsed url   path: 'error@^3.0.0',
+97 verbose parsed url   href: 'error@^3.0.0' }
+98 verbose cache add [ 'json-diff@^0.3.1', null ]
+99 verbose cache add name=undefined spec="json-diff@^0.3.1" args=["json-diff@^0.3.1",null]
+100 verbose parsed url { protocol: null,
+100 verbose parsed url   slashes: null,
+100 verbose parsed url   auth: null,
+100 verbose parsed url   host: null,
+100 verbose parsed url   port: null,
+100 verbose parsed url   hostname: null,
+100 verbose parsed url   hash: null,
+100 verbose parsed url   search: null,
+100 verbose parsed url   query: null,
+100 verbose parsed url   pathname: 'json-diff@^0.3.1',
+100 verbose parsed url   path: 'json-diff@^0.3.1',
+100 verbose parsed url   href: 'json-diff@^0.3.1' }
+101 verbose cache add [ 'minimist@0.0.8', null ]
+102 verbose cache add name=undefined spec="minimist@0.0.8" args=["minimist@0.0.8",null]
+103 verbose parsed url { protocol: null,
+103 verbose parsed url   slashes: null,
+103 verbose parsed url   auth: null,
+103 verbose parsed url   host: null,
+103 verbose parsed url   port: null,
+103 verbose parsed url   hostname: null,
+103 verbose parsed url   hash: null,
+103 verbose parsed url   search: null,
+103 verbose parsed url   query: null,
+103 verbose parsed url   pathname: 'minimist@0.0.8',
+103 verbose parsed url   path: 'minimist@0.0.8',
+103 verbose parsed url   href: 'minimist@0.0.8' }
+104 verbose cache add name="array-find" spec="^0.1.1" args=["array-find","^0.1.1"]
+105 verbose parsed url { protocol: null,
+105 verbose parsed url   slashes: null,
+105 verbose parsed url   auth: null,
+105 verbose parsed url   host: null,
+105 verbose parsed url   port: null,
+105 verbose parsed url   hostname: null,
+105 verbose parsed url   hash: null,
+105 verbose parsed url   search: null,
+105 verbose parsed url   query: null,
+105 verbose parsed url   pathname: '^0.1.1',
+105 verbose parsed url   path: '^0.1.1',
+105 verbose parsed url   href: '^0.1.1' }
+106 verbose addNamed [ 'array-find', '^0.1.1' ]
+107 verbose addNamed [ null, '>=0.1.1-0 <0.2.0-0' ]
+108 silly lockFile ca15485f-array-find-0-1-1 array-find@^0.1.1
+109 verbose lock array-find@^0.1.1 /home/hastenf/.npm/ca15485f-array-find-0-1-1.lock
+110 verbose cache add name="error" spec="^3.0.0" args=["error","^3.0.0"]
+111 verbose parsed url { protocol: null,
+111 verbose parsed url   slashes: null,
+111 verbose parsed url   auth: null,
+111 verbose parsed url   host: null,
+111 verbose parsed url   port: null,
+111 verbose parsed url   hostname: null,
+111 verbose parsed url   hash: null,
+111 verbose parsed url   search: null,
+111 verbose parsed url   query: null,
+111 verbose parsed url   pathname: '^3.0.0',
+111 verbose parsed url   path: '^3.0.0',
+111 verbose parsed url   href: '^3.0.0' }
+112 verbose addNamed [ 'error', '^3.0.0' ]
+113 verbose addNamed [ null, '>=3.0.0-0 <4.0.0-0' ]
+114 silly lockFile 059aed51-error-3-0-0 error@^3.0.0
+115 verbose lock error@^3.0.0 /home/hastenf/.npm/059aed51-error-3-0-0.lock
+116 verbose cache add name="json-diff" spec="^0.3.1" args=["json-diff","^0.3.1"]
+117 verbose parsed url { protocol: null,
+117 verbose parsed url   slashes: null,
+117 verbose parsed url   auth: null,
+117 verbose parsed url   host: null,
+117 verbose parsed url   port: null,
+117 verbose parsed url   hostname: null,
+117 verbose parsed url   hash: null,
+117 verbose parsed url   search: null,
+117 verbose parsed url   query: null,
+117 verbose parsed url   pathname: '^0.3.1',
+117 verbose parsed url   path: '^0.3.1',
+117 verbose parsed url   href: '^0.3.1' }
+118 verbose addNamed [ 'json-diff', '^0.3.1' ]
+119 verbose addNamed [ null, '>=0.3.1-0 <0.4.0-0' ]
+120 silly lockFile b588373f-json-diff-0-3-1 json-diff@^0.3.1
+121 verbose lock json-diff@^0.3.1 /home/hastenf/.npm/b588373f-json-diff-0-3-1.lock
+122 verbose cache add name="minimist" spec="0.0.8" args=["minimist","0.0.8"]
+123 verbose parsed url { protocol: null,
+123 verbose parsed url   slashes: null,
+123 verbose parsed url   auth: null,
+123 verbose parsed url   host: null,
+123 verbose parsed url   port: null,
+123 verbose parsed url   hostname: null,
+123 verbose parsed url   hash: null,
+123 verbose parsed url   search: null,
+123 verbose parsed url   query: null,
+123 verbose parsed url   pathname: '0.0.8',
+123 verbose parsed url   path: '0.0.8',
+123 verbose parsed url   href: '0.0.8' }
+124 verbose addNamed [ 'minimist', '0.0.8' ]
+125 verbose addNamed [ '0.0.8', '0.0.8' ]
+126 silly lockFile 22c6b485-minimist-0-0-8 minimist@0.0.8
+127 verbose lock minimist@0.0.8 /home/hastenf/.npm/22c6b485-minimist-0-0-8.lock
+128 verbose cache add [ 'msee@^0.1.1', null ]
+129 verbose cache add name=undefined spec="msee@^0.1.1" args=["msee@^0.1.1",null]
+130 verbose parsed url { protocol: null,
+130 verbose parsed url   slashes: null,
+130 verbose parsed url   auth: null,
+130 verbose parsed url   host: null,
+130 verbose parsed url   port: null,
+130 verbose parsed url   hostname: null,
+130 verbose parsed url   hash: null,
+130 verbose parsed url   search: null,
+130 verbose parsed url   query: null,
+130 verbose parsed url   pathname: 'msee@^0.1.1',
+130 verbose parsed url   path: 'msee@^0.1.1',
+130 verbose parsed url   href: 'msee@^0.1.1' }
+131 verbose cache add [ 'npm@1.4.21', null ]
+132 verbose cache add name=undefined spec="npm@1.4.21" args=["npm@1.4.21",null]
+133 verbose parsed url { protocol: null,
+133 verbose parsed url   slashes: null,
+133 verbose parsed url   auth: null,
+133 verbose parsed url   host: null,
+133 verbose parsed url   port: null,
+133 verbose parsed url   hostname: null,
+133 verbose parsed url   hash: null,
+133 verbose parsed url   search: null,
+133 verbose parsed url   query: null,
+133 verbose parsed url   pathname: 'npm@1.4.21',
+133 verbose parsed url   path: 'npm@1.4.21',
+133 verbose parsed url   href: 'npm@1.4.21' }
+134 verbose cache add [ 'read-json@0.0.0', null ]
+135 verbose cache add name=undefined spec="read-json@0.0.0" args=["read-json@0.0.0",null]
+136 verbose parsed url { protocol: null,
+136 verbose parsed url   slashes: null,
+136 verbose parsed url   auth: null,
+136 verbose parsed url   host: null,
+136 verbose parsed url   port: null,
+136 verbose parsed url   hostname: null,
+136 verbose parsed url   hash: null,
+136 verbose parsed url   search: null,
+136 verbose parsed url   query: null,
+136 verbose parsed url   pathname: 'read-json@0.0.0',
+136 verbose parsed url   path: 'read-json@0.0.0',
+136 verbose parsed url   href: 'read-json@0.0.0' }
+137 verbose cache add [ 'rimraf@^2.2.8', null ]
+138 verbose cache add name=undefined spec="rimraf@^2.2.8" args=["rimraf@^2.2.8",null]
+139 verbose parsed url { protocol: null,
+139 verbose parsed url   slashes: null,
+139 verbose parsed url   auth: null,
+139 verbose parsed url   host: null,
+139 verbose parsed url   port: null,
+139 verbose parsed url   hostname: null,
+139 verbose parsed url   hash: null,
+139 verbose parsed url   search: null,
+139 verbose parsed url   query: null,
+139 verbose parsed url   pathname: 'rimraf@^2.2.8',
+139 verbose parsed url   path: 'rimraf@^2.2.8',
+139 verbose parsed url   href: 'rimraf@^2.2.8' }
+140 verbose cache add [ 'run-parallel@^0.3.0', null ]
+141 verbose cache add name=undefined spec="run-parallel@^0.3.0" args=["run-parallel@^0.3.0",null]
+142 verbose parsed url { protocol: null,
+142 verbose parsed url   slashes: null,
+142 verbose parsed url   auth: null,
+142 verbose parsed url   host: null,
+142 verbose parsed url   port: null,
+142 verbose parsed url   hostname: null,
+142 verbose parsed url   hash: null,
+142 verbose parsed url   search: null,
+142 verbose parsed url   query: null,
+142 verbose parsed url   pathname: 'run-parallel@^0.3.0',
+142 verbose parsed url   path: 'run-parallel@^0.3.0',
+142 verbose parsed url   href: 'run-parallel@^0.3.0' }
+143 verbose cache add [ 'run-series@^1.0.2', null ]
+144 verbose cache add name=undefined spec="run-series@^1.0.2" args=["run-series@^1.0.2",null]
+145 verbose parsed url { protocol: null,
+145 verbose parsed url   slashes: null,
+145 verbose parsed url   auth: null,
+145 verbose parsed url   host: null,
+145 verbose parsed url   port: null,
+145 verbose parsed url   hostname: null,
+145 verbose parsed url   hash: null,
+145 verbose parsed url   search: null,
+145 verbose parsed url   query: null,
+145 verbose parsed url   pathname: 'run-series@^1.0.2',
+145 verbose parsed url   path: 'run-series@^1.0.2',
+145 verbose parsed url   href: 'run-series@^1.0.2' }
+146 verbose cache add name="msee" spec="^0.1.1" args=["msee","^0.1.1"]
+147 verbose parsed url { protocol: null,
+147 verbose parsed url   slashes: null,
+147 verbose parsed url   auth: null,
+147 verbose parsed url   host: null,
+147 verbose parsed url   port: null,
+147 verbose parsed url   hostname: null,
+147 verbose parsed url   hash: null,
+147 verbose parsed url   search: null,
+147 verbose parsed url   query: null,
+147 verbose parsed url   pathname: '^0.1.1',
+147 verbose parsed url   path: '^0.1.1',
+147 verbose parsed url   href: '^0.1.1' }
+148 verbose addNamed [ 'msee', '^0.1.1' ]
+149 verbose addNamed [ null, '>=0.1.1-0 <0.2.0-0' ]
+150 silly lockFile 783cda77-msee-0-1-1 msee@^0.1.1
+151 verbose lock msee@^0.1.1 /home/hastenf/.npm/783cda77-msee-0-1-1.lock
+152 verbose cache add name="npm" spec="1.4.21" args=["npm","1.4.21"]
+153 verbose parsed url { protocol: null,
+153 verbose parsed url   slashes: null,
+153 verbose parsed url   auth: null,
+153 verbose parsed url   host: null,
+153 verbose parsed url   port: null,
+153 verbose parsed url   hostname: null,
+153 verbose parsed url   hash: null,
+153 verbose parsed url   search: null,
+153 verbose parsed url   query: null,
+153 verbose parsed url   pathname: '1.4.21',
+153 verbose parsed url   path: '1.4.21',
+153 verbose parsed url   href: '1.4.21' }
+154 verbose addNamed [ 'npm', '1.4.21' ]
+155 verbose addNamed [ '1.4.21', '1.4.21' ]
+156 silly lockFile 05329fac-npm-1-4-21 npm@1.4.21
+157 verbose lock npm@1.4.21 /home/hastenf/.npm/05329fac-npm-1-4-21.lock
+158 verbose cache add name="read-json" spec="0.0.0" args=["read-json","0.0.0"]
+159 verbose parsed url { protocol: null,
+159 verbose parsed url   slashes: null,
+159 verbose parsed url   auth: null,
+159 verbose parsed url   host: null,
+159 verbose parsed url   port: null,
+159 verbose parsed url   hostname: null,
+159 verbose parsed url   hash: null,
+159 verbose parsed url   search: null,
+159 verbose parsed url   query: null,
+159 verbose parsed url   pathname: '0.0.0',
+159 verbose parsed url   path: '0.0.0',
+159 verbose parsed url   href: '0.0.0' }
+160 verbose addNamed [ 'read-json', '0.0.0' ]
+161 verbose addNamed [ '0.0.0', '0.0.0' ]
+162 silly lockFile e97563b8-read-json-0-0-0 read-json@0.0.0
+163 verbose lock read-json@0.0.0 /home/hastenf/.npm/e97563b8-read-json-0-0-0.lock
+164 verbose cache add name="rimraf" spec="^2.2.8" args=["rimraf","^2.2.8"]
+165 verbose parsed url { protocol: null,
+165 verbose parsed url   slashes: null,
+165 verbose parsed url   auth: null,
+165 verbose parsed url   host: null,
+165 verbose parsed url   port: null,
+165 verbose parsed url   hostname: null,
+165 verbose parsed url   hash: null,
+165 verbose parsed url   search: null,
+165 verbose parsed url   query: null,
+165 verbose parsed url   pathname: '^2.2.8',
+165 verbose parsed url   path: '^2.2.8',
+165 verbose parsed url   href: '^2.2.8' }
+166 verbose addNamed [ 'rimraf', '^2.2.8' ]
+167 verbose addNamed [ null, '>=2.2.8-0 <3.0.0-0' ]
+168 silly lockFile e7d3f915-rimraf-2-2-8 rimraf@^2.2.8
+169 verbose lock rimraf@^2.2.8 /home/hastenf/.npm/e7d3f915-rimraf-2-2-8.lock
+170 verbose cache add name="run-parallel" spec="^0.3.0" args=["run-parallel","^0.3.0"]
+171 verbose parsed url { protocol: null,
+171 verbose parsed url   slashes: null,
+171 verbose parsed url   auth: null,
+171 verbose parsed url   host: null,
+171 verbose parsed url   port: null,
+171 verbose parsed url   hostname: null,
+171 verbose parsed url   hash: null,
+171 verbose parsed url   search: null,
+171 verbose parsed url   query: null,
+171 verbose parsed url   pathname: '^0.3.0',
+171 verbose parsed url   path: '^0.3.0',
+171 verbose parsed url   href: '^0.3.0' }
+172 verbose addNamed [ 'run-parallel', '^0.3.0' ]
+173 verbose addNamed [ null, '>=0.3.0-0 <0.4.0-0' ]
+174 silly lockFile 65a02891-run-parallel-0-3-0 run-parallel@^0.3.0
+175 verbose lock run-parallel@^0.3.0 /home/hastenf/.npm/65a02891-run-parallel-0-3-0.lock
+176 verbose cache add [ 'safe-json-parse@^1.0.1', null ]
+177 verbose cache add name=undefined spec="safe-json-parse@^1.0.1" args=["safe-json-parse@^1.0.1",null]
+178 verbose parsed url { protocol: null,
+178 verbose parsed url   slashes: null,
+178 verbose parsed url   auth: null,
+178 verbose parsed url   host: null,
+178 verbose parsed url   port: null,
+178 verbose parsed url   hostname: null,
+178 verbose parsed url   hash: null,
+178 verbose parsed url   search: null,
+178 verbose parsed url   query: null,
+178 verbose parsed url   pathname: 'safe-json-parse@^1.0.1',
+178 verbose parsed url   path: 'safe-json-parse@^1.0.1',
+178 verbose parsed url   href: 'safe-json-parse@^1.0.1' }
+179 verbose cache add [ 'semver@^2.2.1', null ]
+180 verbose cache add name=undefined spec="semver@^2.2.1" args=["semver@^2.2.1",null]
+181 verbose parsed url { protocol: null,
+181 verbose parsed url   slashes: null,
+181 verbose parsed url   auth: null,
+181 verbose parsed url   host: null,
+181 verbose parsed url   port: null,
+181 verbose parsed url   hostname: null,
+181 verbose parsed url   hash: null,
+181 verbose parsed url   search: null,
+181 verbose parsed url   query: null,
+181 verbose parsed url   pathname: 'semver@^2.2.1',
+181 verbose parsed url   path: 'semver@^2.2.1',
+181 verbose parsed url   href: 'semver@^2.2.1' }
+182 verbose cache add [ 'sorted-object@^1.0.0', null ]
+183 verbose cache add name=undefined spec="sorted-object@^1.0.0" args=["sorted-object@^1.0.0",null]
+184 verbose parsed url { protocol: null,
+184 verbose parsed url   slashes: null,
+184 verbose parsed url   auth: null,
+184 verbose parsed url   host: null,
+184 verbose parsed url   port: null,
+184 verbose parsed url   hostname: null,
+184 verbose parsed url   hash: null,
+184 verbose parsed url   search: null,
+184 verbose parsed url   query: null,
+184 verbose parsed url   pathname: 'sorted-object@^1.0.0',
+184 verbose parsed url   path: 'sorted-object@^1.0.0',
+184 verbose parsed url   href: 'sorted-object@^1.0.0' }
+185 verbose cache add [ 'string-template@^0.1.3', null ]
+186 verbose cache add name=undefined spec="string-template@^0.1.3" args=["string-template@^0.1.3",null]
+187 verbose parsed url { protocol: null,
+187 verbose parsed url   slashes: null,
+187 verbose parsed url   auth: null,
+187 verbose parsed url   host: null,
+187 verbose parsed url   port: null,
+187 verbose parsed url   hostname: null,
+187 verbose parsed url   hash: null,
+187 verbose parsed url   search: null,
+187 verbose parsed url   query: null,
+187 verbose parsed url   pathname: 'string-template@^0.1.3',
+187 verbose parsed url   path: 'string-template@^0.1.3',
+187 verbose parsed url   href: 'string-template@^0.1.3' }
+188 verbose cache add name="run-series" spec="^1.0.2" args=["run-series","^1.0.2"]
+189 verbose parsed url { protocol: null,
+189 verbose parsed url   slashes: null,
+189 verbose parsed url   auth: null,
+189 verbose parsed url   host: null,
+189 verbose parsed url   port: null,
+189 verbose parsed url   hostname: null,
+189 verbose parsed url   hash: null,
+189 verbose parsed url   search: null,
+189 verbose parsed url   query: null,
+189 verbose parsed url   pathname: '^1.0.2',
+189 verbose parsed url   path: '^1.0.2',
+189 verbose parsed url   href: '^1.0.2' }
+190 verbose addNamed [ 'run-series', '^1.0.2' ]
+191 verbose addNamed [ null, '>=1.0.2-0 <2.0.0-0' ]
+192 silly lockFile 46c3610a-run-series-1-0-2 run-series@^1.0.2
+193 verbose lock run-series@^1.0.2 /home/hastenf/.npm/46c3610a-run-series-1-0-2.lock
+194 silly addNameRange { name: 'array-find',
+194 silly addNameRange   range: '>=0.1.1-0 <0.2.0-0',
+194 silly addNameRange   hasData: false }
+195 silly addNameRange { name: 'error', range: '>=3.0.0-0 <4.0.0-0', hasData: false }
+196 silly addNameRange { name: 'json-diff',
+196 silly addNameRange   range: '>=0.3.1-0 <0.4.0-0',
+196 silly addNameRange   hasData: false }
+197 verbose cache add name="safe-json-parse" spec="^1.0.1" args=["safe-json-parse","^1.0.1"]
+198 verbose parsed url { protocol: null,
+198 verbose parsed url   slashes: null,
+198 verbose parsed url   auth: null,
+198 verbose parsed url   host: null,
+198 verbose parsed url   port: null,
+198 verbose parsed url   hostname: null,
+198 verbose parsed url   hash: null,
+198 verbose parsed url   search: null,
+198 verbose parsed url   query: null,
+198 verbose parsed url   pathname: '^1.0.1',
+198 verbose parsed url   path: '^1.0.1',
+198 verbose parsed url   href: '^1.0.1' }
+199 verbose addNamed [ 'safe-json-parse', '^1.0.1' ]
+200 verbose addNamed [ null, '>=1.0.1-0 <2.0.0-0' ]
+201 silly lockFile 5b004efc-safe-json-parse-1-0-1 safe-json-parse@^1.0.1
+202 verbose lock safe-json-parse@^1.0.1 /home/hastenf/.npm/5b004efc-safe-json-parse-1-0-1.lock
+203 verbose cache add name="semver" spec="^2.2.1" args=["semver","^2.2.1"]
+204 verbose parsed url { protocol: null,
+204 verbose parsed url   slashes: null,
+204 verbose parsed url   auth: null,
+204 verbose parsed url   host: null,
+204 verbose parsed url   port: null,
+204 verbose parsed url   hostname: null,
+204 verbose parsed url   hash: null,
+204 verbose parsed url   search: null,
+204 verbose parsed url   query: null,
+204 verbose parsed url   pathname: '^2.2.1',
+204 verbose parsed url   path: '^2.2.1',
+204 verbose parsed url   href: '^2.2.1' }
+205 verbose addNamed [ 'semver', '^2.2.1' ]
+206 verbose addNamed [ null, '>=2.2.1-0 <3.0.0-0' ]
+207 silly lockFile d8627689-semver-2-2-1 semver@^2.2.1
+208 verbose lock semver@^2.2.1 /home/hastenf/.npm/d8627689-semver-2-2-1.lock
+209 verbose cache add name="sorted-object" spec="^1.0.0" args=["sorted-object","^1.0.0"]
+210 verbose parsed url { protocol: null,
+210 verbose parsed url   slashes: null,
+210 verbose parsed url   auth: null,
+210 verbose parsed url   host: null,
+210 verbose parsed url   port: null,
+210 verbose parsed url   hostname: null,
+210 verbose parsed url   hash: null,
+210 verbose parsed url   search: null,
+210 verbose parsed url   query: null,
+210 verbose parsed url   pathname: '^1.0.0',
+210 verbose parsed url   path: '^1.0.0',
+210 verbose parsed url   href: '^1.0.0' }
+211 verbose addNamed [ 'sorted-object', '^1.0.0' ]
+212 verbose addNamed [ null, '>=1.0.0-0 <2.0.0-0' ]
+213 silly lockFile 1b56d790-sorted-object-1-0-0 sorted-object@^1.0.0
+214 verbose lock sorted-object@^1.0.0 /home/hastenf/.npm/1b56d790-sorted-object-1-0-0.lock
+215 verbose cache add name="string-template" spec="^0.1.3" args=["string-template","^0.1.3"]
+216 verbose parsed url { protocol: null,
+216 verbose parsed url   slashes: null,
+216 verbose parsed url   auth: null,
+216 verbose parsed url   host: null,
+216 verbose parsed url   port: null,
+216 verbose parsed url   hostname: null,
+216 verbose parsed url   hash: null,
+216 verbose parsed url   search: null,
+216 verbose parsed url   query: null,
+216 verbose parsed url   pathname: '^0.1.3',
+216 verbose parsed url   path: '^0.1.3',
+216 verbose parsed url   href: '^0.1.3' }
+217 verbose addNamed [ 'string-template', '^0.1.3' ]
+218 verbose addNamed [ null, '>=0.1.3-0 <0.2.0-0' ]
+219 silly lockFile e65fe8d7-string-template-0-1-3 string-template@^0.1.3
+220 verbose lock string-template@^0.1.3 /home/hastenf/.npm/e65fe8d7-string-template-0-1-3.lock
+221 verbose request where is /array-find
+222 verbose request registry https://registry.npmjs.org/
+223 verbose url raw /array-find
+224 verbose url resolving [ 'https://registry.npmjs.org/', './array-find' ]
+225 verbose url resolved https://registry.npmjs.org/array-find
+226 verbose request where is https://registry.npmjs.org/array-find
+227 info trying registry request attempt 1 at 17:20:58
+228 http GET https://registry.npmjs.org/array-find
+229 verbose request where is /error
+230 verbose request registry https://registry.npmjs.org/
+231 verbose url raw /error
+232 verbose url resolving [ 'https://registry.npmjs.org/', './error' ]
+233 verbose url resolved https://registry.npmjs.org/error
+234 verbose request where is https://registry.npmjs.org/error
+235 info trying registry request attempt 1 at 17:20:58
+236 http GET https://registry.npmjs.org/error
+237 verbose request where is /json-diff
+238 verbose request registry https://registry.npmjs.org/
+239 verbose url raw /json-diff
+240 verbose url resolving [ 'https://registry.npmjs.org/', './json-diff' ]
+241 verbose url resolved https://registry.npmjs.org/json-diff
+242 verbose request where is https://registry.npmjs.org/json-diff
+243 info trying registry request attempt 1 at 17:20:58
+244 http GET https://registry.npmjs.org/json-diff
+245 silly addNameRange { name: 'msee', range: '>=0.1.1-0 <0.2.0-0', hasData: false }
+246 silly addNameRange { name: 'rimraf', range: '>=2.2.8-0 <3.0.0-0', hasData: false }
+247 silly addNameRange { name: 'run-parallel',
+247 silly addNameRange   range: '>=0.3.0-0 <0.4.0-0',
+247 silly addNameRange   hasData: false }
+248 silly addNameRange { name: 'run-series',
+248 silly addNameRange   range: '>=1.0.2-0 <2.0.0-0',
+248 silly addNameRange   hasData: false }
+249 verbose request where is /msee
+250 verbose request registry https://registry.npmjs.org/
+251 verbose url raw /msee
+252 verbose url resolving [ 'https://registry.npmjs.org/', './msee' ]
+253 verbose url resolved https://registry.npmjs.org/msee
+254 verbose request where is https://registry.npmjs.org/msee
+255 info trying registry request attempt 1 at 17:20:58
+256 http GET https://registry.npmjs.org/msee
+257 verbose request where is /read-json
+258 verbose request registry https://registry.npmjs.org/
+259 verbose url raw /read-json
+260 verbose url resolving [ 'https://registry.npmjs.org/', './read-json' ]
+261 verbose url resolved https://registry.npmjs.org/read-json
+262 verbose request where is https://registry.npmjs.org/read-json
+263 info trying registry request attempt 1 at 17:20:58
+264 http GET https://registry.npmjs.org/read-json
+265 verbose request where is /run-parallel
+266 verbose request registry https://registry.npmjs.org/
+267 verbose url raw /run-parallel
+268 verbose url resolving [ 'https://registry.npmjs.org/', './run-parallel' ]
+269 verbose url resolved https://registry.npmjs.org/run-parallel
+270 verbose request where is https://registry.npmjs.org/run-parallel
+271 info trying registry request attempt 1 at 17:20:58
+272 http GET https://registry.npmjs.org/run-parallel
+273 silly addNameRange { name: 'safe-json-parse',
+273 silly addNameRange   range: '>=1.0.1-0 <2.0.0-0',
+273 silly addNameRange   hasData: false }
+274 silly addNameRange { name: 'semver', range: '>=2.2.1-0 <3.0.0-0', hasData: false }
+275 silly addNameRange { name: 'sorted-object',
+275 silly addNameRange   range: '>=1.0.0-0 <2.0.0-0',
+275 silly addNameRange   hasData: false }
+276 silly addNameRange { name: 'string-template',
+276 silly addNameRange   range: '>=0.1.3-0 <0.2.0-0',
+276 silly addNameRange   hasData: false }
+277 verbose request where is /run-series
+278 verbose request registry https://registry.npmjs.org/
+279 verbose url raw /run-series
+280 verbose url resolving [ 'https://registry.npmjs.org/', './run-series' ]
+281 verbose url resolved https://registry.npmjs.org/run-series
+282 verbose request where is https://registry.npmjs.org/run-series
+283 info trying registry request attempt 1 at 17:20:58
+284 http GET https://registry.npmjs.org/run-series
+285 verbose request where is /safe-json-parse
+286 verbose request registry https://registry.npmjs.org/
+287 verbose url raw /safe-json-parse
+288 verbose url resolving [ 'https://registry.npmjs.org/', './safe-json-parse' ]
+289 verbose url resolved https://registry.npmjs.org/safe-json-parse
+290 verbose request where is https://registry.npmjs.org/safe-json-parse
+291 info trying registry request attempt 1 at 17:20:58
+292 http GET https://registry.npmjs.org/safe-json-parse
+293 verbose request where is /sorted-object
+294 verbose request registry https://registry.npmjs.org/
+295 verbose url raw /sorted-object
+296 verbose url resolving [ 'https://registry.npmjs.org/', './sorted-object' ]
+297 verbose url resolved https://registry.npmjs.org/sorted-object
+298 verbose request where is https://registry.npmjs.org/sorted-object
+299 info trying registry request attempt 1 at 17:20:58
+300 http GET https://registry.npmjs.org/sorted-object
+301 verbose request where is /string-template
+302 verbose request registry https://registry.npmjs.org/
+303 verbose url raw /string-template
+304 verbose url resolving [ 'https://registry.npmjs.org/', './string-template' ]
+305 verbose url resolved https://registry.npmjs.org/string-template
+306 verbose request where is https://registry.npmjs.org/string-template
+307 info trying registry request attempt 1 at 17:20:58
+308 http GET https://registry.npmjs.org/string-template
+309 verbose request where is /minimist
+310 verbose request registry https://registry.npmjs.org/
+311 verbose url raw /minimist
+312 verbose url resolving [ 'https://registry.npmjs.org/', './minimist' ]
+313 verbose url resolved https://registry.npmjs.org/minimist
+314 verbose request where is https://registry.npmjs.org/minimist
+315 info trying registry request attempt 1 at 17:20:58
+316 verbose etag "MXLSD2JVPETT7WQI528IU138"
+317 http GET https://registry.npmjs.org/minimist
+318 verbose request where is /rimraf
+319 verbose request registry https://registry.npmjs.org/
+320 verbose url raw /rimraf
+321 verbose url resolving [ 'https://registry.npmjs.org/', './rimraf' ]
+322 verbose url resolved https://registry.npmjs.org/rimraf
+323 verbose request where is https://registry.npmjs.org/rimraf
+324 info trying registry request attempt 1 at 17:20:58
+325 verbose etag "2BYIEW0O2R5E3JBVHDI3XHDIS"
+326 http GET https://registry.npmjs.org/rimraf
+327 verbose request where is /semver
+328 verbose request registry https://registry.npmjs.org/
+329 verbose url raw /semver
+330 verbose url resolving [ 'https://registry.npmjs.org/', './semver' ]
+331 verbose url resolved https://registry.npmjs.org/semver
+332 verbose request where is https://registry.npmjs.org/semver
+333 info trying registry request attempt 1 at 17:20:58
+334 verbose etag "DM9PYT2ME0QLZV8I8TDH10DHA"
+335 http GET https://registry.npmjs.org/semver
+336 verbose request where is /npm
+337 verbose request registry https://registry.npmjs.org/
+338 verbose url raw /npm
+339 verbose url resolving [ 'https://registry.npmjs.org/', './npm' ]
+340 verbose url resolved https://registry.npmjs.org/npm
+341 verbose request where is https://registry.npmjs.org/npm
+342 info trying registry request attempt 1 at 17:20:58
+343 verbose etag "1A9VMBU99OSIK4Q6B94AJA68"
+344 http GET https://registry.npmjs.org/npm
+345 http 200 https://registry.npmjs.org/array-find
+346 silly registry.get cb [ 200,
+346 silly registry.get   { date: 'Mon, 08 Sep 2014 11:51:00 GMT',
+346 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+346 silly registry.get     etag: '"14DSY72ICQERKTZBSU34A3LKD"',
+346 silly registry.get     'content-type': 'application/json',
+346 silly registry.get     'cache-control': 'max-age=60',
+346 silly registry.get     'content-length': '4006',
+346 silly registry.get     'accept-ranges': 'bytes',
+346 silly registry.get     via: '1.1 varnish',
+346 silly registry.get     age: '3066',
+346 silly registry.get     'x-served-by': 'cache-syd1622-SYD',
+346 silly registry.get     'x-cache': 'MISS',
+346 silly registry.get     'x-cache-hits': '0',
+346 silly registry.get     'x-timer': 'S1410177059.990435,VS0,VE252',
+346 silly registry.get     vary: 'Accept',
+346 silly registry.get     'keep-alive': 'timeout=10, max=50',
+346 silly registry.get     connection: 'Keep-Alive' } ]
+347 silly addNameRange number 2 { name: 'array-find',
+347 silly addNameRange   range: '>=0.1.1-0 <0.2.0-0',
+347 silly addNameRange   hasData: true }
+348 silly addNameRange versions [ 'array-find', [ '0.0.1', '0.1.0', '0.1.1' ] ]
+349 verbose addNamed [ 'array-find', '0.1.1' ]
+350 verbose addNamed [ '0.1.1', '0.1.1' ]
+351 silly lockFile 43fcfebb-array-find-0-1-1 array-find@0.1.1
+352 verbose lock array-find@0.1.1 /home/hastenf/.npm/43fcfebb-array-find-0-1-1.lock
+353 silly lockFile 41bd00ab--array-find-array-find-0-1-1-tgz https://registry.npmjs.org/array-find/-/array-find-0.1.1.tgz
+354 verbose lock https://registry.npmjs.org/array-find/-/array-find-0.1.1.tgz /home/hastenf/.npm/41bd00ab--array-find-array-find-0-1-1-tgz.lock
+355 verbose addRemoteTarball [ 'https://registry.npmjs.org/array-find/-/array-find-0.1.1.tgz',
+355 verbose addRemoteTarball   'dc813845ad5a9afc35cb92b786c878d81b5b82ce' ]
+356 info retry fetch attempt 1 at 17:21:00
+357 verbose fetch to= /tmp/npm-11444-GZnGJHE4/registry.npmjs.org/array-find/-/array-find-0.1.1.tgz
+358 http GET https://registry.npmjs.org/array-find/-/array-find-0.1.1.tgz
+359 http 200 https://registry.npmjs.org/msee
+360 silly registry.get cb [ 200,
+360 silly registry.get   { date: 'Mon, 08 Sep 2014 11:51:00 GMT',
+360 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+360 silly registry.get     etag: '"5PFO0KDM4NPNDYA6GV7KOM1TK"',
+360 silly registry.get     'content-type': 'application/json',
+360 silly registry.get     'cache-control': 'max-age=60',
+360 silly registry.get     'content-length': '9466',
+360 silly registry.get     'accept-ranges': 'bytes',
+360 silly registry.get     via: '1.1 varnish',
+360 silly registry.get     age: '559',
+360 silly registry.get     'x-served-by': 'cache-syd1621-SYD',
+360 silly registry.get     'x-cache': 'MISS',
+360 silly registry.get     'x-cache-hits': '0',
+360 silly registry.get     'x-timer': 'S1410177060.288022,VS0,VE256',
+360 silly registry.get     vary: 'Accept',
+360 silly registry.get     'keep-alive': 'timeout=10, max=50',
+360 silly registry.get     connection: 'Keep-Alive' } ]
+361 silly addNameRange number 2 { name: 'msee', range: '>=0.1.1-0 <0.2.0-0', hasData: true }
+362 silly addNameRange versions [ 'msee',
+362 silly addNameRange   [ '0.1.0-alpha.1',
+362 silly addNameRange     '0.1.0-alpha.2',
+362 silly addNameRange     '0.1.0-alpha.3',
+362 silly addNameRange     '0.1.0',
+362 silly addNameRange     '0.1.1' ] ]
+363 verbose addNamed [ 'msee', '0.1.1' ]
+364 verbose addNamed [ '0.1.1', '0.1.1' ]
+365 silly lockFile 1550955d-msee-0-1-1 msee@0.1.1
+366 verbose lock msee@0.1.1 /home/hastenf/.npm/1550955d-msee-0-1-1.lock
+367 silly lockFile 4788fe4e-ry-npmjs-org-msee-msee-0-1-1-tgz https://registry.npmjs.org/msee/-/msee-0.1.1.tgz
+368 verbose lock https://registry.npmjs.org/msee/-/msee-0.1.1.tgz /home/hastenf/.npm/4788fe4e-ry-npmjs-org-msee-msee-0-1-1-tgz.lock
+369 verbose addRemoteTarball [ 'https://registry.npmjs.org/msee/-/msee-0.1.1.tgz',
+369 verbose addRemoteTarball   'bb458c6a2e123abdf428e8f4bce521a8c4ac148f' ]
+370 info retry fetch attempt 1 at 17:21:01
+371 verbose fetch to= /tmp/npm-11444-GZnGJHE4/registry.npmjs.org/msee/-/msee-0.1.1.tgz
+372 http GET https://registry.npmjs.org/msee/-/msee-0.1.1.tgz
+373 http 200 https://registry.npmjs.org/read-json
+374 silly registry.get cb [ 200,
+374 silly registry.get   { date: 'Mon, 08 Sep 2014 11:51:00 GMT',
+374 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+374 silly registry.get     etag: '"4TS6SBFMJZFF7ACAJIVPABJPJ"',
+374 silly registry.get     'content-type': 'application/json',
+374 silly registry.get     'cache-control': 'max-age=60',
+374 silly registry.get     'content-length': '1923',
+374 silly registry.get     'accept-ranges': 'bytes',
+374 silly registry.get     via: '1.1 varnish',
+374 silly registry.get     age: '3066',
+374 silly registry.get     'x-served-by': 'cache-syd1623-SYD',
+374 silly registry.get     'x-cache': 'MISS',
+374 silly registry.get     'x-cache-hits': '0',
+374 silly registry.get     'x-timer': 'S1410177060.353559,VS0,VE195',
+374 silly registry.get     vary: 'Accept',
+374 silly registry.get     'keep-alive': 'timeout=10, max=50',
+374 silly registry.get     connection: 'Keep-Alive' } ]
+375 silly lockFile 6c6ae0b7-rg-read-json-read-json-0-0-0-tgz https://registry.npmjs.org/read-json/-/read-json-0.0.0.tgz
+376 verbose lock https://registry.npmjs.org/read-json/-/read-json-0.0.0.tgz /home/hastenf/.npm/6c6ae0b7-rg-read-json-read-json-0-0-0-tgz.lock
+377 verbose addRemoteTarball [ 'https://registry.npmjs.org/read-json/-/read-json-0.0.0.tgz',
+377 verbose addRemoteTarball   '33ed6a0283fc85912dbfbedb4d38956647bff025' ]
+378 info retry fetch attempt 1 at 17:21:01
+379 verbose fetch to= /tmp/npm-11444-GZnGJHE4/registry.npmjs.org/read-json/-/read-json-0.0.0.tgz
+380 http GET https://registry.npmjs.org/read-json/-/read-json-0.0.0.tgz
+381 http 200 https://registry.npmjs.org/json-diff
+382 silly registry.get cb [ 200,
+382 silly registry.get   { date: 'Mon, 08 Sep 2014 11:51:00 GMT',
+382 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+382 silly registry.get     etag: '"ESN3ZD8QLZC5005MNWVL45QSX"',
+382 silly registry.get     'content-type': 'application/json',
+382 silly registry.get     'cache-control': 'max-age=60',
+382 silly registry.get     'content-length': '17557',
+382 silly registry.get     'accept-ranges': 'bytes',
+382 silly registry.get     via: '1.1 varnish',
+382 silly registry.get     age: '3066',
+382 silly registry.get     'x-served-by': 'cache-syd1620-SYD',
+382 silly registry.get     'x-cache': 'MISS',
+382 silly registry.get     'x-cache-hits': '0',
+382 silly registry.get     'x-timer': 'S1410177060.084239,VS0,VE193',
+382 silly registry.get     vary: 'Accept',
+382 silly registry.get     'keep-alive': 'timeout=10, max=50',
+382 silly registry.get     connection: 'Keep-Alive' } ]
+383 silly addNameRange number 2 { name: 'json-diff', range: '>=0.3.1-0 <0.4.0-0', hasData: true }
+384 silly addNameRange versions [ 'json-diff', [ '0.0.1', '0.2.0', '0.2.1', '0.3.0', '0.3.1' ] ]
+385 verbose addNamed [ 'json-diff', '0.3.1' ]
+386 verbose addNamed [ '0.3.1', '0.3.1' ]
+387 silly lockFile 1d7f26b7-json-diff-0-3-1 json-diff@0.3.1
+388 verbose lock json-diff@0.3.1 /home/hastenf/.npm/1d7f26b7-json-diff-0-3-1.lock
+389 silly lockFile 3c46c452-rg-json-diff-json-diff-0-3-1-tgz https://registry.npmjs.org/json-diff/-/json-diff-0.3.1.tgz
+390 verbose lock https://registry.npmjs.org/json-diff/-/json-diff-0.3.1.tgz /home/hastenf/.npm/3c46c452-rg-json-diff-json-diff-0-3-1-tgz.lock
+391 verbose addRemoteTarball [ 'https://registry.npmjs.org/json-diff/-/json-diff-0.3.1.tgz',
+391 verbose addRemoteTarball   '6dbc3ae2d25e075a7fd71bcd9874458666fb681b' ]
+392 info retry fetch attempt 1 at 17:21:01
+393 verbose fetch to= /tmp/npm-11444-GZnGJHE4/registry.npmjs.org/json-diff/-/json-diff-0.3.1.tgz
+394 http GET https://registry.npmjs.org/json-diff/-/json-diff-0.3.1.tgz
+395 http 200 https://registry.npmjs.org/run-parallel
+396 silly registry.get cb [ 200,
+396 silly registry.get   { date: 'Mon, 08 Sep 2014 11:51:01 GMT',
+396 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+396 silly registry.get     etag: '"5WQFTXLG6GJ13W3F26GEOU3XE"',
+396 silly registry.get     'content-type': 'application/json',
+396 silly registry.get     'cache-control': 'max-age=60',
+396 silly registry.get     'content-length': '9863',
+396 silly registry.get     'accept-ranges': 'bytes',
+396 silly registry.get     via: '1.1 varnish',
+396 silly registry.get     age: '3066',
+396 silly registry.get     'x-served-by': 'cache-syd1622-SYD',
+396 silly registry.get     'x-cache': 'MISS',
+396 silly registry.get     'x-cache-hits': '0',
+396 silly registry.get     'x-timer': 'S1410177060.803911,VS0,VE247',
+396 silly registry.get     vary: 'Accept',
+396 silly registry.get     'keep-alive': 'timeout=10, max=49',
+396 silly registry.get     connection: 'Keep-Alive' } ]
+397 silly addNameRange number 2 { name: 'run-parallel',
+397 silly addNameRange   range: '>=0.3.0-0 <0.4.0-0',
+397 silly addNameRange   hasData: true }
+398 silly addNameRange versions [ 'run-parallel',
+398 silly addNameRange   [ '0.1.0', '0.1.1', '0.2.0', '0.3.0', '1.0.0' ] ]
+399 verbose addNamed [ 'run-parallel', '0.3.0' ]
+400 verbose addNamed [ '0.3.0', '0.3.0' ]
+401 silly lockFile 89f213fd-run-parallel-0-3-0 run-parallel@0.3.0
+402 verbose lock run-parallel@0.3.0 /home/hastenf/.npm/89f213fd-run-parallel-0-3-0.lock
+403 silly lockFile c4c80b92--parallel-run-parallel-0-3-0-tgz https://registry.npmjs.org/run-parallel/-/run-parallel-0.3.0.tgz
+404 verbose lock https://registry.npmjs.org/run-parallel/-/run-parallel-0.3.0.tgz /home/hastenf/.npm/c4c80b92--parallel-run-parallel-0-3-0-tgz.lock
+405 verbose addRemoteTarball [ 'https://registry.npmjs.org/run-parallel/-/run-parallel-0.3.0.tgz',
+405 verbose addRemoteTarball   '2912228d34e1e370c70b9f794036de1c3eeae715' ]
+406 info retry fetch attempt 1 at 17:21:01
+407 verbose fetch to= /tmp/npm-11444-GZnGJHE4/registry.npmjs.org/run-parallel/-/run-parallel-0.3.0.tgz
+408 http GET https://registry.npmjs.org/run-parallel/-/run-parallel-0.3.0.tgz
+409 http 200 https://registry.npmjs.org/error
+410 silly registry.get cb [ 200,
+410 silly registry.get   { date: 'Mon, 08 Sep 2014 11:51:00 GMT',
+410 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+410 silly registry.get     etag: '"5V9R5U4MKPQHCTATTN05TYFYV"',
+410 silly registry.get     'content-type': 'application/json',
+410 silly registry.get     'cache-control': 'max-age=60',
+410 silly registry.get     'content-length': '28154',
+410 silly registry.get     'accept-ranges': 'bytes',
+410 silly registry.get     via: '1.1 varnish',
+410 silly registry.get     age: '0',
+410 silly registry.get     'x-served-by': 'cache-syd1621-SYD',
+410 silly registry.get     'x-cache': 'MISS',
+410 silly registry.get     'x-cache-hits': '0',
+410 silly registry.get     'x-timer': 'S1410177060.285562,VS0,VE383',
+410 silly registry.get     vary: 'Accept',
+410 silly registry.get     'keep-alive': 'timeout=10, max=50',
+410 silly registry.get     connection: 'Keep-Alive' } ]
+411 silly addNameRange number 2 { name: 'error', range: '>=3.0.0-0 <4.0.0-0', hasData: true }
+412 silly addNameRange versions [ 'error',
+412 silly addNameRange   [ '0.0.1',
+412 silly addNameRange     '0.0.2',
+412 silly addNameRange     '0.0.3',
+412 silly addNameRange     '0.0.4',
+412 silly addNameRange     '0.0.5',
+412 silly addNameRange     '0.1.0',
+412 silly addNameRange     '1.0.1',
+412 silly addNameRange     '1.0.2',
+412 silly addNameRange     '1.0.3',
+412 silly addNameRange     '2.0.1',
+412 silly addNameRange     '2.0.2',
+412 silly addNameRange     '2.0.3',
+412 silly addNameRange     '2.0.4',
+412 silly addNameRange     '3.0.0',
+412 silly addNameRange     '4.0.0',
+412 silly addNameRange     '4.1.0',
+412 silly addNameRange     '4.1.1',
+412 silly addNameRange     '4.2.0' ] ]
+413 verbose addNamed [ 'error', '3.0.0' ]
+414 verbose addNamed [ '3.0.0', '3.0.0' ]
+415 silly lockFile d646a11d-error-3-0-0 error@3.0.0
+416 verbose lock error@3.0.0 /home/hastenf/.npm/d646a11d-error-3-0-0.lock
+417 silly lockFile 82df5e70--npmjs-org-error-error-3-0-0-tgz https://registry.npmjs.org/error/-/error-3.0.0.tgz
+418 verbose lock https://registry.npmjs.org/error/-/error-3.0.0.tgz /home/hastenf/.npm/82df5e70--npmjs-org-error-error-3-0-0-tgz.lock
+419 verbose addRemoteTarball [ 'https://registry.npmjs.org/error/-/error-3.0.0.tgz',
+419 verbose addRemoteTarball   'a2957dcfd02e66cced07c120d20b6fbf7f9d8d78' ]
+420 info retry fetch attempt 1 at 17:21:01
+421 verbose fetch to= /tmp/npm-11444-GZnGJHE4/registry.npmjs.org/error/-/error-3.0.0.tgz
+422 http GET https://registry.npmjs.org/error/-/error-3.0.0.tgz
+423 http 200 https://registry.npmjs.org/safe-json-parse
+424 silly registry.get cb [ 200,
+424 silly registry.get   { date: 'Mon, 08 Sep 2014 11:51:01 GMT',
+424 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+424 silly registry.get     etag: '"BY014GNWU8TF10SFE6PJWFRY3"',
+424 silly registry.get     'content-type': 'application/json',
+424 silly registry.get     'cache-control': 'max-age=60',
+424 silly registry.get     'content-length': '6210',
+424 silly registry.get     'accept-ranges': 'bytes',
+424 silly registry.get     via: '1.1 varnish',
+424 silly registry.get     age: '0',
+424 silly registry.get     'x-served-by': 'cache-syd1623-SYD',
+424 silly registry.get     'x-cache': 'MISS',
+424 silly registry.get     'x-cache-hits': '0',
+424 silly registry.get     'x-timer': 'S1410177061.186342,VS0,VE200',
+424 silly registry.get     vary: 'Accept',
+424 silly registry.get     'keep-alive': 'timeout=10, max=49',
+424 silly registry.get     connection: 'Keep-Alive' } ]
+425 silly addNameRange number 2 { name: 'safe-json-parse',
+425 silly addNameRange   range: '>=1.0.1-0 <2.0.0-0',
+425 silly addNameRange   hasData: true }
+426 silly addNameRange versions [ 'safe-json-parse', [ '0.1.1', '1.0.1', '2.0.0' ] ]
+427 verbose addNamed [ 'safe-json-parse', '1.0.1' ]
+428 verbose addNamed [ '1.0.1', '1.0.1' ]
+429 silly lockFile 0f67187f-safe-json-parse-1-0-1 safe-json-parse@1.0.1
+430 verbose lock safe-json-parse@1.0.1 /home/hastenf/.npm/0f67187f-safe-json-parse-1-0-1.lock
+431 silly lockFile d2d11697--parse-safe-json-parse-1-0-1-tgz https://registry.npmjs.org/safe-json-parse/-/safe-json-parse-1.0.1.tgz
+432 verbose lock https://registry.npmjs.org/safe-json-parse/-/safe-json-parse-1.0.1.tgz /home/hastenf/.npm/d2d11697--parse-safe-json-parse-1-0-1-tgz.lock
+433 verbose addRemoteTarball [ 'https://registry.npmjs.org/safe-json-parse/-/safe-json-parse-1.0.1.tgz',
+433 verbose addRemoteTarball   '3e76723e38dfdda13c9b1d29a1e07ffee4b30b57' ]
+434 info retry fetch attempt 1 at 17:21:01
+435 verbose fetch to= /tmp/npm-11444-GZnGJHE4/registry.npmjs.org/safe-json-parse/-/safe-json-parse-1.0.1.tgz
+436 http GET https://registry.npmjs.org/safe-json-parse/-/safe-json-parse-1.0.1.tgz
+437 http 200 https://registry.npmjs.org/run-series
+438 silly registry.get cb [ 200,
+438 silly registry.get   { date: 'Mon, 08 Sep 2014 11:51:01 GMT',
+438 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+438 silly registry.get     etag: '"R3I5UW7GXG7ZC2HYBG0WSXQH"',
+438 silly registry.get     'content-type': 'application/json',
+438 silly registry.get     'cache-control': 'max-age=60',
+438 silly registry.get     'content-length': '13171',
+438 silly registry.get     'accept-ranges': 'bytes',
+438 silly registry.get     via: '1.1 varnish',
+438 silly registry.get     age: '0',
+438 silly registry.get     'x-served-by': 'cache-syd1621-SYD',
+438 silly registry.get     'x-cache': 'MISS',
+438 silly registry.get     'x-cache-hits': '0',
+438 silly registry.get     'x-timer': 'S1410177061.114741,VS0,VE506',
+438 silly registry.get     vary: 'Accept',
+438 silly registry.get     'keep-alive': 'timeout=10, max=49',
+438 silly registry.get     connection: 'Keep-Alive' } ]
+439 silly addNameRange number 2 { name: 'run-series',
+439 silly addNameRange   range: '>=1.0.2-0 <2.0.0-0',
+439 silly addNameRange   hasData: true }
+440 silly addNameRange versions [ 'run-series',
+440 silly addNameRange   [ '0.2.0',
+440 silly addNameRange     '0.3.0',
+440 silly addNameRange     '0.3.1',
+440 silly addNameRange     '0.4.0',
+440 silly addNameRange     '0.5.0',
+440 silly addNameRange     '1.0.0',
+440 silly addNameRange     '1.0.1',
+440 silly addNameRange     '1.0.2' ] ]
+441 verbose addNamed [ 'run-series', '1.0.2' ]
+442 verbose addNamed [ '1.0.2', '1.0.2' ]
+443 silly lockFile ae9f108a-run-series-1-0-2 run-series@1.0.2
+444 verbose lock run-series@1.0.2 /home/hastenf/.npm/ae9f108a-run-series-1-0-2.lock
+445 silly lockFile 78593a39--run-series-run-series-1-0-2-tgz https://registry.npmjs.org/run-series/-/run-series-1.0.2.tgz
+446 verbose lock https://registry.npmjs.org/run-series/-/run-series-1.0.2.tgz /home/hastenf/.npm/78593a39--run-series-run-series-1-0-2-tgz.lock
+447 verbose addRemoteTarball [ 'https://registry.npmjs.org/run-series/-/run-series-1.0.2.tgz',
+447 verbose addRemoteTarball   '63d0d361b9aa2509c85bd790810a8bd9d302bc8e' ]
+448 info retry fetch attempt 1 at 17:21:02
+449 verbose fetch to= /tmp/npm-11444-GZnGJHE4/registry.npmjs.org/run-series/-/run-series-1.0.2.tgz
+450 http GET https://registry.npmjs.org/run-series/-/run-series-1.0.2.tgz
+451 http 200 https://registry.npmjs.org/sorted-object
+452 silly registry.get cb [ 200,
+452 silly registry.get   { date: 'Mon, 08 Sep 2014 11:51:01 GMT',
+452 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+452 silly registry.get     etag: '"33NB2FAI56RHV596A7F0M1D2C"',
+452 silly registry.get     'content-type': 'application/json',
+452 silly registry.get     'cache-control': 'max-age=60',
+452 silly registry.get     'content-length': '2564',
+452 silly registry.get     'accept-ranges': 'bytes',
+452 silly registry.get     via: '1.1 varnish',
+452 silly registry.get     age: '6956',
+452 silly registry.get     'x-served-by': 'cache-syd1620-SYD',
+452 silly registry.get     'x-cache': 'MISS',
+452 silly registry.get     'x-cache-hits': '0',
+452 silly registry.get     'x-timer': 'S1410177061.398567,VS0,VE249',
+452 silly registry.get     vary: 'Accept',
+452 silly registry.get     'keep-alive': 'timeout=10, max=49',
+452 silly registry.get     connection: 'Keep-Alive' } ]
+453 silly addNameRange number 2 { name: 'sorted-object',
+453 silly addNameRange   range: '>=1.0.0-0 <2.0.0-0',
+453 silly addNameRange   hasData: true }
+454 silly addNameRange versions [ 'sorted-object', [ '1.0.0' ] ]
+455 verbose addNamed [ 'sorted-object', '1.0.0' ]
+456 verbose addNamed [ '1.0.0', '1.0.0' ]
+457 silly lockFile 2cfa6355-sorted-object-1-0-0 sorted-object@1.0.0
+458 verbose lock sorted-object@1.0.0 /home/hastenf/.npm/2cfa6355-sorted-object-1-0-0.lock
+459 silly lockFile 1bf80f26-d-object-sorted-object-1-0-0-tgz https://registry.npmjs.org/sorted-object/-/sorted-object-1.0.0.tgz
+460 verbose lock https://registry.npmjs.org/sorted-object/-/sorted-object-1.0.0.tgz /home/hastenf/.npm/1bf80f26-d-object-sorted-object-1-0-0-tgz.lock
+461 verbose addRemoteTarball [ 'https://registry.npmjs.org/sorted-object/-/sorted-object-1.0.0.tgz',
+461 verbose addRemoteTarball   '5d1f4f9c1fb2cd48965967304e212eb44cfb6d05' ]
+462 info retry fetch attempt 1 at 17:21:02
+463 verbose fetch to= /tmp/npm-11444-GZnGJHE4/registry.npmjs.org/sorted-object/-/sorted-object-1.0.0.tgz
+464 http GET https://registry.npmjs.org/sorted-object/-/sorted-object-1.0.0.tgz
+465 http 304 https://registry.npmjs.org/minimist
+466 silly registry.get cb [ 304,
+466 silly registry.get   { date: 'Mon, 08 Sep 2014 11:51:01 GMT',
+466 silly registry.get     server: 'Apache',
+466 silly registry.get     via: '1.1 varnish',
+466 silly registry.get     'last-modified': 'Mon, 08 Sep 2014 11:49:15 GMT',
+466 silly registry.get     'cache-control': 'max-age=60',
+466 silly registry.get     etag: '"MXLSD2JVPETT7WQI528IU138"',
+466 silly registry.get     'x-served-by': 'cache-syd1621-SYD',
+466 silly registry.get     'x-cache': 'HIT',
+466 silly registry.get     'x-cache-hits': '13',
+466 silly registry.get     'x-timer': 'S1410177061.838652,VS0,VE0',
+466 silly registry.get     vary: 'Accept',
+466 silly registry.get     'content-length': '0',
+466 silly registry.get     'keep-alive': 'timeout=10, max=49',
+466 silly registry.get     connection: 'Keep-Alive' } ]
+467 verbose etag https://registry.npmjs.org/minimist from cache
+468 silly lockFile f7b98dc7--org-minimist-minimist-0-0-8-tgz https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz
+469 verbose lock https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz /home/hastenf/.npm/f7b98dc7--org-minimist-minimist-0-0-8-tgz.lock
+470 verbose addRemoteTarball [ 'https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz',
+470 verbose addRemoteTarball   '857fcabfc3397d2625b8228262e86aa7a011b05d' ]
+471 info retry fetch attempt 1 at 17:21:02
+472 verbose fetch to= /tmp/npm-11444-GZnGJHE4/registry.npmjs.org/minimist/-/minimist-0.0.8.tgz
+473 http GET https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz
+474 http 200 https://registry.npmjs.org/string-template
+475 silly registry.get cb [ 200,
+475 silly registry.get   { date: 'Mon, 08 Sep 2014 11:51:01 GMT',
+475 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+475 silly registry.get     etag: '"CNAAR4DFRX9KEB19MKUECZEHQ"',
+475 silly registry.get     'content-type': 'application/json',
+475 silly registry.get     'cache-control': 'max-age=60',
+475 silly registry.get     'content-length': '10984',
+475 silly registry.get     'accept-ranges': 'bytes',
+475 silly registry.get     via: '1.1 varnish',
+475 silly registry.get     age: '3067',
+475 silly registry.get     'x-served-by': 'cache-syd1622-SYD',
+475 silly registry.get     'x-cache': 'MISS',
+475 silly registry.get     'x-cache-hits': '0',
+475 silly registry.get     'x-timer': 'S1410177061.643896,VS0,VE251',
+475 silly registry.get     vary: 'Accept',
+475 silly registry.get     'keep-alive': 'timeout=10, max=48',
+475 silly registry.get     connection: 'Keep-Alive' } ]
+476 silly addNameRange number 2 { name: 'string-template',
+476 silly addNameRange   range: '>=0.1.3-0 <0.2.0-0',
+476 silly addNameRange   hasData: true }
+477 silly addNameRange versions [ 'string-template',
+477 silly addNameRange   [ '0.1.0', '0.1.1', '0.1.2', '0.1.3', '0.2.0' ] ]
+478 verbose addNamed [ 'string-template', '0.1.3' ]
+479 verbose addNamed [ '0.1.3', '0.1.3' ]
+480 silly lockFile b0fecee1-string-template-0-1-3 string-template@0.1.3
+481 verbose lock string-template@0.1.3 /home/hastenf/.npm/b0fecee1-string-template-0-1-3.lock
+482 silly lockFile 260b6f6e-mplate-string-template-0-1-3-tgz https://registry.npmjs.org/string-template/-/string-template-0.1.3.tgz
+483 verbose lock https://registry.npmjs.org/string-template/-/string-template-0.1.3.tgz /home/hastenf/.npm/260b6f6e-mplate-string-template-0-1-3-tgz.lock
+484 verbose addRemoteTarball [ 'https://registry.npmjs.org/string-template/-/string-template-0.1.3.tgz',
+484 verbose addRemoteTarball   'b568d8e9d67095467ba5a97f3138285b574b57f1' ]
+485 info retry fetch attempt 1 at 17:21:03
+486 verbose fetch to= /tmp/npm-11444-GZnGJHE4/registry.npmjs.org/string-template/-/string-template-0.1.3.tgz
+487 http GET https://registry.npmjs.org/string-template/-/string-template-0.1.3.tgz
+488 http 200 https://registry.npmjs.org/rimraf
+489 silly registry.get cb [ 200,
+489 silly registry.get   { date: 'Mon, 08 Sep 2014 11:51:01 GMT',
+489 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+489 silly registry.get     etag: '"1SH15VXSP0BG6V9MRPXNE4RTW"',
+489 silly registry.get     'content-type': 'application/json',
+489 silly registry.get     'cache-control': 'max-age=60',
+489 silly registry.get     'content-length': '32406',
+489 silly registry.get     'accept-ranges': 'bytes',
+489 silly registry.get     via: '1.1 varnish',
+489 silly registry.get     age: '106',
+489 silly registry.get     'x-served-by': 'cache-syd1623-SYD',
+489 silly registry.get     'x-cache': 'HIT',
+489 silly registry.get     'x-cache-hits': '10',
+489 silly registry.get     'x-timer': 'S1410177061.945881,VS0,VE0',
+489 silly registry.get     vary: 'Accept',
+489 silly registry.get     'keep-alive': 'timeout=10, max=48',
+489 silly registry.get     connection: 'Keep-Alive' } ]
+490 silly addNameRange number 2 { name: 'rimraf', range: '>=2.2.8-0 <3.0.0-0', hasData: true }
+491 silly addNameRange versions [ 'rimraf',
+491 silly addNameRange   [ '1.0.0',
+491 silly addNameRange     '1.0.1',
+491 silly addNameRange     '1.0.2',
+491 silly addNameRange     '1.0.4',
+491 silly addNameRange     '1.0.5',
+491 silly addNameRange     '1.0.6',
+491 silly addNameRange     '1.0.7',
+491 silly addNameRange     '1.0.8',
+491 silly addNameRange     '1.0.9',
+491 silly addNameRange     '2.0.0',
+491 silly addNameRange     '2.0.1',
+491 silly addNameRange     '2.0.2',
+491 silly addNameRange     '2.0.3',
+491 silly addNameRange     '2.1.0',
+491 silly addNameRange     '2.1.1',
+491 silly addNameRange     '2.1.2',
+491 silly addNameRange     '2.1.3',
+491 silly addNameRange     '2.1.4',
+491 silly addNameRange     '2.2.0',
+491 silly addNameRange     '2.2.1',
+491 silly addNameRange     '2.2.2',
+491 silly addNameRange     '2.2.3',
+491 silly addNameRange     '2.2.4',
+491 silly addNameRange     '2.2.5',
+491 silly addNameRange     '2.2.6',
+491 silly addNameRange     '2.2.8' ] ]
+492 verbose addNamed [ 'rimraf', '2.2.8' ]
+493 verbose addNamed [ '2.2.8', '2.2.8' ]
+494 silly lockFile b87241a4-rimraf-2-2-8 rimraf@2.2.8
+495 verbose lock rimraf@2.2.8 /home/hastenf/.npm/b87241a4-rimraf-2-2-8.lock
+496 http 200 https://registry.npmjs.org/array-find/-/array-find-0.1.1.tgz
+497 silly lockFile b87241a4-rimraf-2-2-8 rimraf@2.2.8
+498 silly lockFile b87241a4-rimraf-2-2-8 rimraf@2.2.8
+499 silly lockFile e7d3f915-rimraf-2-2-8 rimraf@^2.2.8
+500 silly lockFile e7d3f915-rimraf-2-2-8 rimraf@^2.2.8
+501 silly lockFile 41bd00ab--array-find-array-find-0-1-1-tgz https://registry.npmjs.org/array-find/-/array-find-0.1.1.tgz
+502 silly lockFile 41bd00ab--array-find-array-find-0-1-1-tgz https://registry.npmjs.org/array-find/-/array-find-0.1.1.tgz
+503 silly lockFile 43fcfebb-array-find-0-1-1 array-find@0.1.1
+504 silly lockFile 43fcfebb-array-find-0-1-1 array-find@0.1.1
+505 silly lockFile ca15485f-array-find-0-1-1 array-find@^0.1.1
+506 silly lockFile ca15485f-array-find-0-1-1 array-find@^0.1.1
+507 http 200 https://registry.npmjs.org/msee/-/msee-0.1.1.tgz
+508 silly lockFile 4788fe4e-ry-npmjs-org-msee-msee-0-1-1-tgz https://registry.npmjs.org/msee/-/msee-0.1.1.tgz
+509 silly lockFile 4788fe4e-ry-npmjs-org-msee-msee-0-1-1-tgz https://registry.npmjs.org/msee/-/msee-0.1.1.tgz
+510 silly lockFile 1550955d-msee-0-1-1 msee@0.1.1
+511 silly lockFile 1550955d-msee-0-1-1 msee@0.1.1
+512 silly lockFile 783cda77-msee-0-1-1 msee@^0.1.1
+513 silly lockFile 783cda77-msee-0-1-1 msee@^0.1.1
+514 http 200 https://registry.npmjs.org/error/-/error-3.0.0.tgz
+515 silly lockFile 82df5e70--npmjs-org-error-error-3-0-0-tgz https://registry.npmjs.org/error/-/error-3.0.0.tgz
+516 silly lockFile 82df5e70--npmjs-org-error-error-3-0-0-tgz https://registry.npmjs.org/error/-/error-3.0.0.tgz
+517 silly lockFile d646a11d-error-3-0-0 error@3.0.0
+518 silly lockFile d646a11d-error-3-0-0 error@3.0.0
+519 silly lockFile 059aed51-error-3-0-0 error@^3.0.0
+520 silly lockFile 059aed51-error-3-0-0 error@^3.0.0
+521 http 200 https://registry.npmjs.org/read-json/-/read-json-0.0.0.tgz
+522 silly lockFile 6c6ae0b7-rg-read-json-read-json-0-0-0-tgz https://registry.npmjs.org/read-json/-/read-json-0.0.0.tgz
+523 silly lockFile 6c6ae0b7-rg-read-json-read-json-0-0-0-tgz https://registry.npmjs.org/read-json/-/read-json-0.0.0.tgz
+524 silly lockFile e97563b8-read-json-0-0-0 read-json@0.0.0
+525 silly lockFile e97563b8-read-json-0-0-0 read-json@0.0.0
+526 http 200 https://registry.npmjs.org/semver
+527 silly registry.get cb [ 200,
+527 silly registry.get   { date: 'Mon, 08 Sep 2014 11:51:02 GMT',
+527 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+527 silly registry.get     etag: '"5E2L6A4Y5PFRNT1948JHTOEPP"',
+527 silly registry.get     'content-type': 'application/json',
+527 silly registry.get     'cache-control': 'max-age=60',
+527 silly registry.get     'content-length': '41092',
+527 silly registry.get     'accept-ranges': 'bytes',
+527 silly registry.get     via: '1.1 varnish',
+527 silly registry.get     age: '64',
+527 silly registry.get     'x-served-by': 'cache-syd1621-SYD',
+527 silly registry.get     'x-cache': 'HIT',
+527 silly registry.get     'x-cache-hits': '1',
+527 silly registry.get     'x-timer': 'S1410177062.221584,VS0,VE188',
+527 silly registry.get     vary: 'Accept',
+527 silly registry.get     'keep-alive': 'timeout=10, max=48',
+527 silly registry.get     connection: 'Keep-Alive' } ]
+528 silly addNameRange number 2 { name: 'semver', range: '>=2.2.1-0 <3.0.0-0', hasData: true }
+529 silly addNameRange versions [ 'semver',
+529 silly addNameRange   [ '1.0.0',
+529 silly addNameRange     '1.0.1',
+529 silly addNameRange     '1.0.2',
+529 silly addNameRange     '1.0.3',
+529 silly addNameRange     '1.0.4',
+529 silly addNameRange     '1.0.5',
+529 silly addNameRange     '1.0.6',
+529 silly addNameRange     '1.0.7',
+529 silly addNameRange     '1.0.8',
+529 silly addNameRange     '1.0.9',
+529 silly addNameRange     '1.0.10',
+529 silly addNameRange     '1.0.11',
+529 silly addNameRange     '1.0.12',
+529 silly addNameRange     '1.0.13',
+529 silly addNameRange     '1.0.14',
+529 silly addNameRange     '1.1.0',
+529 silly addNameRange     '1.1.1',
+529 silly addNameRange     '1.1.2',
+529 silly addNameRange     '1.1.3',
+529 silly addNameRange     '1.1.4',
+529 silly addNameRange     '2.0.0-alpha',
+529 silly addNameRange     '2.0.0-beta',
+529 silly addNameRange     '2.0.1',
+529 silly addNameRange     '2.0.2',
+529 silly addNameRange     '2.0.3',
+529 silly addNameRange     '2.0.4',
+529 silly addNameRange     '2.0.5',
+529 silly addNameRange     '2.0.6',
+529 silly addNameRange     '2.0.7',
+529 silly addNameRange     '2.0.8',
+529 silly addNameRange     '2.0.9',
+529 silly addNameRange     '2.0.10',
+529 silly addNameRange     '2.0.11',
+529 silly addNameRange     '2.1.0',
+529 silly addNameRange     '2.2.0',
+529 silly addNameRange     '2.2.1',
+529 silly addNameRange     '2.3.0',
+529 silly addNameRange     '2.3.1',
+529 silly addNameRange     '2.3.2',
+529 silly addNameRange     '3.0.0',
+529 silly addNameRange     '3.0.1' ] ]
+530 verbose addNamed [ 'semver', '2.3.2' ]
+531 verbose addNamed [ '2.3.2', '2.3.2' ]
+532 silly lockFile 860f99cb-semver-2-3-2 semver@2.3.2
+533 verbose lock semver@2.3.2 /home/hastenf/.npm/860f99cb-semver-2-3-2.lock
+534 http 200 https://registry.npmjs.org/json-diff/-/json-diff-0.3.1.tgz
+535 silly lockFile b6a1cd43-pmjs-org-semver-semver-2-3-2-tgz https://registry.npmjs.org/semver/-/semver-2.3.2.tgz
+536 verbose lock https://registry.npmjs.org/semver/-/semver-2.3.2.tgz /home/hastenf/.npm/b6a1cd43-pmjs-org-semver-semver-2-3-2-tgz.lock
+537 verbose addRemoteTarball [ 'https://registry.npmjs.org/semver/-/semver-2.3.2.tgz',
+537 verbose addRemoteTarball   'b9848f25d6cf36333073ec9ef8856d42f1233e52' ]
+538 info retry fetch attempt 1 at 17:21:04
+539 verbose fetch to= /tmp/npm-11444-GZnGJHE4/registry.npmjs.org/semver/-/semver-2.3.2.tgz
+540 http GET https://registry.npmjs.org/semver/-/semver-2.3.2.tgz
+541 silly lockFile 3c46c452-rg-json-diff-json-diff-0-3-1-tgz https://registry.npmjs.org/json-diff/-/json-diff-0.3.1.tgz
+542 silly lockFile 3c46c452-rg-json-diff-json-diff-0-3-1-tgz https://registry.npmjs.org/json-diff/-/json-diff-0.3.1.tgz
+543 silly lockFile 1d7f26b7-json-diff-0-3-1 json-diff@0.3.1
+544 silly lockFile 1d7f26b7-json-diff-0-3-1 json-diff@0.3.1
+545 silly lockFile b588373f-json-diff-0-3-1 json-diff@^0.3.1
+546 silly lockFile b588373f-json-diff-0-3-1 json-diff@^0.3.1
+547 http 200 https://registry.npmjs.org/run-parallel/-/run-parallel-0.3.0.tgz
+548 silly lockFile c4c80b92--parallel-run-parallel-0-3-0-tgz https://registry.npmjs.org/run-parallel/-/run-parallel-0.3.0.tgz
+549 silly lockFile c4c80b92--parallel-run-parallel-0-3-0-tgz https://registry.npmjs.org/run-parallel/-/run-parallel-0.3.0.tgz
+550 silly lockFile 89f213fd-run-parallel-0-3-0 run-parallel@0.3.0
+551 silly lockFile 89f213fd-run-parallel-0-3-0 run-parallel@0.3.0
+552 silly lockFile 65a02891-run-parallel-0-3-0 run-parallel@^0.3.0
+553 silly lockFile 65a02891-run-parallel-0-3-0 run-parallel@^0.3.0
+554 http 200 https://registry.npmjs.org/safe-json-parse/-/safe-json-parse-1.0.1.tgz
+555 silly lockFile d2d11697--parse-safe-json-parse-1-0-1-tgz https://registry.npmjs.org/safe-json-parse/-/safe-json-parse-1.0.1.tgz
+556 silly lockFile d2d11697--parse-safe-json-parse-1-0-1-tgz https://registry.npmjs.org/safe-json-parse/-/safe-json-parse-1.0.1.tgz
+557 silly lockFile 0f67187f-safe-json-parse-1-0-1 safe-json-parse@1.0.1
+558 silly lockFile 0f67187f-safe-json-parse-1-0-1 safe-json-parse@1.0.1
+559 silly lockFile 5b004efc-safe-json-parse-1-0-1 safe-json-parse@^1.0.1
+560 silly lockFile 5b004efc-safe-json-parse-1-0-1 safe-json-parse@^1.0.1
+561 http 200 https://registry.npmjs.org/run-series/-/run-series-1.0.2.tgz
+562 http 200 https://registry.npmjs.org/sorted-object/-/sorted-object-1.0.0.tgz
+563 silly lockFile 1bf80f26-d-object-sorted-object-1-0-0-tgz https://registry.npmjs.org/sorted-object/-/sorted-object-1.0.0.tgz
+564 silly lockFile 1bf80f26-d-object-sorted-object-1-0-0-tgz https://registry.npmjs.org/sorted-object/-/sorted-object-1.0.0.tgz
+565 silly lockFile 2cfa6355-sorted-object-1-0-0 sorted-object@1.0.0
+566 silly lockFile 2cfa6355-sorted-object-1-0-0 sorted-object@1.0.0
+567 silly lockFile 1b56d790-sorted-object-1-0-0 sorted-object@^1.0.0
+568 silly lockFile 1b56d790-sorted-object-1-0-0 sorted-object@^1.0.0
+569 http 200 https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz
+570 silly lockFile f7b98dc7--org-minimist-minimist-0-0-8-tgz https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz
+571 silly lockFile f7b98dc7--org-minimist-minimist-0-0-8-tgz https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz
+572 silly lockFile 22c6b485-minimist-0-0-8 minimist@0.0.8
+573 silly lockFile 22c6b485-minimist-0-0-8 minimist@0.0.8
+574 verbose about to build /home/hastenf/development/meteor/evolve/node_modules/npm-shrinkwrap
+575 verbose node_modules/npm-shrinkwrap unbuild
+576 info preuninstall npm-shrinkwrap@3.1.8
+577 info uninstall npm-shrinkwrap@3.1.8
+578 verbose true,/home/hastenf/development/meteor/evolve/node_modules,/home/hastenf/development/meteor/evolve/node_modules unbuild npm-shrinkwrap@3.1.8
+579 verbose /home/hastenf/development/meteor/evolve/node_modules/.bin,[object Object] binRoot
+580 info postuninstall npm-shrinkwrap@3.1.8
+581 error Error: EACCES, mkdir '/home/hastenf/.npm/minimist/0.0.8'
+581 error  { [Error: EACCES, mkdir '/home/hastenf/.npm/minimist/0.0.8']
+581 error   errno: 3,
+581 error   code: 'EACCES',
+581 error   path: '/home/hastenf/.npm/minimist/0.0.8',
+581 error   parent: 'npm-shrinkwrap' }
+582 error Please try running this command again as root/Administrator.
+583 error System Linux 3.13.0-35-generic
+584 error command "/usr/bin/node" "/usr/bin/npm" "install" "npm-shrinkwrap"
+585 error cwd /home/hastenf/development/meteor/evolve
+586 error node -v v0.10.31
+587 error npm -v 1.4.23
+588 error path /home/hastenf/.npm/minimist/0.0.8
+589 error code EACCES
+590 error errno 3
+591 error stack Error: EACCES, mkdir '/home/hastenf/.npm/minimist/0.0.8'
+592 verbose exit [ 3, true ]

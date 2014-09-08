@@ -344,7 +344,7 @@ function scrapVideos(){
     Loader.update({"_id":"bigthink"},{$set : method});
     scrapVideosGetMore();
 }
-Scrap.bigthink.scrapBlogs = scrapBlogs;
+Scrap.bigthink.scrapVideos = scrapVideos;
 function scrapVideosGetMore(){
     var startTime = new Date().getTime();
     method = {"method2" : {"name":"scrapVideosGetMore","status":"Started scrapVideosGetMore", "time" :getMyTime(startTime)}};
