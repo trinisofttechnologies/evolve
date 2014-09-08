@@ -65,6 +65,8 @@ ConnectionCategory = new Meteor.Collection("connectioncategory");
 DebugFace = false;
 Meteor.startup(function () {
 	if(Meteor.absoluteUrl.defaultOptions.rootUrl.match("localhost:3000"))
-		DebugFace = true;	
+		DebugFace = false;
+
+	console.log("DebugFace : " +DebugFace);	
 });
 
